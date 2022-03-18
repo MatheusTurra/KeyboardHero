@@ -1,0 +1,16 @@
+.container {
+  margin-top: 5rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.testInput {
+  resize: none;
+  display: block;
+  width: 50rem;
+  height: 15rem;
+  margin: 0px auto;
+  font-size: 1.6rem;
+}
