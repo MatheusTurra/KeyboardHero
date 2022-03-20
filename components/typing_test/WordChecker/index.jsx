@@ -2,18 +2,33 @@ import { useRef } from "react";
 
 import styles from "./styles.module.css"
 
-const text = "Esse é o primeiro teste para projeto Keyboard Hero";
+let wordIndex = 0;
+let textIndex = 0;
+
+const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const splittedText = text.split();
 
 export default function WordChecker() {
   const userInput = useRef();
-
+  
   function verifyWord(event) {
-    const keyPress = event.code;
-
-    if(keyPress === "Space") {
+    updateIndexes(event.code);
+  }
+  
+  function updateIndexes(keycode) {
+    if(keycode === "Space") {
+      textIndex++;
+      wordIndex = 0;
       userInput.current.reset();
+      return;
     }
+
+    if(keycode === "Backspace") {
+      wordIndex--;
+      return;
+    }
+
+    wordIndex++;
   }
 
   return(
