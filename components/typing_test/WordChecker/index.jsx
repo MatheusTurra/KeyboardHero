@@ -6,29 +6,38 @@ let wordIndex = 0;
 let textIndex = 0;
 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
-const splittedText = text.split();
+const splittedText = text.split(" ");
 
 export default function WordChecker() {
   const userInput = useRef();
   
   function verifyWord(event) {
-    updateIndexes(event.code);
+    const keyPressed = event.key;
+    const keyPressedCode = event.code;
+    const textLetter = splittedText[textIndex][wordIndex];
+    
+    
+    updateIndexes(keyPressedCode);  
   }
   
-  function updateIndexes(keycode) {
-    if(keycode === "Space") {
+  function updateIndexes(keyPressed) {
+    
+    if(keyPressed === "Space") {
       textIndex++;
       wordIndex = 0;
       userInput.current.reset();
       return;
     }
 
-    if(keycode === "Backspace") {
+    if(keyPressed === "Backspace") {
       wordIndex--;
       return;
     }
 
-    wordIndex++;
+    if(keyPressed.length === 4) {
+      wordIndex++;
+      return;
+    }
   }
 
   return(
@@ -44,7 +53,7 @@ export default function WordChecker() {
           <form ref={userInput}>
             <input
               type="text"
-              onKeyUp={event => verifyWord(event)}
+              onKeyDown={event => verifyWord(event)}
               className={styles.userInput}
             />
           </form>
