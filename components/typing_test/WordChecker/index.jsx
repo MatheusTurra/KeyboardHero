@@ -9,37 +9,25 @@ const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const splittedText = text.split(" ");
 
 export default function WordChecker() {
-  const userInput = useRef();
   
-  function verifyWord(event) {
-    const keyPressed = event.key;
-    const keyPressedCode = event.code;
-    const textLetter = splittedText[textIndex][wordIndex];
-    
-    
-    updateIndexes(keyPressedCode);  
-  }
-  
-  function updateIndexes(keyPressed) {
-    
-    if(keyPressed === "Space") {
+  function teste(event){
+    const textLetters = splittedText[0].split("");
+    const userInputData = event.nativeEvent.data;
+    const userEntry = event.target.value;
+    const userTextIndex = userEntry.length - 1;
+
+    console.log(textLetters[textIndex] === userEntry[userTextIndex], textLetters[textIndex], userEntry[userTextIndex], textIndex, userTextIndex);
+    console.log(userInputData);
+    if(textLetters[textIndex] === userEntry[userTextIndex]) {
+      console.log('certim');
       textIndex++;
-      wordIndex = 0;
-      userInput.current.reset();
-      return;
     }
 
-    if(keyPressed === "Backspace") {
-      wordIndex--;
-      return;
-    }
-
-    if(keyPressed.length === 4) {
-      wordIndex++;
-      return;
+    if(userInputData === null && textIndex >= userTextIndex) {
+      if(textIndex > 0) textIndex--;
+      console.log('apaga')
     }
   }
-
   return(
     <>
       <section className={styles.container}>
@@ -50,10 +38,10 @@ export default function WordChecker() {
           className={styles.testText}
         />
         <div className={styles.userInputContainer}>
-          <form ref={userInput}>
+          <form>
             <input
               type="text"
-              onKeyDown={event => verifyWord(event)}
+              onChange={event => teste(event)}
               className={styles.userInput}
             />
           </form>
