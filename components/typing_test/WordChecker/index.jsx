@@ -3,29 +3,27 @@ import { useRef } from "react";
 import styles from "./styles.module.css"
 
 let wordIndex = 0;
-let textIndex = 0;
+let letterIndex = 0;
 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const splittedText = text.split(" ");
 
 export default function WordChecker() {
   
-  function teste(event){
+  function verifyLetters(event){
     const textLetters = splittedText[0].split("");
-    const userInputData = event.nativeEvent.data;
-    const userEntry = event.target.value;
-    const userTextIndex = userEntry.length - 1;
+    const inputData = event.nativeEvent.data;
+    const userInputValue = event.target.value;
+    const userInputIndex = userInputValue.length - 1;
 
-    console.log(textLetters[textIndex] === userEntry[userTextIndex], textLetters[textIndex], userEntry[userTextIndex], textIndex, userTextIndex);
-    console.log(userInputData);
-    if(textLetters[textIndex] === userEntry[userTextIndex]) {
-      console.log('certim');
-      textIndex++;
+    if(textLetters[letterIndex] === userInputValue[userInputIndex]) {
+      letterIndex++;
     }
 
-    if(userInputData === null && textIndex >= userTextIndex) {
-      if(textIndex > 0) textIndex--;
-      console.log('apaga')
+    if(inputData === null && letterIndex >= userInputIndex) {
+      if(letterIndex > 0) {
+        letterIndex--;
+      }
     }
   }
   return(
@@ -41,7 +39,7 @@ export default function WordChecker() {
           <form>
             <input
               type="text"
-              onChange={event => teste(event)}
+              onChange={event => verifyLetters(event)}
               className={styles.userInput}
             />
           </form>
