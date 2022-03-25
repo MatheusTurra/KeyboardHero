@@ -1,3 +1,5 @@
+import RenderText from "../RenderText";
+
 import { useRef } from "react";
 
 import styles from "./styles.module.css"
@@ -40,11 +42,7 @@ export default function WordChecker() {
     <>
       <section className={styles.container}>
         <h1 className={styles.title}>Keyboard Hero</h1>
-        <textarea
-          readOnly
-          defaultValue={text}
-          className={styles.testText}
-        />
+        <RenderText text={text}/>
         <div className={styles.userInputContainer}>
           <form ref={userInputRef}>
             <input
