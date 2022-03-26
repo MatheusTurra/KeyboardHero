@@ -11,22 +11,26 @@ const words = text.split(" ");
 
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
-  /**
-   * TODO: TENTAR REFAZER COM O EFFECT E COLOCAR O CONTEÚDO DO INPUT EM UM ESTADO
-   */
+  const [isWordCorrect, setIsWordCorrect] = useState(false);
 
   useEffect(() => {
+    handleSpecialKeys();
+    verifyLetter();
+  }, [userInput]);
+
+  function verifyLetter() {
     const letterIndex = userInput.length - 1;
 
     const userInputLetter = userInput.split("")[letterIndex];
     const textLetter = words[wordIndex].split("")[letterIndex]; 
 
-    handleSpecialKeys();
-    
     if(textLetter !== undefined && textLetter === userInputLetter) {
-      console.log(textLetter, userInputLetter)
+      console.log(textLetter, userInputLetter);
+      setIsWordCorrect(true);
+    } else {
+      setIsWordCorrect(false);
     }
-  }, [userInput]);
+  }
 
   function handleSpecialKeys() {
     const detectSpaces = /\s/;
@@ -39,12 +43,15 @@ export default function WordChecker() {
   function userInputHandler(event) {
     setUserInput(event.target.value);
   }
+
   return(
     <>
       <section className={styles.container}>
         <h1 className={styles.title}>Keyboard Hero</h1>
-        <RenderText 
+        <RenderText
           text={text}
+          correct={isWordCorrect}
+          currentWord={wordIndex}
         />
         <div className={styles.userInputContainer}>
           <form>
