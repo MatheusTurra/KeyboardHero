@@ -1,61 +1,49 @@
 import RenderText from "../RenderText";
 
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./styles.module.css"
 
-let textLetterIndex = 0;
+let wordIndex = 0;
+let letterIndex = 0;
 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const splittedText = text.split(" ");
 
 export default function WordChecker() {
-  const userInputRef = useRef();
-  const [textIndex, setTextIndex] = useState(0);
+  const [userInput, setUserInput] = useState("");
+  /**
+   * TODO: TENTAR REFAZER COM O EFFECT E COLOCAR O CONTEÚDO DO INPUT EM UM ESTADO
+   */
 
-  function verifyLetters(event){
-    const inputData = event.nativeEvent.data;
-    const textLetters = splittedText[textIndex].split("");
-    const userInputValue = event.target.value;
-    const userInputIndex = userInputValue.length - 1;
+  useEffect(() => {
+    handleSpecialKeys();
+  }, [userInput]);
 
-    if(
-      textLetterIndex < splittedText[textIndex].length -1 &&
-      textLetters[textLetterIndex] === userInputValue[userInputIndex]
-    ){
-      textLetterIndex++;
-    }
-
-    if(inputData === " "){
-      incrementTextIndex();
-      textLetterIndex = 0;
-      userInputRef.current.reset();
-    }
-    if(inputData === null && textLetterIndex >= userInputIndex) {
-      if(textLetterIndex > 0) {
-        textLetterIndex--;
-      }
+  function handleSpecialKeys() {
+    const detectSpaces = /\s/;
+    if(detectSpaces.test(userInput)) {
+      setUserInput("");
+      wordIndex++;
     }
   }
 
-  function incrementTextIndex() {
-    setTextIndex(prevState => {
-      return prevState + 1;
-    });
-  } 
+  function userInputHandler(event) {
+    setUserInput(event.target.value);
+  }
   return(
     <>
       <section className={styles.container}>
         <h1 className={styles.title}>Keyboard Hero</h1>
         <RenderText 
           text={text}
-          textIndex={textIndex}
         />
         <div className={styles.userInputContainer}>
-          <form ref={userInputRef}>
+          <form>
             <input
               type="text"
-              onChange={event => verifyLetters(event)}
+              value={userInput}
+              onChange={event => userInputHandler(event)}
               className={styles.userInput}
             />
           </form>
