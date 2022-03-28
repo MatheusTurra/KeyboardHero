@@ -11,6 +11,7 @@ const words = text.split(" ");
 
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
+  const [startVerification, setStartVerification] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(false);
 
   useEffect(() => {
@@ -25,7 +26,6 @@ export default function WordChecker() {
     const textLetter = words[wordIndex].split("")[letterIndex]; 
 
     if(textLetter !== undefined && textLetter === userInputLetter) {
-      console.log(textLetter, userInputLetter);
       setIsWordCorrect(true);
     } else {
       setIsWordCorrect(false);
@@ -41,6 +41,7 @@ export default function WordChecker() {
   }
 
   function userInputHandler(event) {
+    setStartVerification(true);
     setUserInput(event.target.value);
   }
 
@@ -52,6 +53,7 @@ export default function WordChecker() {
           text={text}
           correct={isWordCorrect}
           currentWord={wordIndex}
+          spellFeedback={startVerification}
         />
         <div className={styles.userInputContainer}>
           <form>

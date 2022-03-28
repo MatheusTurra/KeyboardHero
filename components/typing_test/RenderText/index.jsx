@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export default function RenderText(props) {
   const splittedText = props.text.split(" ");
-  console.log(props.correct);
+
   return(
     <>
       {splittedText.map((word, index) => {
@@ -10,6 +10,7 @@ export default function RenderText(props) {
           <GameText
             key={index}
             id={index}
+            shouldChangeColor={props.spellFeedback}
             wordCorrect={props.correct}
             current={props.currentWord}
           >
@@ -27,12 +28,17 @@ const GameText = styled.span`
     : "white;"
   }
 
-  ${props =>  props.wordCorrect && props.id === props.current 
+  ${props =>  
+      props.wordCorrect &&
+      props.id === props.current 
     ? css`color: green;`
     : ""
   }
 
-  ${props =>  props.wordCorrect === false && props.id === props.current 
+  ${props =>
+      props.shouldChangeColor &&
+      props.wordCorrect === false &&
+      props.id === props.current  
     ? css`color: red;`
     : ""
   }
