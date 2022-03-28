@@ -3,14 +3,23 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Timer() {
+  const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(60);
   
   useEffect(() => {
     const timer = seconds > 0 && setInterval(() => {
-      setSeconds(prevState => prevState - 1);
-    }, 1000);
+      setSeconds(prevSec => prevSec - 1);
+    }, 100);
     
+    if(seconds === 0) {
+      setSeconds(60);
+      setMinutes(prevMin => prevMin - 1);
+    }
 
+    if(seconds === 0 && minutes === 0) {
+      setSeconds(0);
+      setMinutes(0);
+    }
 
     return () => clearInterval(timer);
   }, [seconds]);
@@ -18,6 +27,7 @@ export default function Timer() {
   return(
     <>
       <div>
+        <Seconds>{minutes} : </Seconds>
         <Seconds>{seconds}</Seconds>
       </div>
     </>
