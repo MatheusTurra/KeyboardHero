@@ -1,3 +1,4 @@
+import Timer from "../Timer";
 import RenderText from "../RenderText";
 
 import { useEffect, useState } from "react";
@@ -56,15 +57,14 @@ export default function WordChecker() {
           spellFeedback={startVerification}
         />
         <div className={styles.userInputContainer}>
-          <form>
-            <input
-              type="text"
-              value={userInput}
-              onChange={event => userInputHandler(event)}
-              className={styles.userInput}
-            />
-          </form>
+          <input
+            type="text"
+            value={userInput}
+            onChange={event => userInputHandler(event)}
+            className={styles.userInput}
+          />
         </div>
+        <Timer />
       </section>
     </>
   );
