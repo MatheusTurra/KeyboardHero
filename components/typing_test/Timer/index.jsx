@@ -9,7 +9,7 @@ export default function Timer() {
   useEffect(() => {
     const timer = seconds > 0 && setInterval(() => {
       setSeconds(prevSec => prevSec - 1);
-    }, 100);
+    }, 1000);
     
     if(seconds === 0) {
       setSeconds(60);
