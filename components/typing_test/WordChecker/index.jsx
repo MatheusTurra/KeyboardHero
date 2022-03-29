@@ -12,12 +12,13 @@ const words = text.split(" ");
 
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
-  const [startVerification, setStartVerification] = useState(false);
+  const [startGame, setStartGame] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(false);
+  const [startVerification, setStartVerification] = useState(false);
 
   useEffect(() => {
-    handleSpecialKeys();
     verifyLetter();
+    handleSpecialKeys();    
   }, [userInput]);
 
   function verifyLetter() {
@@ -44,6 +45,8 @@ export default function WordChecker() {
   function userInputHandler(event) {
     setStartVerification(true);
     setUserInput(event.target.value);
+  
+    setStartGame(true);
   }
 
   return(
@@ -64,7 +67,7 @@ export default function WordChecker() {
             className={styles.userInput}
           />
         </div>
-        <Timer />
+        <Timer isGameStarted={startGame}/>
       </section>
     </>
   );

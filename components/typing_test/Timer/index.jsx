@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
-export default function Timer() {
-  const [minutes, setMinutes] = useState(5);
+export default function Timer(props) {
+  const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(60);
-  
+
   useEffect(() => {
+    if(props.isGameStarted === false) return;
+
     const timer = seconds > 0 && setInterval(() => {
       setSeconds(prevSec => prevSec - 1);
     }, 1000);
@@ -22,7 +24,7 @@ export default function Timer() {
     }
 
     return () => clearInterval(timer);
-  }, [seconds]);
+  }, [seconds, props.isGameStarted]);
 
   return(
     <>
