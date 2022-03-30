@@ -26,11 +26,24 @@ export default function Timer(props) {
     return () => clearInterval(timer);
   }, [seconds, props.isGameStarted]);
 
+  function formatSeconds() {
+    let formattedSeconds = seconds.toString();
+
+    if(seconds === 60) {
+      formattedSeconds = '00';
+    }
+
+    if(seconds < 10) {
+      formattedSeconds = '0' + seconds;
+    }
+
+    return <>{formattedSeconds}</>;
+  }
   return(
     <>
       <div>
         <Seconds>{minutes} : </Seconds>
-        <Seconds>{seconds}</Seconds>
+        <Seconds>{formatSeconds()}</Seconds>
       </div>
     </>
   );
