@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css"
 
 let wordIndex = 0;
-let letterIndex = 0;
 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
@@ -18,7 +17,6 @@ export default function WordChecker() {
 
   useEffect(() => {
     if(startGame) verifyLetter();
-
     handleSpecialKeys();
   }, [userInput]);
 
@@ -28,8 +26,7 @@ export default function WordChecker() {
     
     const wordChunk = currentWord.substring(0, userInputLength);
     
-    console.log(wordChunk === userInput, wordChunk, userInput, startGame);
-    if(wordChunk === userInput) {
+    if(wordChunk !== "" && wordChunk === userInput) {
       setIsWordCorrect(true);
     }
 
