@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Timer(props) {
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(2);
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Timer(props) {
     }, 1000);
     
     if(seconds === 0) {
-      setSeconds(60);
+      setSeconds(59);
       setMinutes(prevMin => prevMin - 1);
     }
 
@@ -36,10 +36,6 @@ export default function Timer(props) {
 
   function formatSeconds() {
     let formattedSeconds = seconds.toString();
-
-    if(seconds === 60) {
-      formattedSeconds = '00';
-    }
 
     if(seconds < 10) {
       formattedSeconds = '0' + seconds;
