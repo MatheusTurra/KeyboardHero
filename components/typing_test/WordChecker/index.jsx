@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css"
 
 let wordIndex = 0;
+let letterIndex = 0;
 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
@@ -13,23 +14,26 @@ const words = text.split(" ");
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
   const [startGame, setStartGame] = useState(false);
-  const [isWordCorrect, setIsWordCorrect] = useState(false);
-  const [startVerification, setStartVerification] = useState(false);
+  const [isWordCorrect, setIsWordCorrect] = useState(null);
 
   useEffect(() => {
-    verifyLetter();
-    handleSpecialKeys();    
+    if(startGame) verifyLetter();
+
+    handleSpecialKeys();
   }, [userInput]);
 
   function verifyLetter() {
-    const letterIndex = userInput.length - 1;
-
-    const userInputLetter = userInput.split("")[letterIndex];
-    const textLetter = words[wordIndex].split("")[letterIndex]; 
-
-    if(textLetter !== undefined && textLetter === userInputLetter) {
+    const currentWord = words[wordIndex];
+    const userInputLength = userInput.length;
+    
+    const wordChunk = currentWord.substring(0, userInputLength);
+    
+    console.log(wordChunk === userInput, wordChunk, userInput, startGame);
+    if(wordChunk === userInput) {
       setIsWordCorrect(true);
-    } else {
+    }
+
+    if(wordChunk !== userInput) {
       setIsWordCorrect(false);
     }
   }
@@ -37,13 +41,13 @@ export default function WordChecker() {
   function handleSpecialKeys() {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
+      setIsWordCorrect(null);
       setUserInput("");
       wordIndex++;
     }
   }
 
   function userInputHandler(event) {
-    setStartVerification(true);
     setUserInput(event.target.value);
   
     setStartGame(true);
@@ -57,7 +61,6 @@ export default function WordChecker() {
           text={text}
           correct={isWordCorrect}
           currentWord={wordIndex}
-          spellFeedback={startVerification}
         />
         <div className={styles.userInputContainer}>
           <input
