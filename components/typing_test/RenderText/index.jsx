@@ -10,7 +10,6 @@ export default function RenderText(props) {
           <GameText
             key={index}
             id={index}
-            shouldChangeColor={props.spellFeedback}
             wordCorrect={props.correct}
             current={props.currentWord}
           >
@@ -36,7 +35,6 @@ const GameText = styled.span`
   }
 
   ${props =>
-      props.shouldChangeColor &&
       props.wordCorrect === false &&
       props.id === props.current  
     ? css`color: red;`
