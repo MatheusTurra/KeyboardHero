@@ -14,6 +14,7 @@ export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
   const [startGame, setStartGame] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(null);
+  const [resetTimer, setResetTimer] = useState(false);
 
   useEffect(() => {
     if(startGame) verifyLetter();
@@ -45,9 +46,17 @@ export default function WordChecker() {
   }
 
   function userInputHandler(event) {
-    setUserInput(event.target.value);
-  
     setStartGame(true);
+    setResetTimer(false);
+    setUserInput(event.target.value);
+  }
+
+  function resetGame() {
+    wordIndex = 0;
+    setUserInput("");
+    setStartGame(false);
+    setResetTimer(true);
+    setIsWordCorrect(null);
   }
 
   return(
@@ -67,7 +76,10 @@ export default function WordChecker() {
             className={styles.userInput}
           />
         </div>
-        <Timer isGameStarted={startGame}/>
+        <Timer
+          shouldResetTimer={resetTimer} 
+          isGameStarted={startGame}/>
+        <button onClick={resetGame}>Reset</button>
       </section>
     </>
   );

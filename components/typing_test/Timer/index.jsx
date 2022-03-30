@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function Timer(props) {
   const [minutes, setMinutes] = useState(1);
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     if(props.isGameStarted === false) return;
@@ -25,6 +25,14 @@ export default function Timer(props) {
 
     return () => clearInterval(timer);
   }, [seconds, props.isGameStarted]);
+
+  useEffect(() => {
+    if(props.shouldResetTimer) {
+      setMinutes(1);
+      setSeconds(0);
+    }
+
+  }, [props.shouldResetTimer]);
 
   function formatSeconds() {
     let formattedSeconds = seconds.toString();
