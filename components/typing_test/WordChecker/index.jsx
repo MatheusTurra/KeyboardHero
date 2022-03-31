@@ -13,8 +13,9 @@ const words = text.split(" ");
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
   const [startGame, setStartGame] = useState(false);
+  const [resetGame, setResetGame] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(null);
-  const [resetTimer, setResetTimer] = useState(false);
 
   useEffect(() => {
     if(startGame) verifyLetter();
@@ -47,16 +48,22 @@ export default function WordChecker() {
 
   function userInputHandler(event) {
     setStartGame(true);
-    setResetTimer(false);
+    setResetGame(false);
     setUserInput(event.target.value);
   }
 
-  function resetGame() {
+  function restartGame() {
     wordIndex = 0;
+
     setUserInput("");
+    setGameOver(false);    
     setStartGame(false);
-    setResetTimer(true);
+    setResetGame(true);
     setIsWordCorrect(null);
+  }
+
+  function endGame() {
+    setGameOver(true);
   }
 
   return(
@@ -67,19 +74,23 @@ export default function WordChecker() {
           text={text}
           correct={isWordCorrect}
           currentWord={wordIndex}
+          isGameOver={gameOver}
         />
         <div className={styles.userInputContainer}>
           <input
             type="text"
             value={userInput}
+            disabled={gameOver}
             onChange={event => userInputHandler(event)}
             className={styles.userInput}
           />
         </div>
         <Timer
-          shouldResetTimer={resetTimer} 
-          isGameStarted={startGame}/>
-        <button onClick={resetGame}>Reset</button>
+          isGameEnded={endGame}
+          isGameStarted={startGame}
+          shouldresetGame={resetGame} 
+        />
+        <button onClick={restartGame}>Restart</button>
       </section>
     </>
   );

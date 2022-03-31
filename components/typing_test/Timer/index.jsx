@@ -21,6 +21,7 @@ export default function Timer(props) {
     if(seconds === 0 && minutes === 0) {
       setSeconds(0);
       setMinutes(0);
+      props.isGameEnded();
     }
 
     return () => clearInterval(timer);
