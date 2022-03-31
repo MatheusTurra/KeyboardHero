@@ -88,7 +88,7 @@ export default function WordChecker() {
         <Timer
           isGameEnded={endGame}
           isGameStarted={startGame}
-          shouldresetGame={resetGame} 
+          shouldResetTimer={resetGame} 
         />
         <button onClick={restartGame}>Restart</button>
       </section>
