@@ -71,9 +71,9 @@ export default function WordChecker() {
       <section className={styles.container}>
         <h1 className={styles.title}>Keyboard Hero</h1>
         <RenderText
-          text={text}
+          text={words}
           correct={isWordCorrect}
-          currentWord={wordIndex}
+          current={wordIndex}
           isGameOver={gameOver}
         />
         <div className={styles.userInputContainer}>
