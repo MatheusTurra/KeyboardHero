@@ -31,8 +31,17 @@ export default function RenderText(props) {
   }, [props.current]);  
 
   useEffect(() => {
-    setColorFeedbackArray(array);
+    setColorFeedbackArray(array.fill(""));
+    removeFeedbackClasses();
   }, [props.resetFeedback]);
+
+  function removeFeedbackClasses() {
+    const textChildren = textContainerRef.current.children;
+    
+    for(let i = 0; i < props.text.length - 1; i++) {
+      textChildren[i].className = "";
+    }
+  }
 
   function updateColorArray(current, value) {
     setColorFeedbackArray(prevState => {
