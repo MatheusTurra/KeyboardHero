@@ -1,29 +1,41 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-/**
- * TODO: LIMPAR O ARRAY DE FEEDBACK DE CORES QUANDO O JOGO FOR REINICIADO
- */
-
 export default function RenderText(props) {
   const textContainerRef = useRef(null);
 
   const array = new Array(props.text.length - 1);
-  const [colorFeedback, setColorFeedback] = useState(array);
+  const [colorFeedbackArray, setColorFeedbackArray] = useState(array);
 
   
   useEffect(() => {
-    if(props.correct) updateColorArray(props.current, true);
-    console.log(props.correct);
-    if(props.correct === false || props.correct === null) updateColorArray(props.current, false);
-  }, [props.correct, props.current]);
-  
+    if(props.wordCorrect) {
+      updateColorArray(props.current, true);
+    } 
+
+    if(props.wordCorrect === false || props.wordCorrect === null) {
+      updateColorArray(props.current, false);
+    }
+  }, [props.wordCorrect, props.current]);
+
   useEffect(() => {
-    setColorFeedback(array);
+    const textRef = textContainerRef.current;
+
+    if(textRef.children[props.current -1] !== undefined) {
+      if(colorFeedbackArray[props.current - 1]) {
+        textRef.children[props.current -1].className = "correct";
+      } else {
+        textRef.children[props.current -1].className = "incorrect"; 
+      }
+    }
+  }, [props.current]);  
+
+  useEffect(() => {
+    setColorFeedbackArray(array);
   }, [props.resetFeedback]);
 
   function updateColorArray(current, value) {
-    setColorFeedback(prevState => {
+    setColorFeedbackArray(prevState => {
       const newState = [...prevState];
       newState[current] = value;
       return newState;
@@ -33,10 +45,12 @@ export default function RenderText(props) {
   function spellFeedback() {
     return props.text.map((word, index) => {
       let classes = "";
-      if(props.current === index) classes += "current ";
-      
-      if(colorFeedback[index]) classes += "correct";
-      if(colorFeedback[index] === false) classes += "incorrect";
+      if(props.current === index) {
+        classes += "current ";
+        
+        if(props.correct) classes += "correct";
+        if(props.correct === false) classes += "incorrect";
+      }
 
       return(
         <span

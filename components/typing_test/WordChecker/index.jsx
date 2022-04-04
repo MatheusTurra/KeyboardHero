@@ -10,17 +10,36 @@ let wordIndex = 0;
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
 
+/**
+ *  TODO: FEEDBACK DA PALAVRA INTEIRA
+ */
+
 export default function WordChecker() {
   const [userInput, setUserInput] = useState("");
+  const [gameOver, setGameOver] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [resetGame, setResetGame] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(null);
+  const [isLetterCorrect, setIsLetterCorrect] = useState(null);
 
   useEffect(() => {
-    if(startGame) verifyLetter();
+    if(startGame) {
+      verifyLetter();
+      verifyWord();
+    } 
+
     handleSpecialKeys();
   }, [userInput]);
+
+  function verifyWord() {
+    const currentWord = words[wordIndex];
+    
+    if(userInput === currentWord) {
+      setIsWordCorrect(true);
+    } else {
+      setIsWordCorrect(false);
+    }
+  }
 
   function verifyLetter() {
     const currentWord = words[wordIndex];
@@ -29,18 +48,18 @@ export default function WordChecker() {
     const wordChunk = currentWord.substring(0, userInputLength);
     
     if(wordChunk !== "" && wordChunk === userInput) {
-      setIsWordCorrect(true);
+      setIsLetterCorrect(true);
     }
 
     if(wordChunk !== userInput) {
-      setIsWordCorrect(false);
+      setIsLetterCorrect(false);
     }
   }
 
   function handleSpecialKeys() {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
-      setIsWordCorrect(null);
+      setIsLetterCorrect(null);
       setUserInput("");
       wordIndex++;
     }
@@ -59,7 +78,7 @@ export default function WordChecker() {
     setGameOver(false);    
     setStartGame(false);
     setResetGame(true);
-    setIsWordCorrect(null);
+    setIsLetterCorrect(null);
   }
 
   function endGame() {
@@ -72,8 +91,9 @@ export default function WordChecker() {
         <h1 className={styles.title}>Keyboard Hero</h1>
         <RenderText
           text={words}
-          correct={isWordCorrect}
+          correct={isLetterCorrect}
           current={wordIndex}
+          wordCorrect={isWordCorrect}
           resetFeedback={resetGame}
           isGameOver={gameOver}
         />
