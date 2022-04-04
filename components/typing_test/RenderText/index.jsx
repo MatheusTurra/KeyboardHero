@@ -7,14 +7,15 @@ import styled from "styled-components";
 
 export default function RenderText(props) {
   const textContainerRef = useRef(null);
-  
+
   const array = new Array(props.text.length - 1);
   const [colorFeedback, setColorFeedback] = useState(array);
 
   
   useEffect(() => {
     if(props.correct) updateColorArray(props.current, true);
-    if(props.correct === false) updateColorArray(props.current, false);
+    console.log(props.correct);
+    if(props.correct === false || props.correct === null) updateColorArray(props.current, false);
   }, [props.correct, props.current]);
   
   useEffect(() => {
