@@ -1,17 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
+/**
+ * TODO: LIMPAR O ARRAY DE FEEDBACK DE CORES QUANDO O JOGO FOR REINICIADO
+ */
+
 export default function RenderText(props) {
+  const textContainerRef = useRef(null);
+  
   const array = new Array(props.text.length - 1);
   const [colorFeedback, setColorFeedback] = useState(array);
 
-  const textContainerRef = useRef(null);
   
   useEffect(() => {
     if(props.correct) updateColorArray(props.current, true);
     if(props.correct === false) updateColorArray(props.current, false);
   }, [props.correct, props.current]);
   
+  useEffect(() => {
+    setColorFeedback(array);
+  }, [props.resetFeedback]);
 
   function updateColorArray(current, value) {
     setColorFeedback(prevState => {

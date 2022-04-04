@@ -74,6 +74,7 @@ export default function WordChecker() {
           text={words}
           correct={isWordCorrect}
           current={wordIndex}
+          resetFeedback={resetGame}
           isGameOver={gameOver}
         />
         <div className={styles.userInputContainer}>
