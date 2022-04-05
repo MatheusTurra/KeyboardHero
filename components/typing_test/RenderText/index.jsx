@@ -13,7 +13,7 @@ export default function RenderText(props) {
       updateColorArray(props.current, true);
     } 
 
-    if(props.wordCorrect === false || props.wordCorrect === null) {
+    if(props.wordCorrect === false) {
       updateColorArray(props.current, false);
     }
   }, [props.wordCorrect, props.current]);
