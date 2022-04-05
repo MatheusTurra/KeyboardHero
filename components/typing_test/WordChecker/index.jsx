@@ -4,11 +4,16 @@ import RenderText from "../RenderText";
 import { useEffect, useState } from "react";
 
 import styles from "./styles.module.css"
+import Result from "../Result";
 
 let wordIndex = 0;
-
+let wordCounter = 0;
+let correctKeyPressCounter = 0;
+let keyPressCounter = 0;
+ 
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
+
 
 /**
  *  TODO: TRANSFORMAR ESSE COMPONENTE EM UM HOOK
@@ -35,6 +40,7 @@ export default function WordChecker() {
     const currentWord = words[wordIndex];
     
     if(userInput === currentWord) {
+      correctKeyPressCounter += currentWord.length;
       setIsWordCorrect(true);
     } else {
       setIsWordCorrect(false);
@@ -59,13 +65,18 @@ export default function WordChecker() {
   function handleSpecialKeys() {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
+      if(isWordCorrect) wordCounter++;
+      
+      wordIndex++;
+      correctKeyPressCounter += 1;
       setIsLetterCorrect(null);
       setUserInput("");
-      wordIndex++;
     }
   }
 
   function userInputHandler(event) {
+    keyPressCounter++;
+
     setStartGame(true);
     setResetGame(false);
     setUserInput(event.target.value);
@@ -73,6 +84,7 @@ export default function WordChecker() {
 
   function restartGame() {
     wordIndex = 0;
+    wordCounter = 0;
 
     setUserInput("");
     setGameOver(false);    
@@ -112,6 +124,13 @@ export default function WordChecker() {
           shouldResetTimer={resetGame} 
         />
         <button onClick={restartGame}>Restart</button>
+
+        <Result 
+          start={startGame}
+          words={wordCounter}
+          keyPresses={keyPressCounter}
+          correctKeyPresses={correctKeyPressCounter}
+        />
       </section>
     </>
   );
