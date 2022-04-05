@@ -11,7 +11,7 @@ const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
 
 /**
- *  TODO: FEEDBACK DA PALAVRA INTEIRA
+ *  TODO: TRANSFORMAR ESSE COMPONENTE EM UM HOOK
  */
 
 export default function WordChecker() {
