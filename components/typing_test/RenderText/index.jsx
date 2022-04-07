@@ -10,11 +10,11 @@ export default function RenderText(props) {
   
   useEffect(() => {
     if(props.wordCorrect) {
-      updateColorArray(props.current, true);
+      updateColorArray(props.current - 1, true);
     } 
 
     if(props.wordCorrect === false) {
-      updateColorArray(props.current, false);
+      updateColorArray(props.current - 1, false);
     }
   }, [props.wordCorrect, props.current]);
 
@@ -28,7 +28,7 @@ export default function RenderText(props) {
         textRef.children[props.current -1].className = "incorrect"; 
       }
     }
-  }, [props.current]);  
+  }, [colorFeedbackArray]);  
 
   useEffect(() => {
     setColorFeedbackArray(array.fill(""));

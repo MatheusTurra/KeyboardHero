@@ -8,9 +8,11 @@ import Result from "../Result";
 
 let wordIndex = 0;
 let wordCounter = 0;
-let correctKeyPressCounter = 0;
 let keyPressCounter = 0;
- 
+let maxTime = 0;
+let incorrectKeyPressCounter = 0;
+let correctKeyPressCounter = 0;
+
 const text = "Esse é o primeiro teste para o projeto Keyboard Hero";
 const words = text.split(" ");
 
@@ -26,6 +28,7 @@ export default function WordChecker() {
   const [resetGame, setResetGame] = useState(false);
   const [isWordCorrect, setIsWordCorrect] = useState(null);
   const [isLetterCorrect, setIsLetterCorrect] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
     if(startGame) {
@@ -37,13 +40,17 @@ export default function WordChecker() {
   }, [userInput]);
 
   function verifyWord() {
+    const detectSpaces = /\s/;
     const currentWord = words[wordIndex];
     
-    if(userInput === currentWord) {
-      correctKeyPressCounter += currentWord.length;
-      setIsWordCorrect(true);
-    } else {
-      setIsWordCorrect(false);
+    if(detectSpaces.test(userInput)) {
+      if(userInput.trim()  === currentWord) {
+        correctKeyPressCounter += currentWord.length;
+        setIsWordCorrect(true);
+      } else {
+        setIsWordCorrect(false);
+        incorrectKeyPressCounter += currentWord.length;
+      }
     }
   }
 
@@ -97,6 +104,14 @@ export default function WordChecker() {
     setGameOver(true);
   }
 
+  function getMaxTime(time) {
+    maxTime = time
+  }
+
+  function getTimeLeft(seconds) {
+    setTimeLeft(seconds);
+  }
+
   return(
     <>
       <section className={styles.container}>
@@ -120,16 +135,21 @@ export default function WordChecker() {
         </div>
         <Timer
           isGameEnded={endGame}
+          getMaxTime={getMaxTime}
+          getTimeLeft={getTimeLeft}
           isGameStarted={startGame}
           shouldResetTimer={resetGame} 
         />
         <button onClick={restartGame}>Restart</button>
 
-        <Result 
+        <Result
+          maxTime={maxTime}
           start={startGame}
+          timeLeft={timeLeft}
           words={wordCounter}
           keyPresses={keyPressCounter}
           correctKeyPresses={correctKeyPressCounter}
+          incorrectKeyPresses={incorrectKeyPressCounter}
         />
       </section>
     </>
