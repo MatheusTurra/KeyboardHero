@@ -14,9 +14,10 @@ export default function Result(props) {
 
 
   useEffect(() => {
-    const wpmCalc = ((props.correctKeyPresses - props.incorrectKeyPresses) / 5) / (props.maxTime - props.timeLeft) * 60; 
-    console.log(props.correctKeyPresses, props.incorrectKeyPresses)
-    setWpm(wpmCalc.toFixed());
+    if(props.timeLeft > 0) {
+      const wpmCalc = ((props.correctKeyPresses - props.incorrectKeyPresses) / 5) / (props.maxTime - props.timeLeft) * 60; 
+      setWpm(wpmCalc.toFixed(0));
+    }
   }, [props.timeLeft]);
 
   useEffect(() => {
