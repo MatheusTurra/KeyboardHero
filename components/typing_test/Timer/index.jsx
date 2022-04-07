@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Timer(props) {
-  const [minutes, setMinutes] = useState(2);
+  const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -11,6 +11,7 @@ export default function Timer(props) {
 
     const timer = seconds > 0 && setInterval(() => {
       setSeconds(prevSec => prevSec - 1);
+      props.getTimeLeft(seconds);
     }, 1000);
     
     if(seconds === 0) {
@@ -32,7 +33,8 @@ export default function Timer(props) {
       setMinutes(1);
       setSeconds(0);
     }
-
+    
+    props.getMaxTime(60 * minutes);
   }, [props.shouldResetTimer]);
 
   function formatSeconds() {
