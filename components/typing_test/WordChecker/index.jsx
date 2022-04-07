@@ -92,6 +92,9 @@ export default function WordChecker() {
   function restartGame() {
     wordIndex = 0;
     wordCounter = 0;
+    keyPressCounter = 0;
+    correctKeyPressCounter = 0;
+    incorrectKeyPressCounter = 0;
 
     setUserInput("");
     setGameOver(false);    
@@ -150,6 +153,7 @@ export default function WordChecker() {
           keyPresses={keyPressCounter}
           correctKeyPresses={correctKeyPressCounter}
           incorrectKeyPresses={incorrectKeyPressCounter}
+          isGameReseted={resetGame}
         />
       </section>
     </>
