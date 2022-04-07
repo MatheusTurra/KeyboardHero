@@ -15,8 +15,16 @@ export default function Result(props) {
 
   useEffect(() => {
     const wpmCalc = ((props.correctKeyPresses - props.incorrectKeyPresses) / 5) / (props.maxTime - props.timeLeft) * 60; 
+    console.log(props.correctKeyPresses, props.incorrectKeyPresses)
     setWpm(wpmCalc.toFixed());
   }, [props.timeLeft]);
+
+  useEffect(() => {
+    if(props.isGameReseted) {
+      setWpm(0);
+      setAccuracy(0);
+    }
+  }, [props.isGameReseted]);
 
   return(
     <>
