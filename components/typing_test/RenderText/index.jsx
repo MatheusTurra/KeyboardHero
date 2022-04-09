@@ -12,7 +12,7 @@ export default function RenderText(props) {
     if(props.wordCorrect) {
       updateColorArray(props.current - 1, true);
     } 
-
+  
     if(props.wordCorrect === false) {
       updateColorArray(props.current - 1, false);
     }
@@ -21,7 +21,7 @@ export default function RenderText(props) {
   useEffect(() => {
     const textRef = textContainerRef.current;
 
-    if(textRef.children[props.current -1] !== undefined) {
+    if(textRef.children[props.current - 1] !== undefined) {
       if(colorFeedbackArray[props.current - 1]) {
         textRef.children[props.current -1].className = "correct";
       } else {

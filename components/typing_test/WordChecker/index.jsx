@@ -31,45 +31,37 @@ export default function WordChecker() {
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    if(startGame) {
-      verifyLetter();
-      verifyWord();
-    } 
+    const currentWord = words[wordIndex];
+    const userInputLength = userInput.length;
+    const wordChunk = currentWord.substring(0, userInputLength);
 
-    handleSpaces();
+
+    if(wordChunk !== "" && wordChunk === userInput.trim()) {
+      setIsLetterCorrect(true);
+    }
+
+    if(wordChunk !== userInput.trim()) {
+      setIsLetterCorrect(false);
+    }
   }, [userInput]);
 
-  function verifyWord() {
+  useEffect(() => {
     const detectSpaces = /\s/;
     const currentWord = words[wordIndex];
-    
+
     if(detectSpaces.test(userInput)) {
       if(userInput.trim()  === currentWord) {
-        correctKeyPressCounter += currentWord.length;
         setIsWordCorrect(true);
+        correctKeyPressCounter += currentWord.length;
       } else {
         setIsWordCorrect(false);
         incorrectKeyPressCounter += currentWord.length;
       }
     }
-  }
+  });
 
-  function verifyLetter() {
-    const currentWord = words[wordIndex];
-    const userInputLength = userInput.length;
-    
-    const wordChunk = currentWord.substring(0, userInputLength);
-    
-    if(wordChunk !== "" && wordChunk === userInput) {
-      setIsLetterCorrect(true);
-    }
 
-    if(wordChunk !== userInput) {
-      setIsLetterCorrect(false);
-    }
-  }
-
-  function handleSpaces() {
+  useEffect(() => {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
       if(isWordCorrect) wordCounter++;
@@ -79,7 +71,7 @@ export default function WordChecker() {
       setIsLetterCorrect(null);
       setUserInput("");
     }
-  }
+  }, [userInput]);
 
   function userInputHandler(event) {
     keyPressCounter++;
