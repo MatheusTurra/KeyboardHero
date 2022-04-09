@@ -51,33 +51,23 @@ export default function RenderText(props) {
     });
   }
 
-  function spellFeedback() {
-    return props.text.map((word, index) => {
-      let classes = "";
-      if(props.current === index) {
-        classes += "current ";
-        
-        if(props.correct) classes += "correct";
-        if(props.correct === false) classes += "incorrect";
-      }
-
-      return(
-        <span
-          key={word + index}
-          className={classes}
-        >
-          {word}
-        </span>
-      );
-    });
-  }
-
   return(
     <>
       <TextContainer
         ref={textContainerRef}
-        isGameOver={props.isGameOver}>
-          {spellFeedback()}
+      >
+        {props.text.map((word, index) => {
+          return(
+            <GameText
+              key={word + index}
+              mapIndex={index}
+              current={props.current}
+              isLetterCorrect={props.correct}
+            >
+              {word}
+            </GameText>
+          );
+        })}
       </TextContainer>
     </>
   );
@@ -98,3 +88,28 @@ const TextContainer = styled.div`
     background-color: grey;
   }
 `;
+
+const GameText = styled.span`
+  background-color: ${props => selectCurrentWord(props.mapIndex, props.current)}
+  color: ${props => spellFeedback(props.mapIndex, props.current, props.isLetterCorrect)}
+`;
+
+function selectCurrentWord(index, current){
+  let backgroundColor = ";";
+  
+  if(current === index) backgroundColor = "grey;"
+  
+  return backgroundColor;
+}
+
+function spellFeedback(index, current, isLetterCorrect) {
+  let color = ";";
+
+  if(current === index) {
+
+    if(isLetterCorrect) color = "#00ff00;";
+    if(isLetterCorrect === false) color = "#ff0000;";
+  }
+
+  return color;
+}
