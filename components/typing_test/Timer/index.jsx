@@ -37,20 +37,11 @@ export default function Timer(props) {
     props.getMaxTime(60 * minutes);
   }, [props.shouldResetTimer]);
 
-  function formatSeconds() {
-    let formattedSeconds = seconds.toString();
-
-    if(seconds < 10) {
-      formattedSeconds = '0' + seconds;
-    }
-
-    return <>{formattedSeconds}</>;
-  }
   return(
     <>
       <div>
         <Seconds>{minutes} : </Seconds>
-        <Seconds>{formatSeconds()}</Seconds>
+        <Seconds>{seconds.toString().padStart(2, 0)}</Seconds>
       </div>
     </>
   );
