@@ -36,7 +36,7 @@ export default function WordChecker() {
       verifyWord();
     } 
 
-    handleSpecialKeys();
+    handleSpaces();
   }, [userInput]);
 
   function verifyWord() {
@@ -69,7 +69,7 @@ export default function WordChecker() {
     }
   }
 
-  function handleSpecialKeys() {
+  function handleSpaces() {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
       if(isWordCorrect) wordCounter++;
@@ -121,12 +121,13 @@ export default function WordChecker() {
         <h1 className={styles.title}>Keyboard Hero</h1>
         <RenderText
           text={words}
-          correct={isLetterCorrect}
+          letterCorrect={isLetterCorrect}
           current={wordIndex}
           wordCorrect={isWordCorrect}
           resetFeedback={resetGame}
           isGameOver={gameOver}
         />
+
         <div className={styles.userInputContainer}>
           <input
             type="text"

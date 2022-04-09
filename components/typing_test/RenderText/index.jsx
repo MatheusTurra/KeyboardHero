@@ -62,7 +62,7 @@ export default function RenderText(props) {
               key={word + index}
               mapIndex={index}
               current={props.current}
-              isLetterCorrect={props.correct}
+              isLetterCorrect={props.letterCorrect}
             >
               {word}
             </GameText>
