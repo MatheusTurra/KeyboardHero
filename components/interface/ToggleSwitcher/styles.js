@@ -40,6 +40,53 @@ export const Notch = styled.div`
     ? "0 0 1rem whitesmoke"
     : "0 0 1rem yellow"
   };
+
+
+  & .moonCraterMedium {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: burlywood;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4) inset;
+    top: 6rem;
+    left: 5rem;
+    opacity: 0.4;
+  }
+`;
+
+
+export const MoonCraterSmall = styled.span`
+  ${props => props.isDarkModeOn 
+    && css`
+      height: 1.12rem;
+      width: 4rem;
+      border-radius: 50%;
+      position: absolute;
+      background-color: burlywood;
+      box-shadow: 0 5px 5px rgba(0,0,0,0.4) inset;
+      top: 2rem;
+      left: 1rem;
+      opacity: 0.4;
+      transform: rotate(45deg);
+    `
+  }
+`
+
+export const MoonCraterMedium = styled.span`
+  ${props => props.isDarkModeOn 
+    && css`
+      height: 2em;
+      width: 2rem;
+      border-radius: 50%;
+      position: absolute;
+      background-color: burlywood;
+      box-shadow: 0 5px 5px rgba(0,0,0,0.4) inset;
+      top: 6.8rem;
+      left: 4.4rem;
+      opacity: 0.4;
+    `
+  }
 `;
 
 export const Background = styled.div`
@@ -85,7 +132,7 @@ export const Background = styled.div`
     height: 0.9rem;
     width: 0.9rem;
     background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem lightgray;
+    box-shadow: 0 0 1rem 0.2rem violet;
     transform: translate(-3rem, 0.5rem);
   }
 
@@ -93,7 +140,7 @@ export const Background = styled.div`
     height: 1.2rem;
     width: 1.2rem;
     background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem lightgray;
+    box-shadow: 0 0 1rem 0.2rem violet;
     transform: translate(-1em, 1rem);
   }
 
@@ -101,7 +148,7 @@ export const Background = styled.div`
     height: 1.5rem;
     width: 1.5rem;
     background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem lightgray;
+    box-shadow: 0 0 1rem 0.2rem violet;
     transform: translate(-1rem, 0rem);
   }
 
@@ -110,7 +157,7 @@ export const Background = styled.div`
     left: 10rem;
     width: 1.8rem;
     height: 1.8rem;
-    box-shadow: 0 0 0.8rem 0.2rem lightgray;
+    box-shadow: 0 0 1rem 0.2rem violet;
     background-color: lightgray;
     transform: translate(-2rem, 0rem);
   }

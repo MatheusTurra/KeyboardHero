@@ -1,4 +1,4 @@
-import { Notch, Switch, StarOrCloud, Container, Background } from "./styles";
+import { Notch, Switch, StarOrCloud, Container, Background, MoonCraterSmall, MoonCraterMedium } from "./styles";
 
 export default function ToggleSwitcher({onClick, toggled}) {
   return(
@@ -8,7 +8,10 @@ export default function ToggleSwitcher({onClick, toggled}) {
           onClick={onClick}
           isDarkModeOn={toggled}
         >
-          <Notch isDarkModeOn={toggled} />
+          <Notch isDarkModeOn={toggled}>
+            <MoonCraterSmall isDarkModeOn={toggled}/>
+            <MoonCraterMedium isDarkModeOn={toggled}/>
+          </Notch>
           <Background>
             <StarOrCloud className={`positionTop ${toggled ? "starMedium" : "cloudMedium"}`}/>
             <StarOrCloud className={`positionCenter ${toggled ? "starSmall" : "cloudMedium"}`}/>
