@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  & .light {
-  }
-  `;
+const MOON_COLOR = "#ffffb7";
+const MOON_SHADOW = "#fff599";
+const MOON_CRATER_COLOR = "#ffe747";
 
 export const Switch = styled.div`
   height: 10rem;
@@ -32,12 +31,12 @@ export const Notch = styled.div`
   };
 
   background: ${props => props.isDarkModeOn
-    ? "whitesmoke"
+    ? MOON_COLOR
     : "yellow"
   }; 
 
   box-shadow: ${props => props.isDarkModeOn
-    ? "0 0 1rem whitesmoke"
+    ? `0 0 1rem ${MOON_SHADOW}`
     : "0 0 1rem yellow"
   };
 
@@ -63,11 +62,10 @@ export const MoonCraterSmall = styled.span`
       width: 4rem;
       border-radius: 50%;
       position: absolute;
-      background-color: burlywood;
-      box-shadow: 0 5px 5px rgba(0,0,0,0.4) inset;
+      background-color: ${MOON_CRATER_COLOR};
       top: 2rem;
       left: 1rem;
-      opacity: 0.4;
+      opacity: 0.3;
       transform: rotate(45deg);
     `
   }
@@ -80,16 +78,30 @@ export const MoonCraterMedium = styled.span`
       width: 2rem;
       border-radius: 50%;
       position: absolute;
-      background-color: burlywood;
-      box-shadow: 0 5px 5px rgba(0,0,0,0.4) inset;
+      background-color: ${MOON_CRATER_COLOR};
       top: 6.8rem;
-      left: 4.4rem;
-      opacity: 0.4;
+      left: 3rem;
+      opacity: 0.3;
     `
   }
 `;
 
-export const Background = styled.div`
+export const MoonCraterBig = styled.span`
+  ${props => props.isDarkModeOn 
+    && css`
+      height: 4em;
+      width: 4rem;
+      border-radius: 50%;
+      position: absolute;
+      background-color: ${MOON_CRATER_COLOR};
+      top: 2.9rem;
+      left: 4.9rem;
+      opacity: 0.3;
+    `
+  }
+`;
+
+export const SkyBackground = styled.div`
   & .positionTop {
     top: 2rem;
     left: 5rem;
