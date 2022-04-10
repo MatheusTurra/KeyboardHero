@@ -21,6 +21,14 @@ export const Switch = styled.div`
   cursor: pointer;
   position: relative;
   border: 1px solid black;
+  
+  &:hover {
+    box-shadow: ${props => props.isDarkModeOn
+      ? "0 0 2rem 0.2rem #00458e"
+      : "0 0 2rem 0.2rem #6fe3e1"
+    };
+  }
+
   background-image: ${props => props.isDarkModeOn
     ? `linear-gradient(${NIGHT_SKY_GRADIENT})`
     : `linear-gradient(${DAY_SKY_GRADIENT})`
@@ -37,7 +45,7 @@ export const Notch = styled.div`
   z-index: 1;
   transition: all 0.3s ease;
   transform: ${props => props.isDarkModeOn
-    && "translate(100px, 0)" 
+    && "translate(10.6rem, 0)" 
   };
 
   background: ${props => props.isDarkModeOn
