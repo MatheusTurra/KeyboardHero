@@ -8,7 +8,7 @@ import {
   MoonCraterBig 
 } from "./styles";
 
-export default function ToggleSwitcher({onClick, toggled}) {
+export default function ThemeSwitcher({onClick, toggled}) {
   return(
     <>
       <Switch 
