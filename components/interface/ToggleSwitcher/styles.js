@@ -13,8 +13,8 @@ export const Switch = styled.div`
   position: relative;
   border: 1px solid black;
   background-image: ${props => props.isDarkModeOn
-    ? "linear-gradient(aqua, skyblue)"
-    : "linear-gradient(midnightBlue, rebeccaPurple)"
+    ? "linear-gradient(midnightBlue, rebeccaPurple)"
+    : "linear-gradient(aqua, skyblue)"
   }; 
 `;
 
@@ -32,13 +32,13 @@ export const Notch = styled.div`
   };
 
   background: ${props => props.isDarkModeOn
-    ? "yellow"
-    : "whitesmoke"
+    ? "whitesmoke"
+    : "yellow"
   }; 
 
   box-shadow: ${props => props.isDarkModeOn
-    ? "0 0 0.5rem yellow"
-    : "0 0 0.5rem whitesmoke"
+    ? "0 0 1rem whitesmoke"
+    : "0 0 1rem yellow"
   };
 `;
 
@@ -58,27 +58,69 @@ export const Background = styled.div`
     left: 5rem;
   }
 
-  & .sizeSmall {
+  & .cloudSmall {
     width: 5rem;
     height: 0.5rem;
   }
 
-  & .sizeMedium {
+  & .cloudMedium {
     width: 7rem;
     height: 1rem;
     z-index: 2;
   }
 
-  & .sizeBig {
+  & .cloudBig {
     width: 10rem;
     height: 1.5rem;
   }
-`;
 
-export const StarOrCloud = styled.div`
+  & .extraCloud {
+    width: 4rem;
+    height: 0.6rem;
+    top: 2.8rem;
+    left: 14rem;
+  }
+
+  & .starSmall {
+    height: 0.9rem;
+    width: 0.9rem;
+    background-color: lightgray;
+    box-shadow: 0 0 1rem 0.2rem lightgray;
+    transform: translate(-3rem, 0.5rem);
+  }
+
+  & .starMedium {
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: lightgray;
+    box-shadow: 0 0 1rem 0.2rem lightgray;
+    transform: translate(-1em, 1rem);
+  }
+
+  & .starBig {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: lightgray;
+    box-shadow: 0 0 1rem 0.2rem lightgray;
+    transform: translate(-1rem, 0rem);
+  }
+
+  & .extraStar {
+    top: 1rem;
+    left: 10rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    box-shadow: 0 0 0.8rem 0.2rem lightgray;
+    background-color: lightgray;
+    transform: translate(-2rem, 0rem);
+  }
+  `;
+
+export const StarOrCloud = styled.span`
   position: absolute;
   background: whitesmoke;
-  border-radius: 50%;  
+  border-radius: 50%;
+  transition: all 0.3s ease;
 `;
 
 

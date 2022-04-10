@@ -8,11 +8,12 @@ export default function ToggleSwitcher({onClick, toggled}) {
           onClick={onClick}
           isDarkModeOn={toggled}
         >
-          <Notch isDarkModeOn={toggled}/>
-          <Background isDarkModeOn={toggled}>
-            <StarOrCloud className="positionTop sizeMedium"/>
-            <StarOrCloud isDarkModeOn={toggled} className={`positionCenter sizeSmall`}/>
-            <StarOrCloud className="positionBottom sizeBig"/>
+          <Notch isDarkModeOn={toggled} />
+          <Background>
+            <StarOrCloud className={`positionTop ${toggled ? "starMedium" : "cloudMedium"}`}/>
+            <StarOrCloud className={`positionCenter ${toggled ? "starSmall" : "cloudMedium"}`}/>
+            <StarOrCloud className={`positionBottom ${toggled ? "starBig" : "cloudBig"}`}/>
+            <StarOrCloud className={toggled ? "extraStar" : "extraCloud"}/>
           </Background>
         </Switch>
       </Container>
