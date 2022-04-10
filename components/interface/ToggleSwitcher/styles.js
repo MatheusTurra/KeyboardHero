@@ -4,6 +4,16 @@ const MOON_COLOR = "#ffffb7";
 const MOON_SHADOW = "#fff599";
 const MOON_CRATER_COLOR = "#ffe747";
 
+const SUN_COLOR = "#ffd900"; 
+const SUN_SHADOW = "#fbaf00";
+
+const CLOUD_COLOR = "#fdfdff";
+const STAR_COLOR = "#e2e2e2";
+const STAR_SHADOW = "#b0d7ff"
+
+const DAY_SKY_GRADIENT = "#6fe3e1, #5257e5";
+const NIGHT_SKY_GRADIENT = "#000328, #00458e"
+
 export const Switch = styled.div`
   height: 10rem;
   width: 20rem;
@@ -12,8 +22,8 @@ export const Switch = styled.div`
   position: relative;
   border: 1px solid black;
   background-image: ${props => props.isDarkModeOn
-    ? "linear-gradient(midnightBlue, rebeccaPurple)"
-    : "linear-gradient(aqua, skyblue)"
+    ? `linear-gradient(${NIGHT_SKY_GRADIENT})`
+    : `linear-gradient(${DAY_SKY_GRADIENT})`
   }; 
 `;
 
@@ -32,12 +42,12 @@ export const Notch = styled.div`
 
   background: ${props => props.isDarkModeOn
     ? MOON_COLOR
-    : "yellow"
+    : SUN_COLOR
   }; 
 
   box-shadow: ${props => props.isDarkModeOn
     ? `0 0 1rem ${MOON_SHADOW}`
-    : "0 0 1rem yellow"
+    : `0 0 1rem ${SUN_SHADOW}`
   };
 
 
@@ -143,24 +153,24 @@ export const SkyBackground = styled.div`
   & .starSmall {
     height: 0.9rem;
     width: 0.9rem;
-    background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem violet;
+    background-color: ${STAR_COLOR};
+    box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-3rem, 0.5rem);
   }
 
   & .starMedium {
     height: 1.2rem;
     width: 1.2rem;
-    background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem violet;
+    background-color: ${STAR_COLOR};
+    box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-1em, 1rem);
   }
 
   & .starBig {
     height: 1.5rem;
     width: 1.5rem;
-    background-color: lightgray;
-    box-shadow: 0 0 1rem 0.2rem violet;
+    background-color: ${STAR_COLOR};
+    box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-1rem, 0rem);
   }
 
@@ -169,15 +179,15 @@ export const SkyBackground = styled.div`
     left: 10rem;
     width: 1.8rem;
     height: 1.8rem;
-    box-shadow: 0 0 1rem 0.2rem violet;
-    background-color: lightgray;
+    box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
+    background-color: ${STAR_COLOR};
     transform: translate(-2rem, 0rem);
   }
   `;
 
 export const StarOrCloud = styled.span`
   position: absolute;
-  background: whitesmoke;
+  background: ${CLOUD_COLOR};
   border-radius: 50%;
   transition: all 0.3s ease;
 `;
