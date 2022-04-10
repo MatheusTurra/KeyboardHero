@@ -1,27 +1,48 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components";
+
+export const Container = styled.div`
+  & .light {
+  }
+  `;
 
 export const Switch = styled.div`
   height: 10rem;
   width: 20rem;
   border-radius: 5rem;
-  border: 1px solid black;
+  cursor: pointer;
   position: relative;
-  background-image: linear-gradient(aqua, skyblue); 
+  border: 1px solid black;
+  background-image: ${props => props.isDarkModeOn
+    ? "linear-gradient(aqua, skyblue)"
+    : "linear-gradient(midnightBlue, rebeccaPurple)"
+  }; 
 `;
-
 
 export const Notch = styled.div`
   height: 9rem;
   width: 9rem;
   border-radius: 50%;
-  background: yellow;
   position: absolute;
   top: 0.5rem;
   left: 0.2rem;
   z-index: 1;
+  transition: all 0.3s ease;
+  transform: ${props => props.isDarkModeOn
+    && "translate(100px, 0)" 
+  };
+
+  background: ${props => props.isDarkModeOn
+    ? "yellow"
+    : "whitesmoke"
+  }; 
+
+  box-shadow: ${props => props.isDarkModeOn
+    ? "0 0 0.5rem yellow"
+    : "0 0 0.5rem whitesmoke"
+  };
 `;
 
-export const SkyContainer = styled.div`
+export const Background = styled.div`
   & .positionTop {
     top: 2rem;
     left: 5rem;
