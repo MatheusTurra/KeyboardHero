@@ -1,19 +1,21 @@
+import Header from "../components/layout/Header";
 import ThemeSwitcher from "../components/interface/ThemeSwitcher";
 import WordChecker from "../components/typing_test/WordChecker";
 
 import { useState } from "react";
 
-export default function Home() {
-  const [toggled, setToggled] = useState(true);
+export default function Home({changeTheme}) {
+  const [isDarkModeOn, setIsDarkModeOn] = useState(true);
 
-  function handleToggleSwitch() {
-    setToggled(prevState => !prevState);
+  function handleThemeChange() {
+    setIsDarkModeOn(prevState => !prevState);
+    changeTheme();
   }
 
-  console.log(toggled)
   return (
     <>
-      <ThemeSwitcher toggled={toggled} onClick={handleToggleSwitch}/>
+      <Header />
+      <ThemeSwitcher toggled={isDarkModeOn} onClick={handleThemeChange}/>
       <WordChecker />
     </>
   );
