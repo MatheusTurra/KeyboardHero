@@ -17,7 +17,6 @@ export default function Home(props) {
   const [isDarkModeOn, setIsDarkModeOn] = useState(getThemeStatus);
 
   function getThemeStatus() {
-    console.log(props.theme.title)
     if(props.theme.title === "dark") return true;
     else return false;
   }
