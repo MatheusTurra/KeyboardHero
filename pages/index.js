@@ -14,7 +14,13 @@ import { useState } from "react";
 
 export default function Home(props) {
   const [theme, setTheme] = useState(props.theme);
-  const [isDarkModeOn, setIsDarkModeOn] = useState(true);
+  const [isDarkModeOn, setIsDarkModeOn] = useState(getThemeStatus);
+
+  function getThemeStatus() {
+    console.log(props.theme.title)
+    if(props.theme.title === "dark") return true;
+    else return false;
+  }
 
   function setPersistedTheme(theme) {
     const twoDaysInSeconds = 8600 * 2;
@@ -49,12 +55,11 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  let storedTheme = dark;
+  let storedTheme = light;
   const userCookies = parseCookies(context);
 
   if(userCookies.theme) {
     storedTheme = JSON.parse(userCookies.theme);
-    console.log(storedTheme)
   }
 
   return {
