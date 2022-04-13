@@ -7,7 +7,6 @@ import light from "../styles/themes/light";
 import GlobalStyle from "../styles/GlobalStyle";
 
 import { parseCookies, setCookie } from "nookies";
-
 import { ThemeProvider } from "styled-components";
 
 import { useState } from "react";
