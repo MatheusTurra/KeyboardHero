@@ -15,8 +15,8 @@ const DAY_SKY_GRADIENT = "#6fe3e1, #5257e5";
 const NIGHT_SKY_GRADIENT = "#000328, #00458e"
 
 export const Switch = styled.div`
-  height: 10rem;
-  width: 20rem;
+  height: 4rem;
+  width: 9rem;
   border-radius: 5rem;
   cursor: pointer;
   position: relative;
@@ -36,12 +36,12 @@ export const Switch = styled.div`
 `;
 
 export const Notch = styled.div`
-  height: 9rem;
-  width: 9rem;
+  height: 3.5rem;
+  width: 3.5rem;
   border-radius: 50%;
   position: absolute;
-  top: 0.5rem;
-  left: 0.2rem;
+  top: 0.2rem;
+  left: 0.3rem;
   z-index: 1;
   transition: all 0.3s ease;
   transform: ${props => props.isDarkModeOn
@@ -120,42 +120,33 @@ export const MoonCraterBig = styled.span`
 `;
 
 export const SkyBackground = styled.div`
-  & .positionTop {
-    top: 2rem;
-    left: 5rem;
-  }
-
-  & .positionCenter {
-    top: 5rem;
-    left: 11rem;
-  }
-
-  & .positionBottom {
-    top: 7rem;
-    left: 5rem;
-  }
-
   & .cloudSmall {
-    width: 5rem;
-    height: 0.5rem;
+    width: 3rem;
+    height: 0.3rem;
+    top: 1.8rem;
+    left: 3rem;
   }
 
   & .cloudMedium {
-    width: 7rem;
-    height: 1rem;
+    top: 0.5rem;
+    left: 2rem;
+    width: 2.6rem;
+    height: 0.3rem;
     z-index: 2;
   }
 
   & .cloudBig {
-    width: 10rem;
-    height: 1.5rem;
+    top: 2.8rem;
+    left: 4.3rem;
+    width: 3.7rem;
+    height: 0.4rem;
   }
 
   & .extraCloud {
-    width: 4rem;
-    height: 0.6rem;
-    top: 2.8rem;
-    left: 14rem;
+    width: 2rem;
+    height: 0.2rem;
+    top: 1.3rem;
+    left: 6.1rem;
   }
 
   & .starSmall {

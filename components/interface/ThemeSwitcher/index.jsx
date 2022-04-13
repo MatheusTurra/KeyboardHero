@@ -21,9 +21,9 @@ export default function ThemeSwitcher({onClick, toggled}) {
           <MoonCraterBig isDarkModeOn={toggled}/>
         </Notch>
         <SkyBackground>
-          <StarOrCloud className={`positionTop ${toggled ? "starMedium" : "cloudMedium"}`}/>
-          <StarOrCloud className={`positionCenter ${toggled ? "starSmall" : "cloudMedium"}`}/>
-          <StarOrCloud className={`positionBottom ${toggled ? "starBig" : "cloudBig"}`}/>
+          <StarOrCloud className={toggled ? "starMedium" : "cloudSmall"}/>
+          <StarOrCloud className={toggled ? "starSmall" : "cloudMedium"}/>
+          <StarOrCloud className={toggled ? "starBig" : "cloudBig"}/>
           <StarOrCloud className={toggled ? "extraStar" : "extraCloud"}/>
         </SkyBackground>
       </Switch>
