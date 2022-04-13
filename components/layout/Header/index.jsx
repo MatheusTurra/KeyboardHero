@@ -1,11 +1,18 @@
-import { Container } from "./styles";
+import ThemeSwitcher from "../../interface/ThemeSwitcher";
 
-export default function Header() {
+import { Navbar, Logo, SwitcherWrapper } from "./styles";
+
+export default function Header({isDarkModeOn, onClick}) {
   return(
     <>
-      <Container>
-        Teste
-      </Container>
+      <Navbar>
+          <Logo>
+            Keyboard Hero
+          </Logo>
+          <SwitcherWrapper>
+            <ThemeSwitcher toggled={isDarkModeOn} onClick={onClick}/>
+          </SwitcherWrapper>
+      </Navbar>
     </>
   );
 }
