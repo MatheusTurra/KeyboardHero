@@ -45,7 +45,7 @@ export const Notch = styled.div`
   z-index: 1;
   transition: all 0.3s ease;
   transform: ${props => props.isDarkModeOn
-    && "translate(10.6rem, 0)" 
+    && "translate(5rem, 0)" 
   };
 
   background: ${props => props.isDarkModeOn
@@ -76,13 +76,13 @@ export const Notch = styled.div`
 export const MoonCraterSmall = styled.span`
   ${props => props.isDarkModeOn 
     && css`
-      height: 1.12rem;
-      width: 4rem;
+      height: 0.32rem;
+      width: 2rem;
       border-radius: 50%;
       position: absolute;
       background-color: ${MOON_CRATER_COLOR};
-      top: 2rem;
-      left: 1rem;
+      top: 1rem;
+      left: 0.5rem;
       opacity: 0.3;
       transform: rotate(45deg);
     `
@@ -92,13 +92,13 @@ export const MoonCraterSmall = styled.span`
 export const MoonCraterMedium = styled.span`
   ${props => props.isDarkModeOn 
     && css`
-      height: 2em;
-      width: 2rem;
+      height: 0.6em;
+      width: 0.6rem;
       border-radius: 50%;
       position: absolute;
       background-color: ${MOON_CRATER_COLOR};
-      top: 6.8rem;
-      left: 3rem;
+      top: 2rem;
+      left: 0.8rem;
       opacity: 0.3;
     `
   }
@@ -107,13 +107,13 @@ export const MoonCraterMedium = styled.span`
 export const MoonCraterBig = styled.span`
   ${props => props.isDarkModeOn 
     && css`
-      height: 4em;
-      width: 4rem;
+      height: 1em;
+      width: 1rem;
       border-radius: 50%;
       position: absolute;
       background-color: ${MOON_CRATER_COLOR};
-      top: 2.9rem;
-      left: 4.9rem;
+      top: 2rem;
+      left: 2.2rem;
       opacity: 0.3;
     `
   }
@@ -150,34 +150,40 @@ export const SkyBackground = styled.div`
   }
 
   & .starSmall {
-    height: 0.9rem;
-    width: 0.9rem;
+    top: 2.5rem;
+    left: 7.2rem;
+    height: 0.3rem;
+    width: 0.3rem;
     background-color: ${STAR_COLOR};
     box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-3rem, 0.5rem);
   }
 
   & .starMedium {
-    height: 1.2rem;
-    width: 1.2rem;
+    top: -0.4rem;
+    left: 4.5rem;
+    height: 0.5rem;
+    width: 0.5rem;
     background-color: ${STAR_COLOR};
     box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-1em, 1rem);
   }
 
   & .starBig {
-    height: 1.5rem;
-    width: 1.5rem;
+    top: 2rem;
+    left: 3.7rem;
+    height: 0.6rem;
+    width: 0.6rem;
     background-color: ${STAR_COLOR};
     box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     transform: translate(-1rem, 0rem);
   }
 
   & .extraStar {
-    top: 1rem;
-    left: 10rem;
-    width: 1.8rem;
-    height: 1.8rem;
+    top: 1.5rem;
+    left: 3rem;
+    width: 0.6rem;
+    height: 0.6rem;
     box-shadow: 0 0 1rem 0.2rem ${STAR_SHADOW};
     background-color: ${STAR_COLOR};
     transform: translate(-2rem, 0rem);
