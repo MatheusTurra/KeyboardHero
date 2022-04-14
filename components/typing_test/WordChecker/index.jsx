@@ -1,10 +1,14 @@
 import Timer from "../Timer";
+import Result from "../Result";
 import RenderText from "../RenderText";
 
 import { useEffect, useState } from "react";
 
-import styles from "./styles.module.css"
-import Result from "../Result";
+import { 
+  GameGradient,
+  GameContainer,
+  UserInteractionWrapper
+} from "./styles";
 
 let wordIndex = 0;
 let wordCounter = 0;
@@ -21,7 +25,7 @@ const words = text.split(" ");
  *  TODO: TRANSFORMAR ESSE COMPONENTE EM UM HOOK
  */
 
-export default function WordChecker() {
+export default function WordChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [startGame, setStartGame] = useState(false);
@@ -109,46 +113,48 @@ export default function WordChecker() {
 
   return(
     <>
-      <section className={styles.container}>
-        <h1 className={styles.title}>Keyboard Hero</h1>
-        <RenderText
-          text={words}
-          letterCorrect={isLetterCorrect}
-          current={wordIndex}
-          wordCorrect={isWordCorrect}
-          resetFeedback={resetGame}
-          isGameOver={gameOver}
-        />
-
-        <div className={styles.userInputContainer}>
-          <input
-            type="text"
-            value={userInput}
-            disabled={gameOver}
-            onChange={event => userInputHandler(event)}
-            className={styles.userInput}
+      <GameGradient isDarkModeOn={isDarkModeOn}>
+        <GameContainer>
+          <RenderText
+            text={words}
+            letterCorrect={isLetterCorrect}
+            current={wordIndex}
+            wordCorrect={isWordCorrect}
+            resetFeedback={resetGame}
+            isGameOver={gameOver}
           />
-        </div>
-        <Timer
-          isGameEnded={endGame}
-          getMaxTime={getMaxTime}
-          getTimeLeft={getTimeLeft}
-          isGameStarted={startGame}
-          shouldResetTimer={resetGame} 
-        />
-        <button onClick={restartGame}>Restart</button>
 
-        <Result
-          maxTime={maxTime}
-          start={startGame}
-          timeLeft={timeLeft}
-          words={wordCounter}
-          keyPresses={keyPressCounter}
-          correctKeyPresses={correctKeyPressCounter}
-          incorrectKeyPresses={incorrectKeyPressCounter}
-          isGameReseted={resetGame}
-        />
-      </section>
+          <UserInteractionWrapper>
+            <div>
+              <input
+                type="text"
+                value={userInput}
+                disabled={gameOver}
+                onChange={event => userInputHandler(event)}
+              />
+            </div>
+            <Timer
+              isGameEnded={endGame}
+              getMaxTime={getMaxTime}
+              getTimeLeft={getTimeLeft}
+              isGameStarted={startGame}
+              shouldResetTimer={resetGame} 
+            />
+            <button onClick={restartGame}>Restart</button>
+
+            <Result
+              maxTime={maxTime}
+              start={startGame}
+              timeLeft={timeLeft}
+              words={wordCounter}
+              keyPresses={keyPressCounter}
+              correctKeyPresses={correctKeyPressCounter}
+              incorrectKeyPresses={incorrectKeyPressCounter}
+              isGameReseted={resetGame}
+            />
+          </UserInteractionWrapper>
+        </GameContainer>
+      </GameGradient>
     </>
   );
 }
