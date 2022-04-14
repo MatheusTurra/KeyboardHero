@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const TimerContainer = styled.div`
-  width: 8rem;
+
+export const ResultContainer = styled.div`
+  width: 65%;
   height: 4rem;
+  font-size: 2.5rem;
+  border-radius: 1rem;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
-  font-weight: 600;
-  border-radius: 1rem;
   background-color: ${props => props.theme.colors.secondary};
 `;
