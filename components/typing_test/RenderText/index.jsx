@@ -8,7 +8,6 @@ export default function RenderText(props) {
   const array = new Array(props.text.length - 1);
   const [colorFeedbackArray, setColorFeedbackArray] = useState(array);
 
-  
   useEffect(() => {
     if(props.wordCorrect) {
       updateColorArray(props.current - 1, true);

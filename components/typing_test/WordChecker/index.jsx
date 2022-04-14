@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 import { 
   GameGradient,
+  ContainerGradient,
   GameContainer,
   UserInteractionWrapper,
   UserInput
@@ -118,14 +119,16 @@ export default function WordChecker({isDarkModeOn}) {
     <>
       <GameGradient isDarkModeOn={isDarkModeOn}>
         <GameContainer>
-          <RenderText
-            text={words}
-            letterCorrect={isLetterCorrect}
-            current={wordIndex}
-            wordCorrect={isWordCorrect}
-            resetFeedback={resetGame}
-            isGameOver={gameOver}
-          />
+          <ContainerGradient isDarkModeOn={isDarkModeOn}>
+            <RenderText
+              text={words}
+              letterCorrect={isLetterCorrect}
+              current={wordIndex}
+              wordCorrect={isWordCorrect}
+              resetFeedback={resetGame}
+              isGameOver={gameOver}
+            />
+          </ContainerGradient>
 
           <UserInteractionWrapper>
             <UserInput

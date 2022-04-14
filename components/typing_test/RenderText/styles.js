@@ -27,18 +27,17 @@ function selectCurrentWord(index, current){
   return color;
 }
 
+
 export const TextContainer = styled.div`
-  width: 100%;
   height: 12rem;
   box-sizing: border-box;
-  line-height: 6rem;
-  clear: both;
+  line-height: 5.5rem;
   overflow: hidden;
-  font-size: 3.0rem;
-  margin: 2rem 0;
-  border-radius: 1rem;
-  padding: 0.6rem 3.3rem 1rem 1.2rem;
   overflow-wrap: break-word;
+  font-size: 3.0rem;
+  border-radius: 1rem;
+  overflow-wrap: break-word;
+  padding: 0.6rem 3.3rem 1rem 1.2rem;
   background-color: ${props => props.theme.colors.secondary};
   
   & span {
