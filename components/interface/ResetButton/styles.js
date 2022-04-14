@@ -29,8 +29,8 @@ export const ButtonContainer = styled.button`
     opacity: 0;
     transition: all 0.3s;
     box-shadow: ${props => props.isDarkModeOn
-      ? "0 0 1rem 4rem #30c5d2"
-      : "0 0 1rem 4rem #f86ca7"};
+      ? "0 0 1rem 3rem #30c5d2"
+      : "0 0 1rem 3rem #f86ca7"};
   }
 
   & :active:after {
