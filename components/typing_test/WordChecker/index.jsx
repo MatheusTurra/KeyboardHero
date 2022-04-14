@@ -9,6 +9,7 @@ import {
   GameGradient,
   ContainerGradient,
   GameContainer,
+  UserContainerGradient,
   UserInteractionWrapper,
   UserInput
 } from "./styles";
@@ -129,7 +130,8 @@ export default function WordChecker({isDarkModeOn}) {
               isGameOver={gameOver}
             />
           </ContainerGradient>
-
+          
+          <UserContainerGradient isDarkModeOn={isDarkModeOn}>
           <UserInteractionWrapper>
             <UserInput
               type="text"
@@ -159,6 +161,7 @@ export default function WordChecker({isDarkModeOn}) {
             />
             <ResetButton isDarkModeOn={isDarkModeOn} onClick={restartGame}/>
           </UserInteractionWrapper>
+          </UserContainerGradient>
         </GameContainer>
       </GameGradient>
     </>

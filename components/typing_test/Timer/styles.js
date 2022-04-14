@@ -10,5 +10,5 @@ export const TimerContainer = styled.div`
   font-size: 2.5rem;
   font-weight: 600;
   border-radius: 1rem;
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.background};
 `;

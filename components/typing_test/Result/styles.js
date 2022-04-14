@@ -7,7 +7,7 @@ export const ResultContainer = styled.div`
   font-size: 1.6rem;
   border-radius: 1rem;
   margin: 0 auto;
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.background};
 `;
 
 export const Wrapper = styled.div`

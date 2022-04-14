@@ -14,7 +14,7 @@ export const ButtonContainer = styled.button`
   border-radius: 1rem;
   border: 0;
   color: ${props => props.theme.colors.text};
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.background};
 
   & :after {
     content: "";
