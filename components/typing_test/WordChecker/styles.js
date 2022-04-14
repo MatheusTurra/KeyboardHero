@@ -27,6 +27,6 @@ export const UserInteractionWrapper = styled.div`
 export const UserInput = styled.input`
   width: 94%;
   height: 4rem;
-  margin-left: 3.5rem;
   border-radius: 1rem;
+  margin-left: 1.2rem;
 `;

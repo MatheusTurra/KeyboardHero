@@ -10,6 +10,7 @@ import {
   UserInteractionWrapper,
   UserInput
 } from "./styles";
+import ResetButton from "../../interface/ResetButton";
 
 let wordIndex = 0;
 let wordCounter = 0;
@@ -126,22 +127,12 @@ export default function WordChecker({isDarkModeOn}) {
           />
 
           <UserInteractionWrapper>
-            <div>
-              <UserInput
-                type="text"
-                value={userInput}
-                disabled={gameOver}
-                onChange={event => userInputHandler(event)}
-              />
-            </div>
-            <Timer
-              isGameEnded={endGame}
-              getMaxTime={getMaxTime}
-              getTimeLeft={getTimeLeft}
-              isGameStarted={startGame}
-              shouldResetTimer={resetGame} 
+            <UserInput
+              type="text"
+              value={userInput}
+              disabled={gameOver}
+              onChange={event => userInputHandler(event)}
             />
-            <button onClick={restartGame}>Restart</button>
 
             <Result
               maxTime={maxTime}
@@ -153,6 +144,16 @@ export default function WordChecker({isDarkModeOn}) {
               incorrectKeyPresses={incorrectKeyPressCounter}
               isGameReseted={resetGame}
             />
+
+            <Timer
+              isGameEnded={endGame}
+              getMaxTime={getMaxTime}
+              getTimeLeft={getTimeLeft}
+              isGameStarted={startGame}
+              shouldResetTimer={resetGame} 
+            />
+            <ResetButton isDarkModeOn={isDarkModeOn}/>
+            {/* <button onClick={restartGame}>Restart</button> */}
           </UserInteractionWrapper>
         </GameContainer>
       </GameGradient>
