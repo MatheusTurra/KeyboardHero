@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+
+import { TextContainer, GameText } from "./styles";
 
 export default function RenderText(props) {
   const textContainerRef = useRef(null);
@@ -71,45 +72,4 @@ export default function RenderText(props) {
       </TextContainer>
     </>
   );
-}
-
-const TextContainer = styled.div`
-  font-size: 3.0rem;
-
-  .correct {
-    color: #00ff00;
-  }
-
-  .incorrect {
-    color: #ff0000;
-  }
-
-  .current {
-    background-color: grey;
-  }
-`;
-
-const GameText = styled.span`
-  background-color: ${props => selectCurrentWord(props.mapIndex, props.current)}
-  color: ${props => spellFeedback(props.mapIndex, props.current, props.isLetterCorrect)}
-`;
-
-function selectCurrentWord(index, current){
-  let backgroundColor = ";";
-  
-  if(current === index) backgroundColor = "grey;"
-  
-  return backgroundColor;
-}
-
-function spellFeedback(index, current, isLetterCorrect) {
-  let color = ";";
-
-  if(current === index) {
-
-    if(isLetterCorrect) color = "#00ff00;";
-    if(isLetterCorrect === false) color = "#ff0000;";
-  }
-
-  return color;
 }
