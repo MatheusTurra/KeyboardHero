@@ -26,6 +26,7 @@ export const TextContainer = styled.div`
   line-height: 6rem;
   clear: both;
   overflow: hidden;
+  justify-self: center;
   font-size: 3.0rem;
   margin: 2rem -1.5rem;
   border-radius: 1rem;
