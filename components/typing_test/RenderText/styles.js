@@ -28,14 +28,14 @@ function selectCurrentWord(index, current){
 }
 
 export const TextContainer = styled.div`
-  width: 90%;
+  width: 100%;
   height: 12rem;
+  box-sizing: border-box;
   line-height: 6rem;
   clear: both;
   overflow: hidden;
-  justify-self: center;
   font-size: 3.0rem;
-  margin: 2rem -1.5rem;
+  margin: 2rem 0;
   border-radius: 1rem;
   padding: 0.6rem 3.3rem 1rem 1.2rem;
   overflow-wrap: break-word;

@@ -13,6 +13,8 @@ export const GameGradient = styled.div`
 export const GameContainer = styled.div`
   margin: 0 auto;
   display: grid;
+  padding: 1rem 9.4rem;
+  margin: 0 auto;
   border-radius: 1rem;
   align-items: center;
   grid-template-rows: 3fr 1fr;
@@ -20,16 +22,17 @@ export const GameContainer = styled.div`
 `;
 
 export const UserInteractionWrapper = styled.div`
+  padding: 0 1rem;
   display: grid;
   grid-template-columns: 5fr 1fr 1fr 1fr;
 `;
 
 export const UserInput = styled.input`
-  width: 94%;
+  width: 100%;
   height: 3.4rem;
   border: 0;
   border-radius: 1rem;
-  margin-left: 1.2rem;
+  margin: 0 auto;
 
   & :focus {
     outline: none;

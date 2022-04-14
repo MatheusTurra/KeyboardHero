@@ -1,6 +1,7 @@
 import Timer from "../Timer";
 import Result from "../Result";
 import RenderText from "../RenderText";
+import ResetButton from "../../interface/ResetButton";
 
 import { useEffect, useState } from "react";
 
@@ -10,7 +11,7 @@ import {
   UserInteractionWrapper,
   UserInput
 } from "./styles";
-import ResetButton from "../../interface/ResetButton";
+
 
 let wordIndex = 0;
 let wordCounter = 0;
