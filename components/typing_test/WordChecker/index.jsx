@@ -143,6 +143,7 @@ export default function WordChecker({isDarkModeOn}) {
               correctKeyPresses={correctKeyPressCounter}
               incorrectKeyPresses={incorrectKeyPressCounter}
               isGameReseted={resetGame}
+
             />
 
             <Timer
@@ -152,8 +153,7 @@ export default function WordChecker({isDarkModeOn}) {
               isGameStarted={startGame}
               shouldResetTimer={resetGame} 
             />
-            <ResetButton isDarkModeOn={isDarkModeOn}/>
-            {/* <button onClick={restartGame}>Restart</button> */}
+            <ResetButton isDarkModeOn={isDarkModeOn} onClick={restartGame}/>
           </UserInteractionWrapper>
         </GameContainer>
       </GameGradient>
