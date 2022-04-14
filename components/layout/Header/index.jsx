@@ -1,10 +1,11 @@
 import ThemeSwitcher from "../../interface/ThemeSwitcher";
 
-import { Navbar, Logo, SwitcherWrapper } from "./styles";
+import { GradientWrapper, Navbar, Logo, SwitcherWrapper } from "./styles";
 
 export default function Header({isDarkModeOn, onClick}) {
   return(
     <>
+    <GradientWrapper isDarkModeOn={isDarkModeOn}>
       <Navbar>
           <Logo>
             Keyboard Hero
@@ -13,6 +14,7 @@ export default function Header({isDarkModeOn, onClick}) {
             <ThemeSwitcher toggled={isDarkModeOn} onClick={onClick}/>
           </SwitcherWrapper>
       </Navbar>
+    </GradientWrapper>
     </>
   );
 }
