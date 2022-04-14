@@ -22,7 +22,6 @@ export const GameContainer = styled.div`
 `;
 
 export const UserInteractionWrapper = styled.div`
-  padding: 0 1rem;
   display: grid;
   grid-template-columns: 6fr 3fr 1fr 1fr;
 `;
