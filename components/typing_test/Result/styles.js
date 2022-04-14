@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 
 export const ResultContainer = styled.div`
-  width: 65%;
-  height: 4rem;
-  font-size: 2.5rem;
+  width: 80%;
+  height: 5rem;
+  font-size: 1.6rem;
   border-radius: 1rem;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: ${props => props.theme.colors.secondary};
+`;
+
+export const Wrapper = styled.div`
+  margin: 0.5rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;

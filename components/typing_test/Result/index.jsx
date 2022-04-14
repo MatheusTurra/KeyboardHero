@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import {
-  ResultContainer
+  ResultContainer, Wrapper
 } from "./styles";
 
 export default function Result(props) {
@@ -34,7 +34,10 @@ export default function Result(props) {
   return(
     <>
       <ResultContainer>
-        <p>{wpm} : {accuracy}</p>
+        <Wrapper>
+          <span>Precisão: {accuracy}</span>
+          <span>Palavras por minuto: {wpm}</span>
+        </Wrapper>
       </ResultContainer>
     </>
   );

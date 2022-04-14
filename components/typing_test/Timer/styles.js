@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TimerContainer = styled.div`
   width: 8rem;
-  height: 4rem;
+  height: 5rem;
   margin: 0 auto;
   display: flex;
   justify-content: center;

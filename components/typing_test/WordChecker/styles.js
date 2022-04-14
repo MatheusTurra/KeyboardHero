@@ -24,12 +24,12 @@ export const GameContainer = styled.div`
 export const UserInteractionWrapper = styled.div`
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: 5fr 1fr 1fr 1fr;
+  grid-template-columns: 6fr 3fr 1fr 1fr;
 `;
 
 export const UserInput = styled.input`
   width: 100%;
-  height: 3.4rem;
+  height: 4.5rem;
   border: 0;
   border-radius: 1rem;
   margin: 0 auto;
