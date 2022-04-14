@@ -44,8 +44,7 @@ export default function Home(props) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header />
-        <ThemeSwitcher toggled={isDarkModeOn} onClick={handleThemeChange}/>
+        <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
         <WordChecker />
       </ ThemeProvider >
     </>
