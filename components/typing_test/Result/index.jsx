@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+import {
+  ResultContainer
+} from "./styles";
+
 export default function Result(props) {
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
@@ -29,9 +33,9 @@ export default function Result(props) {
 
   return(
     <>
-      <div>
+      <ResultContainer>
         <p>{wpm} : {accuracy}</p>
-      </div>
+      </ResultContainer>
     </>
   );
 }

@@ -1,5 +1,4 @@
 import Header from "../components/layout/Header";
-import ThemeSwitcher from "../components/interface/ThemeSwitcher";
 import WordChecker from "../components/typing_test/WordChecker";
 
 import dark from "../styles/themes/dark";
@@ -10,6 +9,10 @@ import { parseCookies, setCookie } from "nookies";
 import { ThemeProvider } from "styled-components";
 
 import { useState } from "react";
+
+/**
+ * TODO: CRIAR UM CONTEXTO PARA ARMAZENAR O ESTADO DO TEMA
+ */
 
 export default function Home(props) {
   const [theme, setTheme] = useState(props.theme);
@@ -45,7 +48,7 @@ export default function Home(props) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
-        <WordChecker />
+        <WordChecker isDarkModeOn={isDarkModeOn}/>
       </ ThemeProvider >
     </>
   );
