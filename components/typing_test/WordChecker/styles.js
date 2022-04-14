@@ -15,11 +15,18 @@ export const GameContainer = styled.div`
   display: grid;
   border-radius: 1rem;
   align-items: center;
-  justify-items: center;
   grid-template-rows: 3fr 1fr;
   background-color: ${props => props.theme.colors.primary};
 `;
 
 export const UserInteractionWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr 1fr;
+`;
+
+export const UserInput = styled.input`
+  width: 94%;
+  height: 4rem;
+  margin-left: 3.5rem;
+  border-radius: 1rem;
 `;

@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { 
   GameGradient,
   GameContainer,
-  UserInteractionWrapper
+  UserInteractionWrapper,
+  UserInput
 } from "./styles";
 
 let wordIndex = 0;
@@ -126,7 +127,7 @@ export default function WordChecker({isDarkModeOn}) {
 
           <UserInteractionWrapper>
             <div>
-              <input
+              <UserInput
                 type="text"
                 value={userInput}
                 disabled={gameOver}
