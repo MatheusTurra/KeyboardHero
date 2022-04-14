@@ -1,20 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 function selectCurrentWord(index, current){
-  let backgroundColor = ";";
-  
-  if(current === index) backgroundColor = "grey;"
-  
-  return backgroundColor;
+  let backgroundColor = "";
+  let borderColor = "";
+
+  if(current === index) {
+    borderColor += "0.2rem solid #343a40";
+    backgroundColor += "#212529";
   }
+  
+  return css`
+    border: ${borderColor};
+    background-color: ${backgroundColor};
+  `;
+}
   
   function spellFeedback(index, current, isLetterCorrect) {
   let color = ";";
   
   if(current === index) {
   
-    if(isLetterCorrect) color = "#00ff00;";
-    if(isLetterCorrect === false) color = "#ff0000;";
+    if(isLetterCorrect) color = "#5bce68";
+    if(isLetterCorrect === false) color = "#dc2b34";
   }
   
   return color;
@@ -35,23 +42,20 @@ export const TextContainer = styled.div`
   background-color: ${props => props.theme.colors.secondary};
   
   & span {
-    padding-left: 0.7rem;
+    padding:0 0.7rem;
   }
 
   .correct {
-    color: #00ff00;
+    color: #5bce68;
   }
 
   .incorrect {
-    color: #ff0000;
-  }
-
-  .current {
-    background-color: grey;
+    color: #dc2b34;
   }
 `;
 
 export const GameText = styled.span`
-  background-color: ${props => selectCurrentWord(props.mapIndex, props.current)}
+  border-radius: 0.5rem;
+  ${props => selectCurrentWord(props.mapIndex, props.current)};
   color: ${props => spellFeedback(props.mapIndex, props.current, props.isLetterCorrect)}
 `;
