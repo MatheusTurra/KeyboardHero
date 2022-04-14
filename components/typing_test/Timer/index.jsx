@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-import styled from "styled-components";
+import {
+  TimerContainer
+} from "./styles";
 
 export default function Timer(props) {
   const [minutes, setMinutes] = useState(1);
@@ -39,14 +41,10 @@ export default function Timer(props) {
 
   return(
     <>
-      <div>
-        <Seconds>{minutes} : </Seconds>
-        <Seconds>{seconds.toString().padStart(2, 0)}</Seconds>
-      </div>
+      <TimerContainer>
+        <span>{minutes} : </span>
+        <span>{seconds.toString().padStart(2, 0)}</span>
+      </TimerContainer>
     </>
   );
 }
-
-const Seconds = styled.span`
-  font-size: 2rem;
-`;
