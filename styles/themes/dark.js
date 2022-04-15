@@ -7,5 +7,10 @@ export default {
 
     background: "#12181b",
     text: "#b2becd"
+  },
+
+  gameText: {
+    currentWordBorder: "#343a40",
+    currentWordBackground: "#212529"
   }
 }
