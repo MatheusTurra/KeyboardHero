@@ -31,17 +31,23 @@ function selectCurrentWord(theme, index, current){
 export const TextContainer = styled.div`
   height: 12rem;
   box-sizing: border-box;
-  line-height: 5.5rem;
+  line-height: 5rem;
   overflow: hidden;
-  overflow-wrap: break-word;
-  font-size: 3.0rem;
+  font-size: 3rem;
   border-radius: 1rem;
   overflow-wrap: break-word;
-  padding: 0.6rem 3.3rem 1rem 1.2rem;
+  padding: 1rem 10rem;
   background-color: ${props => props.theme.colors.secondary};
   
+  & div {
+    position: relative;
+    bottom: 0rem;
+    top: -${props => props.scrollTop}rem;
+  }
+
   & span {
-    padding:0 0.7rem;
+    padding:0 0.2rem;
+    display: inline-block;
   }
 
   .correct {

@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 
 import { TextContainer, GameText } from "./styles";
 
+let shouldScrollTop = false;
+
 export default function RenderText(props) {
   const textContainerRef = useRef(null);
 
   const array = new Array(props.text.length - 1);
   const [colorFeedbackArray, setColorFeedbackArray] = useState(array);
+  const [textScrollTop, setTextScrollTop] = useState(0);
 
   useEffect(() => {
     if(props.wordCorrect) {
@@ -16,6 +19,8 @@ export default function RenderText(props) {
     if(props.wordCorrect === false) {
       updateColorArray(props.current - 1, false);
     }
+
+    shouldScrollTop = true;
   }, [props.wordCorrect, props.current]);
 
   useEffect(() => {
@@ -33,7 +38,18 @@ export default function RenderText(props) {
   useEffect(() => {
     setColorFeedbackArray(array.fill(""));
     removeFeedbackClasses();
+    setTextScrollTop(0);
+    
+    shouldScrollTop = false;
   }, [props.resetFeedback]);
+
+  useEffect(() => {
+    if(shouldScrollTop === false) return;
+
+    const currentWordPosition = textContainerRef.current.children[props.current].offsetLeft;
+ 
+    if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 6);
+  }, [props.current]);
 
   function removeFeedbackClasses() {
     const textChildren = textContainerRef.current.children;
@@ -53,21 +69,22 @@ export default function RenderText(props) {
 
   return(
     <>
-      <TextContainer
-        ref={textContainerRef}
-      >
-        {props.text.map((word, index) => {
-          return(
-            <GameText
-              key={word + index}
-              mapIndex={index}
-              current={props.current}
-              isLetterCorrect={props.letterCorrect}
-            >
-              {word}
-            </GameText>
-          );
-        })}
+      <TextContainer scrollTop={textScrollTop}> 
+        <div ref={textContainerRef}>
+          {props.text.map((word, index) => {
+            return(
+              <GameText
+                id={index}
+                key={word + index}
+                mapIndex={index}
+                current={props.current}
+                isLetterCorrect={props.letterCorrect}
+              >
+                {word}
+              </GameText>
+            );
+          })}
+        </div>
       </TextContainer>
     </>
   );
