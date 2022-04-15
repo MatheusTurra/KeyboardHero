@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-function selectCurrentWord(index, current){
+function selectCurrentWord(theme, index, current){
   let backgroundColor = "";
   let borderColor = "";
-
+  console.log(theme)
   if(current === index) {
-    borderColor += "0.2rem solid #343a40";
-    backgroundColor += "#212529";
+    borderColor += `0.2rem solid ${theme.currentWordBorder}`;
+    backgroundColor += theme.currentWordBackground;
   }
   
   return css`
@@ -55,6 +55,6 @@ export const TextContainer = styled.div`
 
 export const GameText = styled.span`
   border-radius: 0.5rem;
-  ${props => selectCurrentWord(props.mapIndex, props.current)};
+  ${props => selectCurrentWord(props.theme.gameText, props.mapIndex, props.current)};
   color: ${props => spellFeedback(props.mapIndex, props.current, props.isLetterCorrect)}
 `;
