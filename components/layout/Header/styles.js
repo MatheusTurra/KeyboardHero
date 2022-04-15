@@ -5,6 +5,7 @@ export const GradientWrapper = styled.div`
   height: 11rem;
   border-bottom-left-radius: 0.6rem;
   border-bottom-right-radius: 0.6rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.50);
   background-image: ${props => props.isDarkModeOn
     ? "linear-gradient(to right, #471069, #30c5d2)"
     : "linear-gradient(to right, #f86ca7, #f4d444)"
