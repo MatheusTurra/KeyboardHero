@@ -53,6 +53,8 @@ export const UserInput = styled.input`
   border: 0;
   border-radius: 1rem;
   margin: 0 auto;
+  font-size: 2.2rem;
+  background-color: #d3dbe3;
 
   & :focus {
     outline: none;

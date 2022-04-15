@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 function selectCurrentWord(theme, index, current){
   let backgroundColor = "";
   let borderColor = "";
-  console.log(theme)
+
   if(current === index) {
     borderColor += `0.2rem solid ${theme.currentWordBorder}`;
     backgroundColor += theme.currentWordBackground;
