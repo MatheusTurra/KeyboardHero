@@ -11,7 +11,6 @@ export const ContainerGradient = styled.div`
   height: 12rem;
   padding: 0.3rem;
   border-radius: 1rem;
-  background: blue;
   box-shadow: 0 0.4rem 1rem rgba(0,30,84, 0.50);
   background-image: ${props => props.isDarkModeOn
     ? "linear-gradient(to right, #471069, #30c5d2)"
@@ -33,7 +32,6 @@ export const UserContainerGradient = styled.div`
   width: 96rem;
   padding: 0.3rem;
   border-radius: 1rem;
-  background: blue;
   box-shadow: 0 0.4rem 1rem rgba(0,30,84, 0.50);
   background-image: ${props => props.isDarkModeOn
     ? "linear-gradient(to right, #471069, #30c5d2)"
