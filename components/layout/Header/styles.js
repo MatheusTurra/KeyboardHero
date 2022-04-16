@@ -29,5 +29,11 @@ export const Logo = styled.h1`
 `;
 
 export const SwitcherWrapper = styled.div`
+  font-size: 2rem;
+  display: flex;
+  gap: 1rem;
   justify-self: end;
+  align-items: center;
+  margin-right: 2.5rem;
+  color: ${props => props.theme.colors.text};
 `;
