@@ -11,7 +11,7 @@ export const ResultContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  margin: 0.5rem 2.2rem;
+  margin: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
