@@ -223,8 +223,8 @@ export const SkyBackground = styled.div`
   }
 
   & .starSmall {
-    top: -0.2rem;
-    left: 3.7rem;
+    top: 0rem;
+    left: 4.3rem;
     height: 0.3rem;
     width: 0.3rem;
     background-color: ${STAR_COLOR};

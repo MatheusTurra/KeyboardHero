@@ -4,15 +4,19 @@ import styled from 'styled-components';
 export const ResultContainer = styled.div`
   width: 80%;
   height: 5rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   border-radius: 1rem;
-  margin: 0 auto;
+  margin: 1rem auto;
   background-color: ${props => props.theme.colors.background};
 `;
 
 export const Wrapper = styled.div`
-  margin: 0.5rem 1rem;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: flex-start;
+
+  & span {
+    margin: 0 auto;
+  }
 `;

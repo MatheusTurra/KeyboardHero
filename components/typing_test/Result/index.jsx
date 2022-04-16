@@ -37,7 +37,7 @@ export default function Result(props) {
       <ResultContainer>
         <Wrapper>
           <span>Precisão: {accuracy}</span>
-          <span>Palavras por minuto: {wpm}</span>
+          <span>Palavras por Minuto: {wpm}</span>
         </Wrapper>
       </ResultContainer>
     </>

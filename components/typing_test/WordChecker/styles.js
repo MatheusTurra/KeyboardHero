@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90%;
+  width: 92%;
   margin: 0 auto;
 `;
 
@@ -19,9 +19,11 @@ export const ContainerGradient = styled.div`
 
 export const GameContainer = styled.div`
   display: grid;
+  grid-gap: 2rem;
+  /* grid-template-rows: 3fr 1fr; */
   border-radius: 1rem;
   align-items: center;
-  grid-template-rows: 3fr 1fr;
+  margin: 2rem 0;
 `;
 
 export const UserContainerGradient = styled.div`
@@ -35,16 +37,19 @@ export const UserContainerGradient = styled.div`
 `;
 
 export const UserInteractionWrapper = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; 
   padding: 1rem;
   border-radius: 1rem;
-  grid-template-columns: 6fr 3fr 1fr 1fr;
   background: ${props => props.theme.colors.secondary};
 `;
 
 export const UserInput = styled.input`
   width: 100%;
-  height: 4.5rem;
+  height: 4.4rem;
   border: 0;
   border-radius: 1rem;
   margin: 0 auto;
