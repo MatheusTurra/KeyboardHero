@@ -36,7 +36,7 @@ export const TextContainer = styled.div`
   font-size: 3rem;
   border-radius: 1rem;
   overflow-wrap: break-word;
-  padding: 1rem 10rem;
+  padding: 0rem 10rem 1rem 10rem;
   background-color: ${props => props.theme.colors.secondary};
   
   & div {

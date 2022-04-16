@@ -48,7 +48,7 @@ export default function RenderText(props) {
 
     const currentWordPosition = textContainerRef.current.children[props.current].offsetLeft;
  
-    if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 6);
+    if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 5);
   }, [props.current]);
 
   function removeFeedbackClasses() {
