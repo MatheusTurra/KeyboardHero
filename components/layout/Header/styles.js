@@ -18,22 +18,41 @@ export const Navbar = styled.nav`
   background: ${props => props.theme.colors.primary};
   display: grid;
   justify-items: center;
-  grid-template-columns: repeat(3, 3fr);
+  grid-template-columns: 10fr 1fr;
   align-items: center;
 `;
 
 export const Logo = styled.h1`
-  font-size: 3.5rem;
+  font-size: 2.6rem;
   font-weight: 800;
-  grid-column-start: 2;
+
+  @media(min-width: 768px) {
+    font-size: 2.8rem;
+  }
 `;
 
 export const SwitcherWrapper = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   gap: 1rem;
   justify-self: end;
   align-items: center;
-  margin-right: 2.5rem;
+  margin: 0 auto;
+  padding: 0 1rem;
   color: ${props => props.theme.colors.text};
+
+  @media(min-width: 768px) {
+    font-size: 2rem;
+  }
+
+  & .icon {
+    display: none;
+  }
+
+  & .icon {
+    @media(min-width: 768px) {
+      display: inline;
+    }
+  }
+
 `;

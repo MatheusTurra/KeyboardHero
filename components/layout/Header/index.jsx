@@ -12,9 +12,9 @@ export default function Header({isDarkModeOn, onClick}) {
             Keyboard Hero
           </Logo>
           <SwitcherWrapper>
-            <FaSun />
+            <FaSun className="icon"/>
             <ThemeSwitcher toggled={isDarkModeOn} onClick={onClick}/>
-            <FaMoon />
+            <FaMoon className="icon"/>
           </SwitcherWrapper>
       </Navbar>
     </GradientWrapper>
