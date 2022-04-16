@@ -22,7 +22,7 @@ let maxTime = 0;
 let incorrectKeyPressCounter = 0;
 let correctKeyPressCounter = 0;
 
-const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum lectus iaculis felis aliquet, ut tempus felis blandit. Phasellus et semper dui, in tempor odio. Etiam imperdiet laoreet justo, ut lobortis diam. Vestibulum convallis efficitur diam, ut eleifend velit dapibus interdum. Cras condimentum dolor sit amet diam tincidunt, sed egestas lorem porta. Maecenas quis pretium risus. Vivamus id mauris et sapien fringilla auctor venenatis ac eros. Phasellus eu malesuada nibh.";
+const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum lectus iaculis felis aliquet, ut tempus felis blandit. Phasellus et semper dui, in tempor odio. Etiam imperdiet laoreet justo, ut lobortis diam. Vestibulum convallis efficitur diam, ut eleifend velit dapibus interdum. Cras condimentum dolor sit amet diam tincidunt, sed egestas lorem porta. Maecenas quis pretium risus. Vivamus idmauris et sapien fringilla auctor venenatis ac eros. Phasellus eu malesuada nibh.";
 const words = text.split(" ");
 
 
