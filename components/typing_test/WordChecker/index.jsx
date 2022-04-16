@@ -5,8 +5,8 @@ import ResetButton from "../../interface/ResetButton";
 
 import { useEffect, useState } from "react";
 
-import { 
-  GameGradient,
+import {
+  Container,
   ContainerGradient,
   GameContainer,
   UserContainerGradient,
@@ -118,7 +118,7 @@ export default function WordChecker({isDarkModeOn}) {
 
   return(
     <>
-      <GameGradient isDarkModeOn={isDarkModeOn}>
+      <Container isDarkModeOn={isDarkModeOn}>
         <GameContainer>
           <ContainerGradient isDarkModeOn={isDarkModeOn}>
             <RenderText
@@ -163,7 +163,7 @@ export default function WordChecker({isDarkModeOn}) {
           </UserInteractionWrapper>
           </UserContainerGradient>
         </GameContainer>
-      </GameGradient>
+      </Container>
     </>
   );
 }

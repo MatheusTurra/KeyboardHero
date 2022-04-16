@@ -36,9 +36,9 @@ export const TextContainer = styled.div`
   font-size: 3rem;
   border-radius: 1rem;
   overflow-wrap: break-word;
-  padding: 0rem 3rem;
+  padding: 0 1rem;
   background-color: ${props => props.theme.colors.secondary};
-  
+
   & div {
     position: relative;
     bottom: 0rem;
@@ -56,6 +56,10 @@ export const TextContainer = styled.div`
 
   .incorrect {
     color: #dc2b34;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 3rem;
   }
 `;
 
