@@ -61,13 +61,14 @@ export const UserInteractionWrapper = styled.div`
 `;
 
 export const UserInput = styled.input`
-  width: 100%;
+  width: 95%;
   height: 4.4rem;
   border: 0;
   border-radius: 1rem;
   margin: 0 auto;
   font-size: 2.2rem;
-  background-color: #d3dbe3;
+  border: 0.3rem solid;
+  border-color: #d3dbe3;
 
   & :focus {
     outline: none;
