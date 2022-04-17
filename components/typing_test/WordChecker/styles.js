@@ -23,7 +23,7 @@ export const GameContainer = styled.div`
   /* grid-template-rows: 3fr 1fr; */
   border-radius: 1rem;
   align-items: center;
-  margin: 4rem 0;
+  margin: 2rem 0;
 `;
 
 export const UserContainerGradient = styled.div`
