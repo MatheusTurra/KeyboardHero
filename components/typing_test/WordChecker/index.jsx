@@ -23,8 +23,7 @@ let keyPressCounter = 0;
 let maxTime = 0;
 let incorrectKeyPressCounter = 0;
 let correctKeyPressCounter = 0;
-
-const words = generateWords(340);
+// let words = generateWords(340);
 
 
 /**
@@ -32,6 +31,7 @@ const words = generateWords(340);
  */
 
 export default function WordChecker({isDarkModeOn}) {
+  const [words, setWords] = useState([""]);
   const [userInput, setUserInput] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [startGame, setStartGame] = useState(false);
@@ -39,6 +39,10 @@ export default function WordChecker({isDarkModeOn}) {
   const [isWordCorrect, setIsWordCorrect] = useState(null);
   const [isLetterCorrect, setIsLetterCorrect] = useState(null);
   const [timeLeft, setTimeLeft] = useState(0);
+
+  useEffect(() => {
+    setWords(generateWords(340));
+  }, []);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
@@ -98,6 +102,7 @@ export default function WordChecker({isDarkModeOn}) {
     correctKeyPressCounter = 0;
     incorrectKeyPressCounter = 0;
 
+    setWords( generateWords(340));
     setUserInput("");
     setGameOver(false);    
     setStartGame(false);
