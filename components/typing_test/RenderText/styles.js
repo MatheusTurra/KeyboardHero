@@ -2,15 +2,15 @@ import styled, { css } from "styled-components";
 
 function selectCurrentWord(theme, index, current){
   let backgroundColor = "";
-  let borderColor = "";
-
+  let outlineColor = "";
+  
   if(current === index) {
-    borderColor += `0.2rem solid ${theme.currentWordBorder}`;
+    outlineColor += `0.2rem solid ${theme.currentWordBorder}`;
     backgroundColor += theme.currentWordBackground;
   }
   
   return css`
-    border: ${borderColor};
+    outline: ${outlineColor};
     background-color: ${backgroundColor};
   `;
 }
@@ -37,7 +37,7 @@ export const TextContainer = styled.div`
   font-weight: 600;
   border-radius: 1rem;
   overflow-wrap: break-word;
-  padding: 0 1rem;
+  padding:0 2rem;
   background-color: ${props => props.theme.colors.secondary};
 
   & div {
@@ -47,7 +47,7 @@ export const TextContainer = styled.div`
   }
 
   & span {
-    padding:0 0.2rem;
+    margin-right: 1rem;
     display: inline-block;
   }
 
@@ -60,7 +60,7 @@ export const TextContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding: 0 3rem;
+    padding: 0 1rem;
   }
 `;
 

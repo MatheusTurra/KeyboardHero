@@ -47,7 +47,6 @@ export default function RenderText(props) {
     if(shouldScrollTop === false) return;
 
     const currentWordPosition = textContainerRef.current.children[props.current].offsetLeft;
-    console.log(currentWordPosition);
     if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 5);
   }, [props.current]);
 
