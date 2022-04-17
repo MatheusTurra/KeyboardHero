@@ -137,6 +137,9 @@ export default function WordChecker({isDarkModeOn}) {
               type="text"
               value={userInput}
               disabled={gameOver}
+              autoFocus={true}
+              spellCheck={false}
+              autoComplete="off"
               onChange={event => userInputHandler(event)}
             />
 
