@@ -140,6 +140,7 @@ export default function WordChecker({isDarkModeOn}) {
               autoFocus={true}
               spellCheck={false}
               autoComplete="off"
+              placeholder="Digite aqui"
               onChange={event => userInputHandler(event)}
             />
 
