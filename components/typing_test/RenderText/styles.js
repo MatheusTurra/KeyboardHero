@@ -33,7 +33,8 @@ export const TextContainer = styled.div`
   box-sizing: border-box;
   line-height: 5rem;
   overflow: hidden;
-  font-size: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
   border-radius: 1rem;
   overflow-wrap: break-word;
   padding: 0 1rem;
