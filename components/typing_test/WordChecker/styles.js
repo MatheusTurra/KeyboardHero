@@ -28,6 +28,10 @@ export const GameContainer = styled.div`
   border-radius: 1rem;
   align-items: center;
   margin: 2rem 0;
+
+  @media(min-width: 768px) {
+    margin: 10rem 0;
+  }
 `;
 
 export const UserContainerGradient = styled.div`
