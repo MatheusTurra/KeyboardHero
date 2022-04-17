@@ -149,7 +149,6 @@ export default function WordChecker({isDarkModeOn}) {
               correctKeyPresses={correctKeyPressCounter}
               incorrectKeyPresses={incorrectKeyPressCounter}
               isGameReseted={resetGame}
-
             />
 
             <Timer
