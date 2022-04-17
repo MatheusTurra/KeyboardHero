@@ -5,6 +5,7 @@ export const TimerContainer = styled.div`
   height: 5rem;
   margin: 0 auto;
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;

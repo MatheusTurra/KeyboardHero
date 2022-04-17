@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 92%;
+  max-width: 92%;
   margin: 0 auto;
+
+  @media(min-width: 768px) {
+    max-width: 125rem;
+  }
 `;
 
 export const ContainerGradient = styled.div`
@@ -18,9 +22,9 @@ export const ContainerGradient = styled.div`
 `;
 
 export const GameContainer = styled.div`
-  display: grid;
-  grid-gap: 2rem;
-  /* grid-template-rows: 3fr 1fr; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   border-radius: 1rem;
   align-items: center;
   margin: 2rem 0;
@@ -30,6 +34,7 @@ export const UserContainerGradient = styled.div`
   padding: 0.3rem;
   border-radius: 1rem;
   box-shadow: 0 0.4rem 1rem rgba(0,30,84, 0.50);
+  width: 100%;
   background-image: ${props => props.isDarkModeOn
     ? "linear-gradient(to right, #471069, #30c5d2)"
     : "linear-gradient(to right, #f86ca7, #f4d444)"
@@ -37,14 +42,18 @@ export const UserContainerGradient = styled.div`
 `;
 
 export const UserInteractionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  gap: 0.5rem; 
+  grid-gap: 1rem;
   padding: 1rem;
   border-radius: 1rem;
   background: ${props => props.theme.colors.secondary};
+  
+  @media(min-width: 768px) {
+    flex-direction: row;
+    grid-template-columns: 6fr 2fr 1fr 1fr;
+  }
 `;
 
 export const UserInput = styled.input`
