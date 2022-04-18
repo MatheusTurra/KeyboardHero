@@ -6,7 +6,8 @@ export default {
     secondary: "#f8f9fa",
 
     background: "#dbe1e8",
-    text: "#14191f"
+    text: "#14191f",
+    link: "#f4d444"
   },
 
   gameText: {
