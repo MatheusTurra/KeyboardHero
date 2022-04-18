@@ -1,4 +1,5 @@
 import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import WordChecker from "../components/typing_test/WordChecker";
 
 import dark from "../styles/themes/dark";
@@ -49,6 +50,7 @@ export default function Home(props) {
         <GlobalStyle />
         <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
         <WordChecker isDarkModeOn={isDarkModeOn}/>
+        <Footer />
       </ ThemeProvider >
     </>
   );
