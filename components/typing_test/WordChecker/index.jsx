@@ -167,7 +167,7 @@ export default function WordChecker({isDarkModeOn}) {
               getMaxTime={getMaxTime}
               getTimeLeft={getTimeLeft}
               isGameStarted={startGame}
-              shouldResetTimer={resetGame} 
+              resetTimer={resetGame} 
             />
             <ResetButton isDarkModeOn={isDarkModeOn} onClick={restartGame}/>
           </UserInteractionWrapper>
