@@ -42,11 +42,19 @@ O projeto **keyboard Hero** tem o intuito de testar a sua habilidade de digitaç
 
 ## Como testar o projeto :electric_plug:
 
-### https://keyboard-hero.vercel.app/
+* #### acesse o link: https://keyboard-hero.vercel.app/
 
 <br>
 
-### Instalação
+## Instalação local
+
+#### Pré requisitos
+* [Node JS > v12](https://nodejs.org/en/)
+* [Npm](https://www.npmjs.com/)
+* [Git](https://git-scm.com/downloads)
+
+<br>
+
 ```bash
   # Clonar o repositório
   git clone https://github.com/MatheusTurra/KeyboardHero.git
