@@ -39,6 +39,7 @@ O projeto **keyboard Hero** tem o intuito de testar a sua habilidade de digitaç
 
 ## Tecnologias Utilizadas :rocket:	
 * [Next JS](https://nextjs.org/)
+* [Styled Components](https://styled-components.com/)
 * [Nookies](https://github.com/maticzav/nookies)
 * [Faker](https://github.com/faker-js/faker)
 
