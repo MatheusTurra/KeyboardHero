@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function useTimeCountdown(startCountdown, totalTime) {
   const [minutes, setMinutes] = useState(totalTime);
   const [seconds, setSeconds] = useState(0);
+  const [countdownHasEnded, setCountdownHasEnded] = useState(false);
 
   useEffect(() => {
     if(startCountdown === false) return;
@@ -19,15 +20,17 @@ export default function useTimeCountdown(startCountdown, totalTime) {
     if(seconds === 0 && minutes === 0) {
       setSeconds(0);
       setMinutes(0);
+      setCountdownHasEnded(true);
     }
 
     return () => clearInterval(timerInterval);
   }, [seconds, startCountdown]);
 
   function resetCountdown(minutes) {
+    setCountdownHasEnded(false);
     setMinutes(minutes);
     setSeconds(0);
   }
 
-  return [minutes, seconds, resetCountdown];
+  return {minutes, seconds, countdownHasEnded, resetCountdown};
 }

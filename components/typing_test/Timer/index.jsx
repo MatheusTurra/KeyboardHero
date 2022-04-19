@@ -5,15 +5,20 @@ import {
   TimerContainer
 } from "./styles";
 
-export default function Timer({isGameStarted, resetTimer, getMaxTime}) {
-  const [minutes, seconds, resetCountdown] = useTimeCountdown(isGameStarted, 1);
+export default function Timer({isGameStarted, resetTimer, getMaxTime, isGameEnded}) {
+  const {
+    minutes,
+    seconds,
+    countdownHasEnded,
+    resetCountdown,
+  } = useTimeCountdown(isGameStarted, 1);
 
   useEffect(() => {
-    if(resetTimer) {
-      // setMinutes(1);
-      // setSeconds(0);
-      resetCountdown(1);
-    }
+    if(countdownHasEnded) isGameEnded();
+  }, [countdownHasEnded]);
+
+  useEffect(() => {
+    if(resetTimer) resetCountdown(1);
     
     getMaxTime(60 * minutes);
   }, [resetTimer]);
