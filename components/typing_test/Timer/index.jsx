@@ -5,13 +5,17 @@ import {
   TimerContainer
 } from "./styles";
 
-export default function Timer({isGameStarted, resetTimer, getMaxTime, isGameEnded}) {
+export default function Timer({isGameStarted, resetTimer, getMaxTime, isGameEnded, getTimeLeft}) {
   const {
     minutes,
     seconds,
     countdownHasEnded,
     resetCountdown,
   } = useTimeCountdown(isGameStarted, 1);
+
+  useEffect(() => {
+    getTimeLeft(seconds);
+  }, [seconds]);
 
   useEffect(() => {
     if(countdownHasEnded) isGameEnded();
