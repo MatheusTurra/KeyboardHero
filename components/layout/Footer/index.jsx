@@ -16,7 +16,7 @@ export default function Footer(){
         <a 
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/MatheusTurra">
+          href="https://github.com/MatheusTurra/KeyboardHero">
           Github
         </a>
       </SocialMediaLinks>
