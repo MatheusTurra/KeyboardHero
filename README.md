@@ -14,7 +14,7 @@
 </br>
 
 ## Sobre o projeto 📝
-O projeto **keyboard Hero** tem o intuito de testar a sua habilidade de digitação em uma certa quantidade de tempo. O teste consiste na exibição de palavras inglesas aleatórias e 1 minuto para conclui-lo, o resultado é exibido em tempo real mostrando sua precisão de digitação e a quantidade de palavras por minuto (WPM em inglês), após 1 minuto de jogo se encerra o teste se encerra.
+O projeto **keyboard Hero** tem o intuito de testar a sua habilidade de digitação em uma certa quantidade de tempo. O teste consiste na exibição de palavras inglesas aleatórias e 1 minuto para conclui-lo, o resultado é exibido em tempo real mostrando sua precisão de digitação e a quantidade de palavras por minuto (WPM em inglês), após 1 minuto de jogo o teste se encerra.
 
 </br>
 
