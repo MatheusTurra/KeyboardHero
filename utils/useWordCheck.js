@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 let totalWrongWords = 0;
 let totalCorrectWords = 0;
 
+let totalKeyPresses = 0;
 let totalWrongKeyPresses = 0;
 let totalCorrectKeyPresses = 0;
 
@@ -14,6 +15,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
     const userInputLength = userInput.length;
     const wordChunk = word.substring(0, userInputLength);
 
+    if(userInput === "") setIsLetterCorrect(null);
 
     if(wordChunk !== "" && wordChunk === userInput.trim()) {
       setIsLetterCorrect(true);
@@ -35,6 +37,8 @@ export default function useWordCheck(word, userInput, resetCounters) {
         setIsWordCorrect(false);
         totalWrongKeyPresses += userInput.length - 1;
       }
+
+      totalKeyPresses += userInput.length -1;
     }
   }, [userInput]);
 
@@ -63,6 +67,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
   return {
     isLetterCorrect,
     isWordCorrect,
+    totalKeyPresses,
     totalCorrectWords,
     totalWrongWords,
     totalCorrectKeyPresses,
