@@ -3,9 +3,11 @@ import Result from "../Result";
 import RenderText from "../RenderText";
 import ResetButton from "../../interface/ResetButton";
 
-import { generateWords } from "../../../utils/words";
+import { generateWords } from "../../../utils/randomWords";
+import useWordCheck from "../../../utils/useWordCheck";
 
 import { useEffect, useState } from "react";
+
 
 import {
   Container,
@@ -18,17 +20,7 @@ import {
 
 
 let wordIndex = 0;
-let wordCounter = 0;
-let keyPressCounter = 0;
 let maxTime = 0;
-let incorrectKeyPressCounter = 0;
-let correctKeyPressCounter = 0;
-// let words = generateWords(340);
-
-
-/**
- *  TODO: TRANSFORMAR ESSE COMPONENTE EM UM HOOK
- */
 
 export default function WordChecker({isDarkModeOn}) {
   const [words, setWords] = useState([""]);
@@ -36,60 +28,30 @@ export default function WordChecker({isDarkModeOn}) {
   const [gameOver, setGameOver] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [resetGame, setResetGame] = useState(false);
-  const [isWordCorrect, setIsWordCorrect] = useState(null);
-  const [isLetterCorrect, setIsLetterCorrect] = useState(null);
   const [timeLeft, setTimeLeft] = useState(0);
-
+  
+  const {
+    isLetterCorrect,
+    isWordCorrect,
+    totalKeyPresses,
+    totalCorrectKeyPresses,
+    totalWrongKeyPresses
+  } = useWordCheck(words[wordIndex], userInput, resetGame);
+  
   useEffect(() => {
-    setWords(generateWords(340));
+    setWords(generateWords());
   }, []);
 
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-    const userInputLength = userInput.length;
-    const wordChunk = currentWord.substring(0, userInputLength);
-
-
-    if(wordChunk !== "" && wordChunk === userInput.trim()) {
-      setIsLetterCorrect(true);
-    }
-
-    if(wordChunk !== userInput.trim()) {
-      setIsLetterCorrect(false);
-    }
-  }, [userInput]);
-
-  useEffect(() => {
-    const detectSpaces = /\s/;
-    const currentWord = words[wordIndex];
-
-    if(detectSpaces.test(userInput)) {
-      if(userInput.trim()  === currentWord) {
-        setIsWordCorrect(true);
-        correctKeyPressCounter += currentWord.length;
-      } else {
-        setIsWordCorrect(false);
-        incorrectKeyPressCounter += currentWord.length;
-      }
-    }
-  });
-
 
   useEffect(() => {
     const detectSpaces = /\s/;
     if(detectSpaces.test(userInput)) {
-      if(isWordCorrect) wordCounter++;
-      
       wordIndex++;
-      correctKeyPressCounter += 1;
-      setIsLetterCorrect(null);
       setUserInput("");
     }
   }, [userInput]);
 
   function userInputHandler(event) {
-    keyPressCounter++;
-
     setStartGame(true);
     setResetGame(false);
     setUserInput(event.target.value);
@@ -97,17 +59,12 @@ export default function WordChecker({isDarkModeOn}) {
 
   function restartGame() {
     wordIndex = 0;
-    wordCounter = 0;
-    keyPressCounter = 0;
-    correctKeyPressCounter = 0;
-    incorrectKeyPressCounter = 0;
 
-    setWords( generateWords(340));
+    setWords(generateWords());
     setUserInput("");
     setGameOver(false);    
     setStartGame(false);
     setResetGame(true);
-    setIsLetterCorrect(null);
   }
 
   function endGame() {
@@ -155,10 +112,9 @@ export default function WordChecker({isDarkModeOn}) {
               maxTime={maxTime}
               start={startGame}
               timeLeft={timeLeft}
-              words={wordCounter}
-              keyPresses={keyPressCounter}
-              correctKeyPresses={correctKeyPressCounter}
-              incorrectKeyPresses={incorrectKeyPressCounter}
+              keyPresses={totalKeyPresses}
+              correctKeyPresses={totalCorrectKeyPresses}
+              incorrectKeyPresses={totalWrongKeyPresses}
               isGameReseted={resetGame}
             />
 
@@ -167,7 +123,7 @@ export default function WordChecker({isDarkModeOn}) {
               getMaxTime={getMaxTime}
               getTimeLeft={getTimeLeft}
               isGameStarted={startGame}
-              shouldResetTimer={resetGame} 
+              resetTimer={resetGame} 
             />
             <ResetButton isDarkModeOn={isDarkModeOn} onClick={restartGame}/>
           </UserInteractionWrapper>

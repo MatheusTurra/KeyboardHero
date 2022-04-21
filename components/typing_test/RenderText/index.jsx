@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 
 import { TextContainer, GameText } from "./styles";
 
 let shouldScrollTop = false;
 
-export default function RenderText(props) {
+function RenderText(props) {
   const textContainerRef = useRef(null);
 
   const array = new Array(props.text.length - 1);
@@ -46,7 +46,7 @@ export default function RenderText(props) {
   useEffect(() => {
     if(shouldScrollTop === false) return;
 
-    const currentWordPosition = textContainerRef.current.children[props.current].offsetLeft;
+    const currentWordPosition = textContainerRef.current.children[props.current]?.offsetLeft;
     if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 5);
   }, [props.current]);
 
@@ -73,7 +73,6 @@ export default function RenderText(props) {
           {props.text.map((word, index) => {
             return(
               <GameText
-                id={index}
                 key={word + index}
                 mapIndex={index}
                 current={props.current}
@@ -88,3 +87,5 @@ export default function RenderText(props) {
     </>
   );
 }
+
+export default memo(RenderText);
