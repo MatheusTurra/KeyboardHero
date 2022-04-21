@@ -59,6 +59,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
   useEffect(() => {
     totalCorrectWords = 0;
     totalWrongWords = 0;
+    totalKeyPresses = 0;
     totalCorrectKeyPresses = 0;
     totalWrongKeyPresses = 0;
 
