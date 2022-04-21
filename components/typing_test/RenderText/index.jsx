@@ -46,7 +46,7 @@ export default function RenderText(props) {
   useEffect(() => {
     if(shouldScrollTop === false) return;
 
-    const currentWordPosition = textContainerRef.current.children[props.current].offsetLeft;
+    const currentWordPosition = textContainerRef.current.children[props.current]?.offsetLeft;
     if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 5);
   }, [props.current]);
 
@@ -73,7 +73,6 @@ export default function RenderText(props) {
           {props.text.map((word, index) => {
             return(
               <GameText
-                id={index}
                 key={word + index}
                 mapIndex={index}
                 current={props.current}

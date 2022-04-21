@@ -12,6 +12,8 @@ export default function useWordCheck(word, userInput, resetCounters) {
   const [isLetterCorrect, setIsLetterCorrect] = useState(null);
 
   useEffect(() => {
+    if(word === undefined) return;
+    
     const userInputLength = userInput.length;
     const wordChunk = word.substring(0, userInputLength);
 
