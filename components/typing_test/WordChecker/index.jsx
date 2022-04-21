@@ -6,7 +6,7 @@ import ResetButton from "../../interface/ResetButton";
 import { generateWords } from "../../../utils/randomWords";
 import useWordCheck from "../../../utils/useWordCheck";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
 import {
@@ -67,17 +67,17 @@ export default function WordChecker({isDarkModeOn}) {
     setResetGame(true);
   }
 
-  function endGame() {
+  const endGame = useCallback(() => {
     setGameOver(true);
-  }
+  }, [])
 
-  function getMaxTime(time) {
+  const getMaxTime = useCallback(time => {
     maxTime = time
-  }
+  }, []);
 
-  function getTimeLeft(seconds) {
+  const getTimeLeft = useCallback(seconds => {
     setTimeLeft(seconds);
-  }
+  }, []);
 
   return(
     <>

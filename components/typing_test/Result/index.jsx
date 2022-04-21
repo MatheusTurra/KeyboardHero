@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 import {
-  ResultContainer, Wrapper
+  Wrapper,
+  ResultContainer
 } from "./styles";
 
 export default function Result(props) {
@@ -14,7 +15,7 @@ export default function Result(props) {
 
       setAccuracy(accuracyCalc.toFixed());
     }
-  }, [props.correctKeyPresses]);
+  }, [props.keyPresses, props.correctKeyPresses]);
 
 
   useEffect(() => {
@@ -23,7 +24,12 @@ export default function Result(props) {
       
       setWpm(wpmCalc > 0 ? wpmCalc.toFixed(0) : 0);
     }
-  }, [props.timeLeft]);
+  }, [
+      props.timeLeft,
+      props.maxTime,
+      props.correctKeyPresses,
+      props.incorrectKeyPresses
+    ]);
 
   useEffect(() => {
     if(props.isGameReseted) {

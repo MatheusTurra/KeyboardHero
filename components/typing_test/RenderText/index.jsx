@@ -4,59 +4,57 @@ import { TextContainer, GameText } from "./styles";
 
 let shouldScrollTop = false;
 
-function RenderText(props) {
+function RenderText({text, letterCorrect, wordCorrect, current, resetFeedback}) {
   const textContainerRef = useRef(null);
 
-  const array = new Array(props.text.length - 1);
+  const array = new Array(text.length - 1);
   const [colorFeedbackArray, setColorFeedbackArray] = useState(array);
   const [textScrollTop, setTextScrollTop] = useState(0);
 
   useEffect(() => {
-    if(props.wordCorrect) {
-      updateColorArray(props.current - 1, true);
+    if(wordCorrect) {
+      updateColorArray(current - 1, true);
     } 
   
-    if(props.wordCorrect === false) {
-      updateColorArray(props.current - 1, false);
+    if(wordCorrect === false) {
+      updateColorArray(current - 1, false);
     }
 
     shouldScrollTop = true;
-  }, [props.wordCorrect, props.current]);
+  }, [wordCorrect, current]);
 
   useEffect(() => {
     const textRef = textContainerRef.current;
 
-    if(textRef.children[props.current - 1] !== undefined) {
-      if(colorFeedbackArray[props.current - 1]) {
-        textRef.children[props.current -1].className = "correct";
+    if(textRef.children[current - 1] !== undefined) {
+      if(colorFeedbackArray[current - 1]) {
+        textRef.children[current -1].className = "correct";
       } else {
-        textRef.children[props.current -1].className = "incorrect"; 
+        textRef.children[current -1].className = "incorrect"; 
       }
     }
-  }, [colorFeedbackArray]);  
+  }, [colorFeedbackArray, current]);  
 
   useEffect(() => {
     setColorFeedbackArray(array.fill(""));
     removeFeedbackClasses();
     setTextScrollTop(0);
-    
     shouldScrollTop = false;
-  }, [props.resetFeedback]);
+
+    const textChildren = textContainerRef.current.children;
+    for(let i = 0; i < text.length - 1; i++) {
+      textChildren[i].className = "";
+    }
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resetFeedback]);
 
   useEffect(() => {
     if(shouldScrollTop === false) return;
 
-    const currentWordPosition = textContainerRef.current.children[props.current]?.offsetLeft;
+    const currentWordPosition = textContainerRef.current.children[current]?.offsetLeft;
     if(currentWordPosition === 0) setTextScrollTop(prevState => prevState + 5);
-  }, [props.current]);
-
-  function removeFeedbackClasses() {
-    const textChildren = textContainerRef.current.children;
-    
-    for(let i = 0; i < props.text.length - 1; i++) {
-      textChildren[i].className = "";
-    }
-  }
+  }, [current]);
 
   function updateColorArray(current, value) {
     setColorFeedbackArray(prevState => {
@@ -70,13 +68,13 @@ function RenderText(props) {
     <>
       <TextContainer scrollTop={textScrollTop}> 
         <div ref={textContainerRef}>
-          {props.text.map((word, index) => {
+          {text.map((word, index) => {
             return(
               <GameText
                 key={word + index}
                 mapIndex={index}
-                current={props.current}
-                isLetterCorrect={props.letterCorrect}
+                current={current}
+                isLetterCorrect={letterCorrect}
               >
                 {word}
               </GameText>

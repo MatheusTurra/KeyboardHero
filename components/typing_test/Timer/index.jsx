@@ -5,27 +5,27 @@ import {
   TimerContainer
 } from "./styles";
 
-export default function Timer(props) {
+export default function Timer({resetTimer, isGameStarted, getTimeLeft, isGameEnded, getMaxTime}) {
   const {
     minutes,
     seconds,
     countdownHasEnded,
     resetCountdown,
-  } = useTimeCountdown(props.isGameStarted, 1);
+  } = useTimeCountdown(isGameStarted, 1);
 
   useEffect(() => {
-    props.getTimeLeft(seconds);
-  }, [seconds]);
+    getTimeLeft(seconds);
+  }, [seconds, getTimeLeft]);
 
   useEffect(() => {
-    if(countdownHasEnded) props.isGameEnded();
-  }, [countdownHasEnded]);
+    if(countdownHasEnded) isGameEnded();
+  }, [countdownHasEnded, isGameEnded]);
 
   useEffect(() => {
-    if(props.resetTimer) resetCountdown(1);
+    if(resetTimer) resetCountdown(1);
     
-    props.getMaxTime(60 * minutes);
-  }, [props.resetTimer]);
+    getMaxTime(60 * minutes);
+  }, [minutes, resetTimer, getMaxTime, resetCountdown]);
 
   return(
     <>

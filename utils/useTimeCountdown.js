@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function useTimeCountdown(startCountdown, totalTime) {
   const [minutes, setMinutes] = useState(totalTime);
@@ -26,11 +26,11 @@ export default function useTimeCountdown(startCountdown, totalTime) {
     return () => clearInterval(timerInterval);
   }, [seconds, startCountdown]);
 
-  function resetCountdown(minutes) {
+  const resetCountdown =  useCallback(minutes => {
     setCountdownHasEnded(false);
     setMinutes(minutes);
     setSeconds(0);
-  }
+  });
 
   return {minutes, seconds, countdownHasEnded, resetCountdown};
 }
