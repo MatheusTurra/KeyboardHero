@@ -3,11 +3,11 @@ import Result from "../Result";
 import RenderText from "../RenderText";
 import ResetButton from "../../interface/ResetButton";
 
+import { generateWords } from "../../../utils/randomWords";
+import useWordCheck from "../../../utils/useWordCheck";
 
 import { useEffect, useState } from "react";
 
-import { generateWords } from "../../../utils/words";
-import useWordCheck from "../../../utils/useWordCheck";
 
 import {
   Container,
@@ -39,7 +39,7 @@ export default function WordChecker({isDarkModeOn}) {
   } = useWordCheck(words[wordIndex], userInput, resetGame);
   
   useEffect(() => {
-    setWords(generateWords(340));
+    setWords(generateWords());
   }, []);
 
 
@@ -60,7 +60,7 @@ export default function WordChecker({isDarkModeOn}) {
   function restartGame() {
     wordIndex = 0;
 
-    setWords(generateWords(340));
+    setWords(generateWords());
     setUserInput("");
     setGameOver(false);    
     setStartGame(false);
