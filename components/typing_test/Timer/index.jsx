@@ -14,6 +14,10 @@ export default function Timer({resetTimer, isGameStarted, getTimeLeft, isGameEnd
   } = useTimeCountdown(isGameStarted, 1);
 
   useEffect(() => {
+    getMaxTime(60 * minutes);
+  }, []);
+
+  useEffect(() => {
     getTimeLeft(seconds);
   }, [seconds, getTimeLeft]);
 
@@ -24,7 +28,6 @@ export default function Timer({resetTimer, isGameStarted, getTimeLeft, isGameEnd
   useEffect(() => {
     if(resetTimer) resetCountdown(1);
     
-    getMaxTime(60 * minutes);
   }, [minutes, resetTimer, getMaxTime, resetCountdown]);
 
   return(
