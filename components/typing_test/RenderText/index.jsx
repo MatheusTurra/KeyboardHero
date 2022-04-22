@@ -37,7 +37,6 @@ function RenderText({text, letterCorrect, wordCorrect, current, resetFeedback}) 
 
   useEffect(() => {
     setColorFeedbackArray(array.fill(""));
-    removeFeedbackClasses();
     setTextScrollTop(0);
     shouldScrollTop = false;
 
