@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 92%;
-  margin: 3rem auto;
+  margin: 5rem auto;
   
-  @media(min-width: 1440px) {
-    max-width: 125rem;
+  @media(min-width: 768px) {
+    width: 50%;
   }
 `;
 
@@ -52,5 +52,7 @@ export const UserInput = styled.input`
   border: 0;
   font-size: 2rem;
   height: 90%;
+  color: ${props => props.theme.colors.text};
+  margin-left: 0.3rem;
   background-color: ${props => props.theme.colors.secondary};
 `;
