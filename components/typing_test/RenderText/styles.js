@@ -29,7 +29,7 @@ function selectCurrentWord(theme, index, current){
 
 
 export const TextContainer = styled.div`
-  height: 12rem;
+  height: 100%;
   box-sizing: border-box;
   line-height: 5rem;
   overflow: hidden;
