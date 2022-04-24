@@ -7,6 +7,8 @@ let totalKeyPresses = 0;
 let totalWrongKeyPresses = 0;
 let totalCorrectKeyPresses = 0;
 
+let userInputIndex = 0;
+
 export default function useWordCheck(word, userInput, resetCounters) {
   const [isWordCorrect, setIsWordCorrect] = useState(null);
   const [isLetterCorrect, setIsLetterCorrect] = useState(null);
@@ -14,8 +16,8 @@ export default function useWordCheck(word, userInput, resetCounters) {
   useEffect(() => {
     if(word === undefined) return;
     
-    const userInputLength = userInput.length;
-    const wordChunk = word.substring(0, userInputLength);
+    userInputIndex = userInput.length;
+    const wordChunk = word.substring(0, userInputIndex);
 
     if(userInput === "") setIsLetterCorrect(null);
 
@@ -40,6 +42,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
         totalWrongKeyPresses += userInput.length - 1;
       }
 
+      userInputIndex = 0;
       totalKeyPresses += userInput.length -1;
     }
   }, [userInput]);
@@ -74,6 +77,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
     totalCorrectWords,
     totalWrongWords,
     totalCorrectKeyPresses,
-    totalWrongKeyPresses
+    totalWrongKeyPresses,
+    userInputIndex
   };
 }
