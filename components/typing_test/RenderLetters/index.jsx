@@ -1,17 +1,18 @@
-import { TextContainer } from "./styles";
-
 import DisplayWord from "../DisplayWord";
 import ResultFeedback from "../ResultFeedback";
 
+import { TextContainer } from "./styles";
 
-export default function RenderLetters({text, currentWordIndex}) {
+import { memo } from "react";
+
+function RenderLetters({ text }) {
   return(
     <> 
       <TextContainer> 
         {text.map((word, index) => {
           return (
             <ResultFeedback key={index}>
-              <DisplayWord word={word}/>
+              <DisplayWord word={word} textIndex={index}/>
             </ResultFeedback>
           );
         })}
@@ -19,3 +20,5 @@ export default function RenderLetters({text, currentWordIndex}) {
     </>
   );
 }
+
+export default memo(RenderLetters);
