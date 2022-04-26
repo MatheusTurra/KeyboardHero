@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 
 
 const initialState = {
+  currentWord: 0,
   currentLetterIndex: 0,
   isCurrentWordRight: null,
   totalRightKeyPresses: 0,
@@ -10,6 +11,10 @@ const initialState = {
 
 function reducer(state, action) {
   switch(action.type) {
+    case "updateCurrentWord": 
+      state.currentWord = action.value;
+      return {...state};
+
     case "updateLetterIndex": 
       state.currentLetterIndex = action.value;
       return {...state};
