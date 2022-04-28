@@ -7,9 +7,10 @@ export const TextContainer = styled.div`
   box-sizing: border-box;
   line-height: 5rem;
   overflow: hidden;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 1.8rem;
   overflow-wrap: break-word;
-  padding:0 2rem;
+  word-break: break-word;
+  padding: 0 2.5rem;
+  font-family: "JetBrains Mono", monospace;
   background-color: ${props => props.theme.colors.secondary}
 `;

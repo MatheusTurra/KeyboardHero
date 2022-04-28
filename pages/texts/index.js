@@ -7,6 +7,8 @@ import dark from "../../styles/themes/dark";
 import light from "../../styles/themes/light";
 import GlobalStyle from "../../styles/GlobalStyle";
 
+import { GameProvider } from "../../providers/GameContext";
+
 import { parseCookies, setCookie } from "nookies";
 import { ThemeProvider } from "styled-components";
 
@@ -51,7 +53,9 @@ export default function Home(props) {
         <Seo />
         <GlobalStyle />
         <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
-        <TextChecker isDarkModeOn={isDarkModeOn} />
+        <GameProvider>
+          <TextChecker isDarkModeOn={isDarkModeOn} />
+        </GameProvider>
         <Footer />
       </ ThemeProvider >
     </>

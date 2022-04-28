@@ -3,31 +3,31 @@ import { useState, useEffect } from "react";
 let totalWrongWords = 0;
 let totalCorrectWords = 0;
 
-let totalKeyPresses = 0;
+let currentWord = 0;
 let totalWrongKeyPresses = 0;
-let totalCorrectKeyPresses = 0;
+let totalRightKeyPresses = 0;
 
-let userInputIndex = 0;
 
-export default function useWordCheck(word, userInput, resetCounters) {
+export default function useWordCheck(word, userInput, resetCounters, gameContext) {
   const [isWordCorrect, setIsWordCorrect] = useState(null);
   const [isLetterCorrect, setIsLetterCorrect] = useState(null);
-
+  const { dispatch } = gameContext;
+  
   useEffect(() => {
     if(word === undefined) return;
     
-    userInputIndex = userInput.length;
-    const wordChunk = word.substring(0, userInputIndex);
+    const userInputLength = userInput.length;
+    const wordChunk = word.substring(0, userInputLength);
 
     if(userInput === "") setIsLetterCorrect(null);
 
     if(wordChunk !== "" && wordChunk === userInput.trim()) {
-      setIsLetterCorrect(true);
     }
-
+    
     if(wordChunk !== userInput.trim()) {
-      setIsLetterCorrect(false);
     }
+    
+    dispatch({ type: "updateLetterIndex", value: userInputLength });
   }, [userInput]);
 
   useEffect(() => {
@@ -35,15 +35,20 @@ export default function useWordCheck(word, userInput, resetCounters) {
 
     if(detectSpaces.test(userInput)) {
       if(userInput.trim() === word) {
-        setIsWordCorrect(true);
-        totalCorrectKeyPresses += userInput.length - 1;
+        totalRightKeyPresses += userInput.length -1;
+        
+        dispatch({ type: "updateCurrentWordIsRight", value: true});
+        dispatch({ type: "updateTotalRightKeyPresses", value: totalRightKeyPresses});
       } else {
-        setIsWordCorrect(false);
-        totalWrongKeyPresses += userInput.length - 1;
+        totalWrongKeyPresses += userInput.length -1;
+        
+        dispatch({ type: "updateCurrentWordIsRight", value: false});
+        dispatch({ type: "updateTotalWrongKeyPresses", value: totalWrongKeyPresses});
       }
-
-      userInputIndex = 0;
-      totalKeyPresses += userInput.length -1;
+      
+      
+      currentWord++;
+      dispatch({type: "updateCurrentWord", value: currentWord})
     }
   }, [userInput]);
 
@@ -62,8 +67,7 @@ export default function useWordCheck(word, userInput, resetCounters) {
   useEffect(() => {
     totalCorrectWords = 0;
     totalWrongWords = 0;
-    totalKeyPresses = 0;
-    totalCorrectKeyPresses = 0;
+    totalRightKeyPresses = 0;
     totalWrongKeyPresses = 0;
 
     setIsWordCorrect(null);
@@ -73,11 +77,9 @@ export default function useWordCheck(word, userInput, resetCounters) {
   return {
     isLetterCorrect,
     isWordCorrect,
-    totalKeyPresses,
     totalCorrectWords,
     totalWrongWords,
-    totalCorrectKeyPresses,
+    totalRightKeypresses: totalRightKeyPresses,
     totalWrongKeyPresses,
-    userInputIndex
   };
 }
