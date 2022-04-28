@@ -13,11 +13,11 @@ let showWhitespace = false;
 
 export default function DisplayWord({word, textIndex}) {
   const { state } = useContext(GameContext);
-  const { currentLetterIndex, currentWord }  = state;
+  const { currentLetterIndex, currentWord, isCurrentLetterRight }  = state;
 
   const isWordActive = textIndex === currentWord;
-  if(isWordActive) {
 
+  if(isWordActive) {
     const wordLeftChunk = word.substring(0, currentLetterIndex);
     let wordCursor = word[currentLetterIndex];
     const wordRightChunk = word.substring(currentLetterIndex + 1)
@@ -27,12 +27,15 @@ export default function DisplayWord({word, textIndex}) {
 
     return(
       <>
-        <CurrentWord>
+        <CurrentWord isLetterRight={isCurrentLetterRight}>
           <span>{wordLeftChunk}</span>
-          <WordCursor>{wordCursor}</WordCursor>
+          <WordCursor isLetterRight={isCurrentLetterRight}>{wordCursor}</WordCursor>
           <span>{wordRightChunk}</span>
         </CurrentWord>
-        <WhiteSpace show={showWhitespace}>&nbsp;</WhiteSpace>
+        <WhiteSpace 
+          isLetterRight={isCurrentLetterRight}
+          show={showWhitespace}>&nbsp;
+        </WhiteSpace>
       </>
     );
   }

@@ -19,12 +19,17 @@ export default function useWordCheck(word, userInput, resetCounters, gameContext
     const userInputLength = userInput.length;
     const wordChunk = word.substring(0, userInputLength);
 
-    if(userInput === "") setIsLetterCorrect(null);
+    if(userInput === "") {
+      dispatch({ type: "updateCurrentLetterIsRight", value: null });
+    }
 
     if(wordChunk !== "" && wordChunk === userInput.trim()) {
+      dispatch({ type: "updateCurrentLetterIsRight", value: true });
     }
     
     if(wordChunk !== userInput.trim()) {
+      dispatch({ type: "updateCurrentLetterIsRight", value: false });
+
     }
     
     dispatch({ type: "updateLetterIndex", value: userInputLength });

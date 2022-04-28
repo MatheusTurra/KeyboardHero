@@ -5,6 +5,7 @@ const initialState = {
   currentWord: 0,
   currentLetterIndex: 0,
   isCurrentWordRight: null,
+  isCurrentLetterRight: null,
   totalRightKeyPresses: 0,
   totalWrongKeyPresses: 0
 };
@@ -17,6 +18,10 @@ function reducer(state, action) {
 
     case "updateLetterIndex": 
       state.currentLetterIndex = action.value;
+      return {...state};
+
+    case "updateCurrentLetterIsRight":
+      state.isCurrentLetterRight = action.value;
       return {...state};
 
     case "updateCurrentWordIsRight":
