@@ -20,6 +20,14 @@ export const GameWord = styled.span`
   white-space: pre;
 `;
 
+export const LeftChunk = styled.span`
+  color: ${props => 
+    props.isLetterRight === false 
+      ? "crimson"
+      :"lightgreen"
+  };
+`;
+
 export const CurrentWord = styled.span`
   white-space: pre;
   background-color: ${props => changeFeedbackColor(props.isLetterRight)}; 

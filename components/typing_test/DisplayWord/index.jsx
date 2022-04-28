@@ -1,6 +1,7 @@
 import { 
   GameWord,
   CurrentWord,
+  LeftChunk,
   WordCursor,
   WhiteSpace,
  } from "./styles";
@@ -28,7 +29,7 @@ export default function DisplayWord({word, textIndex}) {
     return(
       <>
         <CurrentWord isLetterRight={isCurrentLetterRight}>
-          <span>{wordLeftChunk}</span>
+          <LeftChunk isLetterRight={isCurrentLetterRight}>{wordLeftChunk}</LeftChunk>
           <WordCursor isLetterRight={isCurrentLetterRight}>{wordCursor}</WordCursor>
           <span>{wordRightChunk}</span>
         </CurrentWord>
