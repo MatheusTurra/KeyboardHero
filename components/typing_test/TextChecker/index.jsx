@@ -1,4 +1,4 @@
-import RenderLetters from "../RenderLetters";
+import RenderWords from "../RenderWords";
 import useWordCheck from "../../../utils/useWordCheck";
 
 import { GameContext } from "../../../providers/GameContext";
@@ -41,7 +41,7 @@ export default function TextChecker({isDarkModeOn}) {
       <Container>
         <ContainerGradient isDarkModeOn={isDarkModeOn}>
           <GameContainer>
-            <RenderLetters 
+            <RenderWords 
               text={text}
             />
           </GameContainer>

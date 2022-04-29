@@ -12,5 +12,13 @@ export const TextContainer = styled.div`
   word-break: break-word;
   padding: 0 2.5rem;
   font-family: "JetBrains Mono", monospace;
-  background-color: ${props => props.theme.colors.secondary}
+  background-color: ${props => props.theme.colors.secondary};
+`;
+
+export const GameWord = styled.span`
+  white-space: pre;
+`;
+
+export const WhiteSpace = styled.span`
+  background-color: ${props => props.theme.colors.secondary};
 `;

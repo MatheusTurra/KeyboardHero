@@ -9,16 +9,11 @@ function changeFeedbackColor(isLetterRight) {
 
 
 function changeWhitespaceColor(show, isLetterRight) {
-  // console.log('changewhitespace', show)
   if(show) {
     if(isLetterRight === false) return "salmon";
     else return "blue";
   }
 }
-
-export const GameWord = styled.span`
-  white-space: pre;
-`;
 
 export const LeftChunk = styled.span`
   color: ${props => 
@@ -43,4 +38,4 @@ export const WordCursor = styled.span`
 
 export const WhiteSpace = styled.span`
   background-color: ${props => changeWhitespaceColor(props.show, props.isLetterRight)};
-`
+`;

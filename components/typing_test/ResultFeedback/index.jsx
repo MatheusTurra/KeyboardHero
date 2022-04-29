@@ -1,8 +1,7 @@
-export default function ResultFeedback(props) {
+export default function ResultFeedback() {
   return(
     <>
       <span>
-        {props.children}
       </span>
     </>
   );
