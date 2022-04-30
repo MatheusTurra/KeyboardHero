@@ -1,7 +1,7 @@
 import { GameContext } from "../../../providers/GameContext";
 import { memo, useContext } from "react";
 
-import { PreviousWord } from "../WordStatus";
+import { PreviousWord } from "../PreviousWord";
 import DisplayCurrentWord from "../DisplayCurrentWord";
 
 import {
