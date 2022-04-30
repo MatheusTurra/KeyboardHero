@@ -22,15 +22,15 @@ function RenderLetters({ text }) {
           const isPrevious = index < currentWord ? true : false;
           
           if(isPrevious) {
-            return <PreviousWord word={word} wordIndex={index}/>;
+            return <PreviousWord key={"prev" + index} word={word} wordIndex={index}/>;
           }
 
           if(isCurrentWordActive) {
-            return <DisplayCurrentWord word={word}/>;
+            return <DisplayCurrentWord key={"curr" + index} word={word}/>;
           }
 
           return(
-            <GameWord>
+            <GameWord key={"word" + index}>
               {word}
               <WhiteSpace>&nbsp;</WhiteSpace>
             </GameWord>
