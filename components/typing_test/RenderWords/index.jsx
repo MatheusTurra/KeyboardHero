@@ -1,6 +1,7 @@
 import { GameContext } from "../../../providers/GameContext";
 import { memo, useContext } from "react";
 
+import { PreviousWord } from "../WordStatus";
 import DisplayCurrentWord from "../DisplayCurrentWord";
 
 import {
@@ -18,11 +19,14 @@ function RenderLetters({ text }) {
       <TextContainer> 
         {text.map((word, index) => {
           const isCurrentWordActive = currentWord === index;
+          const isPrevious = index < currentWord ? true : false;
           
+          if(isPrevious) {
+            return <PreviousWord word={word} wordIndex={index}/>;
+          }
+
           if(isCurrentWordActive) {
-            return (
-              <DisplayCurrentWord word={word}/>
-            );
+            return <DisplayCurrentWord word={word}/>;
           }
 
           return(
