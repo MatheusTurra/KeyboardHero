@@ -1,5 +1,6 @@
 import RenderWords from "../RenderWords";
 import useWordCheck from "../../../utils/useWordCheck";
+import useTimer from "../../../utils/useTimer";
 
 import { GameContext } from "../../../providers/GameContext";
 
@@ -20,7 +21,9 @@ const text = "Maurício de Sousa, analista do jornal Folha da Manhã criou e, in
 export default function TextChecker({isDarkModeOn}) {
   const gameState = useContext(GameContext);
   const [userInput, setUserInput] = useState("");
-  const {isLetterCorrect, isWordCorrect} = useWordCheck(text[currentWordIndex], userInput, false, gameState);
+  
+  const [minutes, seconds] = useTimer();
+  useWordCheck(text[currentWordIndex], userInput, false, gameState);
 
   useEffect(() => {
     const detectSpaces = /\s/;
@@ -60,7 +63,7 @@ export default function TextChecker({isDarkModeOn}) {
               onChange={event => handleUserInputChange(event)}
             />
 
-            <p>1:00</p>
+            <p>{minutes} :  {seconds.toString().padStart(2, 0)}</p>
           </UserInteractionContainer>
         </UserInteractionGradient>            
       </Container>

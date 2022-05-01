@@ -40,5 +40,3 @@ export default function RenderLetters({ text }) {
     </>
   );
 }
-
-// export default memo(RenderLetters);
