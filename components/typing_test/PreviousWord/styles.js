@@ -20,7 +20,7 @@ const slideWpmDown = keyframes`
 export const WpmFeedback = styled.span`
   z-index: 0;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
   width: 80%;
   height: 50%;
   white-space: pre;
