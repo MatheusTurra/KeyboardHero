@@ -10,7 +10,7 @@ import {
   WhiteSpace
 } from "./styles";
 
-function RenderLetters({ text }) {
+export default function RenderLetters({ text }) {
   const { state } = useContext(GameContext);
   const { currentWord } = state;
 
@@ -41,4 +41,4 @@ function RenderLetters({ text }) {
   );
 }
 
-export default memo(RenderLetters);
+// export default memo(RenderLetters);
