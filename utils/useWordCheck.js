@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { GameContext } from "../providers/GameContext";
+
+import { useState, useEffect, useContext } from "react";
 
 let totalWrongWords = 0;
 let totalCorrectWords = 0;
@@ -8,10 +10,9 @@ let totalWrongKeyPresses = 0;
 let totalRightKeyPresses = 0;
 
 
-export default function useWordCheck(word, userInput, resetCounters, gameContext) {
-  const [isWordCorrect, setIsWordCorrect] = useState(null);
-  const [isLetterCorrect, setIsLetterCorrect] = useState(null);
-  const { dispatch } = gameContext;
+export default function useWordCheck(word, userInput) {
+  const gameState = useContext(GameContext);
+  const { dispatch } = gameState;
   
   useEffect(() => {
     if(word === undefined) return;
@@ -29,7 +30,6 @@ export default function useWordCheck(word, userInput, resetCounters, gameContext
     
     if(wordChunk !== userInput.trim()) {
       dispatch({ type: "updateCurrentLetterIsRight", value: false });
-
     }
     
     dispatch({ type: "updateLetterIndex", value: userInputLength });
@@ -56,35 +56,4 @@ export default function useWordCheck(word, userInput, resetCounters, gameContext
       dispatch({type: "updateCurrentWord", value: currentWord})
     }
   }, [userInput]);
-
-  useEffect(() => {
-    setIsWordCorrect(null)
-    
-    if(isWordCorrect !== null && isWordCorrect) {
-      totalCorrectWords++;
-    } 
-    
-    if(isWordCorrect !== null && isWordCorrect === false) {
-      totalWrongWords++;
-    }
-  }, [isWordCorrect]);
-
-  useEffect(() => {
-    totalCorrectWords = 0;
-    totalWrongWords = 0;
-    totalRightKeyPresses = 0;
-    totalWrongKeyPresses = 0;
-
-    setIsWordCorrect(null);
-    setIsLetterCorrect(null);
-  }, [resetCounters]);
-
-  return {
-    isLetterCorrect,
-    isWordCorrect,
-    totalCorrectWords,
-    totalWrongWords,
-    totalRightKeypresses: totalRightKeyPresses,
-    totalWrongKeyPresses,
-  };
 }

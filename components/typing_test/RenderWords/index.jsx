@@ -22,11 +22,11 @@ export default function RenderLetters({ text }) {
           const isPrevious = index < currentWord ? true : false;
           
           if(isPrevious) {
-            return <PreviousWord key={"prev" + index} word={word} wordIndex={index}/>;
+            return <PreviousWord key={"previous" + index} word={word} wordIndex={index}/>;
           }
 
           if(isCurrentWordActive) {
-            return <DisplayCurrentWord key={"curr" + index} word={word}/>;
+            return <DisplayCurrentWord key={"current" + index} word={word}/>;
           }
 
           return(
