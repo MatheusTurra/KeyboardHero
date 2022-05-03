@@ -4,6 +4,9 @@ import { createContext, useReducer } from "react";
 const initialState = {
   currentWord: 0,
   wordStatus: [],
+  gameDuration: 0,
+  whenGameStarted: 0,
+  isGameStarted: false,
   currentLetterIndex: 0,
   isCurrentWordRight: null,
   isCurrentLetterRight: null,
@@ -32,11 +35,23 @@ function reducer(state, action) {
 
     case "updateTotalRightKeyPresses":
       state.totalRightKeyPresses = action.value;
-      return {...state}
+      return {...state};
 
     case "updateTotalWrongKeyPresses":
       state.totalWrongKeyPresses = action.value;
-      return {...state}
+      return {...state};
+
+    case "updateGameIsStarted":
+      state.isGameStarted = action.value;
+      return {...state};
+
+    case "updateWhenGameStarted":
+      state.whenGameStarted = action.value;
+      return {...state};
+
+    case "updateGameDuration":
+      state.gameDuration = action.value;
+      return {...state};
 
     default:
       throw new Error(`${action.type} Unkown reducer action`);

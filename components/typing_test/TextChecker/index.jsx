@@ -20,7 +20,7 @@ export default function TextChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
   
   const [minutes, seconds] = useTimer();
-  useWordCheck(text[currentWordIndex], userInput, false);
+  useWordCheck(text[currentWordIndex], userInput);
 
   useEffect(() => {
     const detectSpaces = /\s/;

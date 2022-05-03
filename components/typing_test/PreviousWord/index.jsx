@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GameContext } from "../../../providers/GameContext";
+import { useCalcWpm } from "../../../utils/useCalcWpm";
 
 import { 
   WpmFeedback,
@@ -11,7 +12,8 @@ import {
 export function PreviousWord({ word, wordIndex }) {
   const { state } = useContext(GameContext);
   const { wordStatus } = state;
-  const wpm = 52;
+  
+  const wpm = useCalcWpm();
   
   if(wordStatus[wordIndex]) {
     return(
