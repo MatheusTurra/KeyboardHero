@@ -8,8 +8,9 @@ export function useCalcWpm() {
 
   const currentTime = new Date().getTime();
   const gameDurationInMinutes = (currentTime - whenGameStarted) / 60000;
-
-  let wpmResult = ((totalRightKeyPresses - totalWrongKeyPresses) / 5) / gameDurationInMinutes;
+  const totalValidKeyPresses = totalRightKeyPresses - totalWrongKeyPresses;
+  
+  let wpmResult = (totalValidKeyPresses / 5) / gameDurationInMinutes;
 
   if(wpmResult < 0) wpmResult = 0;
   
