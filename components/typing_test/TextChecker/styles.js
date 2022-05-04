@@ -42,6 +42,7 @@ export const UserInteractionGradient = styled.div`
 export const UserInteractionContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
   border-radius: 1rem;
   background-color: ${props => props.theme.colors.secondary};

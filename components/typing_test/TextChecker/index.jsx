@@ -1,6 +1,5 @@
 import RenderWords from "../RenderWords";
 import useWordCheck from "../../../utils/useWordCheck";
-import useTimer from "../../../utils/useTimer";
 
 import { useEffect, useState } from "react";
 
@@ -12,6 +11,7 @@ import {
   UserInteractionContainer,
   UserInput
 } from "./styles"
+import Chronometer from "../Chronometer";
 
 let currentWordIndex = 0;
 const text = "Maurício de Sousa, analista do jornal Folha da Manhã criou e, ingressou na área dos quadrinhos no ano de 1959 com seus primeiros personagens, Bidu e Franjinha. Ambos foram baseados na própria infância de Maurício, sendo Bidu inspirado no seu cãozinho de estimação, Cuíca. No ano seguinte, os personagens ganharam espaço através da revista infantil Zaz Traz, pela Editora Outubro. Posteriormente um gibi intitulado 'Bidu' foi lançado pela Editora Continental, sendo cancelado no mesmo ano com apenas 8 revistas sendo lançadas. Ainda naquele tempo novos personagens foram criados, entre eles o que mais chamou atenção foi Cebolinha como coadjuvante de Franjinha.".split(" ");
@@ -19,7 +19,6 @@ const text = "Maurício de Sousa, analista do jornal Folha da Manhã criou e, in
 export default function TextChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
   
-  const [minutes, seconds] = useTimer();
   useWordCheck(text[currentWordIndex], userInput);
 
   useEffect(() => {
@@ -59,8 +58,7 @@ export default function TextChecker({isDarkModeOn}) {
               value={userInput}
               onChange={event => handleUserInputChange(event)}
             />
-
-            <p>{minutes} :  {seconds.toString().padStart(2, 0)}</p>
+            <Chronometer />
           </UserInteractionContainer>
         </UserInteractionGradient>            
       </Container>

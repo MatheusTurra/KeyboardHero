@@ -50,7 +50,6 @@ export default function useWordCheck(word, userInput) {
         dispatch({ type: "updateTotalWrongKeyPresses", value: totalWrongKeyPresses});
       }
       
-      
       currentWord++;
       dispatch({type: "updateCurrentWord", value: currentWord})
     }
