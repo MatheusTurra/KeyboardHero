@@ -40,20 +40,22 @@ export const UserInteractionGradient = styled.div`
 `;
 
 export const UserInteractionContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 14fr 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   border-radius: 1rem;
+  padding: 0 1rem;
   background-color: ${props => props.theme.colors.secondary};
+
 `;
 
 export const UserInput = styled.input`
-  outline: none;
   border: 0;
+  width: 90%;
+  outline: none;
   font-size: 2rem;
-  height: 90%;
-  color: ${props => props.theme.colors.text};
   margin-left: 0.3rem;
+  color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.secondary};
 `;

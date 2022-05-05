@@ -1,4 +1,5 @@
 import RenderWords from "../RenderWords";
+import ResetButton from "../../interface/ResetButton";
 import useWordCheck from "../../../utils/useWordCheck";
 
 import { useEffect, useState } from "react";
@@ -59,6 +60,7 @@ export default function TextChecker({isDarkModeOn}) {
               onChange={event => handleUserInputChange(event)}
             />
             <Chronometer />
+            <ResetButton />
           </UserInteractionContainer>
         </UserInteractionGradient>            
       </Container>
