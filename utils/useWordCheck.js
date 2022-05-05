@@ -1,6 +1,6 @@
 import { GameContext } from "../providers/GameContext";
 
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 let currentWord = 0;
 let totalWrongKeyPresses = 0;
@@ -14,10 +14,11 @@ export default function useWordCheck(word, userInput) {
   useEffect(() => {
     if(word === undefined) return;
 
-    setWhenGameStarted(isGameStarted, dispatch)
-
+    
     const userInputLength = userInput.length;
     const wordChunk = word.substring(0, userInputLength);
+    
+    setWhenGameStarted(userInputLength, isGameStarted, dispatch);
 
     if(userInput === "") {
       dispatch({ type: "updateCurrentLetterIsRight", value: null });
@@ -57,10 +58,13 @@ export default function useWordCheck(word, userInput) {
 }
 
 
-function setWhenGameStarted(isGameStarted, dispatch) {
-  if(isGameStarted === false) {
-    const currentTime =  new Date().getTime();
+function setWhenGameStarted(userInputLength, isGameStarted, dispatch) {
+  if(isGameStarted === false && userInputLength > 0) {
+    currentWord = 0;
+    totalRightKeyPresses = 0;
+    totalWrongKeyPresses = 0;
 
+    const currentTime =  new Date().getTime();
     dispatch({type: "updateGameIsStarted", value: true});
     dispatch({type: "updateWhenGameStarted", value: currentTime});
   }

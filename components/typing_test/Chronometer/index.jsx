@@ -1,11 +1,9 @@
 import useChronometer from "../../../utils/useChronometer";
 
-import { 
-  ChronometerContainer
- } from "./styles";
+import { ChronometerContainer } from "./styles";
  
 export default function Chronometer() {
-  const [minutes, seconds] = useChronometer(true);
+  const [minutes, seconds] = useChronometer();
 
   return (
     <ChronometerContainer>

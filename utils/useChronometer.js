@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { GameContext } from "../providers/GameContext";
 
-export default function useChronometer(startTimer) {
+import { useContext, useEffect, useState } from "react";
+
+export default function useChronometer() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  
+  const { state } = useContext(GameContext);
 
   useEffect(() => {
+    // TEM ALGUMA COISA MUDANDO O ESTADO PRA TRUE
+    if(state.isGameStarted === false) {
+      setMinutes(0);
+      setSeconds(0);
+      return;
+    }
+
     const oneSecond = 1000;
     const timerInterval = setInterval(() => {
       setSeconds(prevState => prevState + 1);
@@ -16,7 +27,7 @@ export default function useChronometer(startTimer) {
     }
 
     return () => clearInterval(timerInterval);
-  }, [minutes, seconds]);
+  }, [minutes, seconds, state.isGameStarted]);
   
   return [minutes, seconds];
 }

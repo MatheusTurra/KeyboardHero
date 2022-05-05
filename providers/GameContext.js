@@ -53,6 +53,12 @@ function reducer(state, action) {
       state.gameDuration = action.value;
       return {...state};
 
+    case "resetState": 
+      let resetedState = initialState;
+      resetedState.isGameStarted = false;
+
+      return resetedState;
+
     default:
       throw new Error(`${action.type} Unkown reducer action`);
   }
