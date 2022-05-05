@@ -13,7 +13,8 @@ export default {
   gameText: {
     currentWordBorder: "#c7d0db",
     currentRightWordBackground: "#78c6a3",
-    currentWrongWordBackground: "#ec8385"
+    currentWrongWordBackground: "#ec8385",
+    previousRightWordColor: "#25a244",
 
   }
 }

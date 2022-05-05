@@ -35,7 +35,7 @@ export const WpmFeedback = styled.span`
 `;
 
 export const RightWord = styled.span`
-  color: #25a244;
+  color: ${props => props.theme.gameText.previousRightWordColor};
   white-space: pre;
   z-index: 10;
   position: relative;
@@ -44,7 +44,7 @@ export const RightWord = styled.span`
 export const  WrongWord = styled.span`
   z-index: 0;
   position: relative;
-  color: #e66063;
+  color: #8d99ae;
   white-space: pre;
   text-decoration: line-through;
   text-decoration-color: crimson;
