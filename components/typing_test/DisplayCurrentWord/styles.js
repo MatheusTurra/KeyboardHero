@@ -1,31 +1,28 @@
 import styled, { keyframes } from 'styled-components';
 
-function changeFeedbackColor(isLetterRight) {
+function changeFeedbackColor(isLetterRight, theme) {
   if(isLetterRight === null) return;
-
-  if(isLetterRight) return "green";
-  else return "red";
+  console.log(theme);
+  if(isLetterRight) return theme.currentRightWordBackground;
+  else return theme.currentWrongWordBackground;
 }
 
 
 function changeWhitespaceColor(show, isLetterRight) {
   if(show) {
-    if(isLetterRight === false) return "salmon";
-    else return "blue";
+    if(isLetterRight === false) return "#e66063";
+    else return "#56ab91";
   }
 }
 
 export const LeftChunk = styled.span`
-  color: ${props => 
-    props.isLetterRight === false 
-      ? "crimson"
-      :"lightgreen"
-  };
+  color: ;
 `;
 
 export const CurrentWord = styled.span`
   white-space: pre;
-  background-color: ${props => changeFeedbackColor(props.isLetterRight)}; 
+  /* border-radius: 0.3rem; */
+  background-color: ${props => changeFeedbackColor(props.isLetterRight, props.theme.gameText)}; 
 `;
 const blinkCursor = keyframes`
   50% {
@@ -34,14 +31,17 @@ const blinkCursor = keyframes`
 `;
 
 export const WordCursor = styled.span`
+  border-radius: 0.3rem;
   animation: ${blinkCursor} 1s infinite alternate;
   background-color: ${props => 
     props.isLetterRight === false
-    ? "salmon"
-    : "grey"}; 
+    ? "#e66063"
+    : "#56ab91"}; 
 `;
 
 export const WhiteSpace = styled.span`
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
   animation: ${blinkCursor} 1s infinite alternate;
   background-color: ${props => changeWhitespaceColor(props.show, props.isLetterRight)};
 `;

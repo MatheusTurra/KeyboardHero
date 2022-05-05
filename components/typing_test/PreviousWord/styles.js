@@ -35,7 +35,7 @@ export const WpmFeedback = styled.span`
 `;
 
 export const RightWord = styled.span`
-  color: limegreen;
+  color: #25a244;
   white-space: pre;
   z-index: 10;
   position: relative;
@@ -44,7 +44,7 @@ export const RightWord = styled.span`
 export const  WrongWord = styled.span`
   z-index: 0;
   position: relative;
-  color: coral;
+  color: #e66063;
   white-space: pre;
   text-decoration: line-through;
   text-decoration-color: crimson;

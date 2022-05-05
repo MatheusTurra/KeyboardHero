@@ -3,15 +3,16 @@ export default {
 
   colors: {
     primary: "#2a2e35",
-    secondary: "#12181b",
+    secondary: "#1a1a1c",
 
     background: "#12181b",
-    text: "#b2becd",
+    text: "#e2e8f0",
     link: "#00458e"
   },
 
   gameText: {
     currentWordBorder: "#343a40",
-    currentWordBackground: "#212529"
+    currentRightWordBackground: "#248277",
+    currentWrongWordBackground: "#9c191b"
   }
 }
