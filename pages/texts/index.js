@@ -56,7 +56,7 @@ export default function Home(props) {
         <GameProvider>
           <TextChecker isDarkModeOn={isDarkModeOn} />
         </GameProvider>
-        <Footer />
+        {/* <Footer /> */}
       </ ThemeProvider >
     </>
   );
