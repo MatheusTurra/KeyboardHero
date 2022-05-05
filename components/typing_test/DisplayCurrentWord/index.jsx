@@ -1,5 +1,4 @@
 import { 
-  GameWord,
   CurrentWord,
   LeftChunk,
   WordCursor,

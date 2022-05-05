@@ -12,7 +12,7 @@ import {
 
 export default function RenderLetters({ text }) {
   const { state } = useContext(GameContext);
-  const { currentWord } = state;
+  const { currentWord, isGameStarted } = state;
 
   return(
     <> 
@@ -25,7 +25,7 @@ export default function RenderLetters({ text }) {
             return <PreviousWord key={"previous" + index} word={word} wordIndex={index}/>;
           }
 
-          if(isCurrentWordActive) {
+          if(isCurrentWordActive && isGameStarted) {
             return <DisplayCurrentWord key={"current" + index} word={word}/>;
           }
 
