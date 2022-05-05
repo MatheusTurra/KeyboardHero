@@ -9,7 +9,7 @@ const slideWpmDown = keyframes`
   30% {
     transform: translate3d(0, 0, 0);
     opacity: 1;
-  } */
+  }
 
   100% {
     transform: scale(0.8) translate3d(0, 0.5rem, 0);
