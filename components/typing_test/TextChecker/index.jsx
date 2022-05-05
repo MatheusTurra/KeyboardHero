@@ -18,9 +18,12 @@ import {
 
 const text = "Maurício de Sousa, analista do jornal Folha da Manhã criou e, ingressou na área dos quadrinhos no ano de 1959 com seus primeiros personagens, Bidu e Franjinha. Ambos foram baseados na própria infância de Maurício, sendo Bidu inspirado no seu cãozinho de estimação, Cuíca. No ano seguinte, os personagens ganharam espaço através da revista infantil Zaz Traz, pela Editora Outubro. Posteriormente um gibi intitulado 'Bidu' foi lançado pela Editora Continental, sendo cancelado no mesmo ano com apenas 8 revistas sendo lançadas. Ainda naquele tempo novos personagens foram criados, entre eles o que mais chamou atenção foi Cebolinha como coadjuvante de Franjinha.".split(" ");
 
+/**
+ * TODO: COLOCAR O CONTEXTO NO HOOK USEWORDCHECK
+ */
+
 export default function TextChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
-  const [startGame, setStartGame] = useState(false); 
 
   const { state } = useContext(GameContext);
   const { currentWord, isGameStarted } = state;
@@ -43,7 +46,6 @@ export default function TextChecker({isDarkModeOn}) {
   
   function handleUserInputChange(event) {
     const inputValue = event.target.value;
-    setStartGame(true);
     setUserInput(inputValue);
   }
 
