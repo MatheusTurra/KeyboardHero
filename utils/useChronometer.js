@@ -9,7 +9,6 @@ export default function useChronometer() {
   const { state } = useContext(GameContext);
 
   useEffect(() => {
-    // TEM ALGUMA COISA MUDANDO O ESTADO PRA TRUE
     if(state.isGameStarted === false) {
       setMinutes(0);
       setSeconds(0);
@@ -29,5 +28,5 @@ export default function useChronometer() {
     return () => clearInterval(timerInterval);
   }, [minutes, seconds, state.isGameStarted]);
   
-  return [minutes, seconds];
+  return [minutes, seconds, state.isGameStarted];
 }
