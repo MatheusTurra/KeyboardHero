@@ -73,7 +73,7 @@ export default function TextChecker({isDarkModeOn}) {
               onChange={event => handleUserInputChange(event)}
             />
             <Chronometer />
-            <ResetButton />
+            <ResetButton isDarkModeOn={isDarkModeOn}/>
           </UserInteractionContainer>
         </UserInteractionGradient>            
       </Container>
