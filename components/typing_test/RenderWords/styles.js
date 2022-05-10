@@ -13,6 +13,11 @@ export const TextContainer = styled.div`
   padding: 0 2.5rem;
   font-family: "JetBrains Mono", monospace;
   background-color: ${props => props.theme.colors.secondary};
+
+  & div {
+    position: relative;
+    bottom: ${props => props.scroll}rem;
+  }
 `;
 
 export const GameWord = styled.span`
