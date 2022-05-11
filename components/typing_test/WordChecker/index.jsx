@@ -1,7 +1,6 @@
+import Timer from "../Timer";
 import RenderWords from "../RenderWords";
-import Chronometer from "../Chronometer";
 import ResetButton from "../../interface/ResetButton";
-
 import useWordCheck from "../../../utils/useWordCheck";
 import { GameContext } from "../../../providers/GameContext";
 import { generateWords } from "../../../utils/generateWords";
@@ -32,10 +31,9 @@ export default function WordChecker({isDarkModeOn}) {
   useWordCheck(gameWords, userInput);
 
   useEffect(() => {
-    console.log(isGameStarted)
     if(isGameStarted === false) {
       const randomWords = generateWords();
-      
+
       setUserInput("");
       setGameWords(randomWords);
     }
@@ -76,7 +74,7 @@ export default function WordChecker({isDarkModeOn}) {
               onKeyUp={event => detectSpacesHandler(event)}
 
             />
-            <Chronometer />
+            <Timer />
             <ResetButton isDarkModeOn={isDarkModeOn} />
           </UserInteractionWrapper>
           </UserContainerGradient>

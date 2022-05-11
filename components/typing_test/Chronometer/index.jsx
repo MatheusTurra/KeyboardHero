@@ -8,7 +8,7 @@ export default function Chronometer() {
   return (
     <ChronometerContainer>
       <span>{minutes > 0 && minutes + ":"} </span>
-      <span>{isGameStarted && seconds.toString().padStart(2, 0)}</span>
+      <span>{seconds.toString().padStart(2, 0)}</span>
     </ChronometerContainer>
   );
 }

@@ -4,7 +4,7 @@ export const TimerContainer = styled.div`
   width: 8rem;
   height: 5rem;
   margin: 0 auto;
-  display: flex;
+  display: ${props => props.showTimer ? "flex" : "none"};
   flex-grow: 1;
   justify-content: center;
   align-items: center;
