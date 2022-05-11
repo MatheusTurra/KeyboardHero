@@ -26,9 +26,9 @@ export default function TextChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
 
   const { state } = useContext(GameContext);
-  const { currentWord, isGameStarted } = state;
+  const { isGameStarted } = state;
   
-  useWordCheck(text[currentWord], userInput);
+  useWordCheck(text, userInput);
 
   useEffect(() => {
     if(isGameStarted === false) {

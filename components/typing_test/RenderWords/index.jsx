@@ -3,7 +3,7 @@ import DisplayCurrentWord from "../DisplayCurrentWord";
 
 import { GameContext } from "../../../providers/GameContext";
 
-import { useRef, useContext, useEffect, useState } from "react";
+import { useRef, useContext, useEffect, useState, memo } from "react";
 
 import {
   TextContainer,
@@ -11,7 +11,7 @@ import {
   WhiteSpace
 } from "./styles";
 
-export default function RenderLetters({ text }) {
+function RenderWords({ text }) {
   const currentWordRef = useRef(null);
   
   const { state } = useContext(GameContext);
@@ -30,7 +30,8 @@ export default function RenderLetters({ text }) {
 
   useEffect(() => {
     setTextScroll(0);
-  }, [isGameStarted])
+  }, [isGameStarted]);
+  
   return(
     <> 
       <TextContainer scroll={textScroll}>
@@ -63,3 +64,5 @@ export default function RenderLetters({ text }) {
     </>
   );
 }
+
+export default memo(RenderWords);

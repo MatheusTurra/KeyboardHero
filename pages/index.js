@@ -3,6 +3,8 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import WordChecker from "../components/typing_test/WordChecker";
 
+import { GameProvider } from "../providers/GameContext";
+
 import dark from "../styles/themes/dark";
 import light from "../styles/themes/light";
 import GlobalStyle from "../styles/GlobalStyle";
@@ -51,7 +53,9 @@ export default function Home(props) {
         <Seo />
         <GlobalStyle />
         <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
-        <WordChecker isDarkModeOn={isDarkModeOn}/>
+        <GameProvider>
+          <WordChecker isDarkModeOn={isDarkModeOn}/>
+        </GameProvider>
         <Footer />
       </ ThemeProvider >
     </>

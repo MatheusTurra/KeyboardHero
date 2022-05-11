@@ -1,10 +1,9 @@
-import Timer from "../Timer";
-import Result from "../Result";
-import RenderText from "../RenderText";
+import RenderWords from "../RenderWords";
+import Chronometer from "../Chronometer";
 import ResetButton from "../../interface/ResetButton";
 
-import { generateWords } from "../../../utils/randomWords";
 import useWordCheck from "../../../utils/useWordCheck";
+import { generateWords } from "../../../utils/generateWords";
 
 import { useCallback, useEffect, useState } from "react";
 
@@ -18,80 +17,41 @@ import {
   UserInput
 } from "./styles";
 
+/**
+ * TODO: RESPONSIVIDADE NO FIREFOX
+ */
 
-let wordIndex = 0;
-let maxTime = 0;
+const randomWords = generateWords();
 
 export default function WordChecker({isDarkModeOn}) {
-  const [words, setWords] = useState([""]);
   const [userInput, setUserInput] = useState("");
-  const [gameOver, setGameOver] = useState(false);
-  const [startGame, setStartGame] = useState(false);
-  const [resetGame, setResetGame] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
-  
-  const {
-    isLetterCorrect,
-    isWordCorrect,
-    totalKeyPresses,
-    totalCorrectKeyPresses,
-    totalWrongKeyPresses
-  } = useWordCheck(words[wordIndex], userInput, resetGame);
-  
+  const [gameWords, setGameWords] = useState([""]);  
+
+  useWordCheck(gameWords, userInput);
+
   useEffect(() => {
-    setWords(generateWords());
+    setGameWords(randomWords);
   }, []);
-
-
-  useEffect(() => {
-    const detectSpaces = /\s/;
-    if(detectSpaces.test(userInput)) {
-      wordIndex++;
-      setUserInput("");
-    }
-  }, [userInput]);
 
   function userInputHandler(event) {
-    setStartGame(true);
-    setResetGame(false);
-    setUserInput(event.target.value);
+    const userInputValue = event.target.value;
+    setUserInput(userInputValue);
   }
 
-  function restartGame() {
-    wordIndex = 0;
-
-    setWords(generateWords());
-    setUserInput("");
-    setGameOver(false);    
-    setStartGame(false);
-    setResetGame(true);
+  function detectSpacesHandler(event) {
+    const keyPressed = event.code;
+    
+    if(keyPressed === "Space") {
+      setUserInput("");
+    }
   }
-
-  const endGame = useCallback(() => {
-    setGameOver(true);
-  }, [])
-
-  const getMaxTime = useCallback(time => {
-    maxTime = time
-  }, []);
-
-  const getTimeLeft = useCallback(seconds => {
-    setTimeLeft(seconds);
-  }, []);
 
   return(
     <>
       <Container isDarkModeOn={isDarkModeOn}>
         <GameContainer>
           <ContainerGradient isDarkModeOn={isDarkModeOn}>
-            <RenderText
-              text={words}
-              letterCorrect={isLetterCorrect}
-              current={wordIndex}
-              wordCorrect={isWordCorrect}
-              resetFeedback={resetGame}
-              isGameOver={gameOver}
-            />
+            <RenderWords text={gameWords} />
           </ContainerGradient>
           
           <UserContainerGradient isDarkModeOn={isDarkModeOn}>
@@ -99,33 +59,17 @@ export default function WordChecker({isDarkModeOn}) {
             <UserInput
               type="text"
               value={userInput}
-              disabled={gameOver}
               autoFocus={true}
               spellCheck={false}
               autoCapitalize="off"
               autoComplete="off"
               placeholder="Digite aqui"
               onChange={event => userInputHandler(event)}
-            />
+              onKeyUp={event => detectSpacesHandler(event)}
 
-            <Result
-              maxTime={maxTime}
-              start={startGame}
-              timeLeft={timeLeft}
-              keyPresses={totalKeyPresses}
-              correctKeyPresses={totalCorrectKeyPresses}
-              incorrectKeyPresses={totalWrongKeyPresses}
-              isGameReseted={resetGame}
             />
-
-            <Timer
-              isGameEnded={endGame}
-              getMaxTime={getMaxTime}
-              getTimeLeft={getTimeLeft}
-              isGameStarted={startGame}
-              resetTimer={resetGame} 
-            />
-            <ResetButton isDarkModeOn={isDarkModeOn} onClick={restartGame}/>
+            <Chronometer />
+            <ResetButton isDarkModeOn={isDarkModeOn} />
           </UserInteractionWrapper>
           </UserContainerGradient>
         </GameContainer>

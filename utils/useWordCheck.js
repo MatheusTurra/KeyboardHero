@@ -7,16 +7,15 @@ let totalWrongKeyPresses = 0;
 let totalRightKeyPresses = 0;
 
 
-export default function useWordCheck(word, userInput) {
+export default function useWordCheck(text, userInput) {
   const { state, dispatch } = useContext(GameContext);
   const { isGameStarted } = state;
 
   useEffect(() => {
-    if(word === undefined) return;
+    if(text === undefined) return;
 
-    
     const userInputLength = userInput.length;
-    const wordChunk = word.substring(0, userInputLength);
+    const wordChunk = text[currentWord].substring(0, userInputLength);
     
     setWhenGameStarted(userInputLength, isGameStarted, dispatch);
 
@@ -34,18 +33,17 @@ export default function useWordCheck(word, userInput) {
     
     dispatch({ type: "updateLetterIndex", value: userInputLength });
   }, [userInput]);
-
   useEffect(() => {
     const detectSpaces = /\s/;
 
     if(detectSpaces.test(userInput)) {
-      if(userInput.trim() === word) {
-        totalRightKeyPresses += userInput.length -1;
+      if(userInput.trim() === text[currentWord]) {
+        totalRightKeyPresses += userInput.length - 1;
         
         dispatch({ type: "updateCurrentWordIsRight", value: true});
         dispatch({ type: "updateTotalRightKeyPresses", value: totalRightKeyPresses});
       } else {
-        totalWrongKeyPresses += userInput.length -1;
+        totalWrongKeyPresses += userInput.length - 1;
         
         dispatch({ type: "updateCurrentWordIsRight", value: false});
         dispatch({ type: "updateTotalWrongKeyPresses", value: totalWrongKeyPresses});
