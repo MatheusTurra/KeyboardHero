@@ -3,9 +3,10 @@ import Chronometer from "../Chronometer";
 import ResetButton from "../../interface/ResetButton";
 
 import useWordCheck from "../../../utils/useWordCheck";
+import { GameContext } from "../../../providers/GameContext";
 import { generateWords } from "../../../utils/generateWords";
 
-import { useCallback, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 
 import {
@@ -21,17 +22,24 @@ import {
  * TODO: RESPONSIVIDADE NO FIREFOX
  */
 
-const randomWords = generateWords();
-
 export default function WordChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
-  const [gameWords, setGameWords] = useState([""]);  
+  const [gameWords, setGameWords] = useState([""]);
+
+  const { state } = useContext(GameContext);
+  const { isGameStarted } = state;
 
   useWordCheck(gameWords, userInput);
 
   useEffect(() => {
-    setGameWords(randomWords);
-  }, []);
+    console.log(isGameStarted)
+    if(isGameStarted === false) {
+      const randomWords = generateWords();
+      
+      setUserInput("");
+      setGameWords(randomWords);
+    }
+  }, [isGameStarted]);
 
   function userInputHandler(event) {
     const userInputValue = event.target.value;
