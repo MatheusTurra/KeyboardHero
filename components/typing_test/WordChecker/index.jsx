@@ -19,7 +19,6 @@ import {
 import Result from "../Result";
 
 /**
- * TODO: RESPONSIVIDADE NO FIREFOX
  * TODO: CONTAR A QUANTIDADE DE TECLAS PRESSIONADAS A PARTIR DO TEXTO
  */
 
@@ -69,7 +68,6 @@ export default function WordChecker({isDarkModeOn}) {
               value={userInput}
               autoFocus={true}
               spellCheck={false}
-              autoCapitalize="off"
               autoComplete="off"
               placeholder="Digite aqui"
               onChange={event => userInputHandler(event)}
