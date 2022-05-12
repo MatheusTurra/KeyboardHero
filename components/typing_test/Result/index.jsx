@@ -15,13 +15,11 @@ export default function Result() {
   const accuracy = useCalcAccuracy();
 
   return(
-    <>
-      <ResultContainer>
-        <Wrapper showResults={state.isGameOver}>
-          <span>Precisão: {accuracy}</span>
-          <span>Palavras por Minuto: {wpm}</span>
-        </Wrapper>
-      </ResultContainer>
-    </>
+    <ResultContainer>
+      <Wrapper showResults={true}>
+        <span>Precisão: {accuracy}</span>
+        <span>Palavras por Minuto: {wpm}</span>
+      </Wrapper>
+    </ResultContainer>
   );
 }

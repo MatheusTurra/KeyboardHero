@@ -38,12 +38,12 @@ export default function useWordCheck(text, userInput) {
 
     if(detectSpaces.test(userInput)) {
       if(userInput.trim() === text[currentWord]) {
-        totalRightKeyPresses += userInput.length - 1;
+        totalRightKeyPresses += text[currentWord].length;
         
         dispatch({ type: "updateCurrentWordIsRight", value: true});
         dispatch({ type: "updateTotalRightKeyPresses", value: totalRightKeyPresses});
       } else {
-        totalWrongKeyPresses += userInput.length - 1;
+        totalWrongKeyPresses += text[currentWord].length;
         
         dispatch({ type: "updateCurrentWordIsRight", value: false});
         dispatch({ type: "updateTotalWrongKeyPresses", value: totalWrongKeyPresses});

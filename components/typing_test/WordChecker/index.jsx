@@ -1,7 +1,10 @@
 import Timer from "../Timer";
+import Result from "../Result";
 import RenderWords from "../RenderWords";
 import ResetButton from "../../interface/ResetButton";
+
 import useWordCheck from "../../../utils/useWordCheck";
+
 import { GameContext } from "../../../providers/GameContext";
 import { generateWords } from "../../../utils/generateWords";
 
@@ -16,11 +19,6 @@ import {
   UserInteractionWrapper,
   UserInput
 } from "./styles";
-import Result from "../Result";
-
-/**
- * TODO: CONTAR A QUANTIDADE DE TECLAS PRESSIONADAS A PARTIR DO TEXTO
- */
 
 export default function WordChecker({isDarkModeOn}) {
   const [userInput, setUserInput] = useState("");
