@@ -22,5 +22,6 @@ export const Wrapper = styled.div`
 
   & span {
     margin: 0 auto;
+    display: ${props => props.showResults === false && "none"};
   }
 `;

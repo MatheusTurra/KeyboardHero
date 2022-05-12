@@ -1,47 +1,23 @@
-import { useEffect, useState } from "react";
+import { GameContext } from "../../../providers/GameContext";
+import { useCalcAccuracy, useCalcWpm } from "../../../utils/useCalcWpm";
+
+import { useContext } from "react";
 
 import {
   Wrapper,
   ResultContainer
 } from "./styles";
 
-export default function Result(props) {
-  const [wpm, setWpm] = useState(0);
-  const [accuracy, setAccuracy] = useState(0);
+export default function Result() {
+  const { state } = useContext(GameContext);
 
-  useEffect(() => {
-    if(props.keyPresses > 0) {
-      const accuracyCalc = (props.correctKeyPresses / props.keyPresses) * 100;
-
-      setAccuracy(accuracyCalc.toFixed());
-    }
-  }, [props.keyPresses, props.correctKeyPresses]);
-
-
-  useEffect(() => {
-    if(props.timeLeft > 0) {
-      const wpmCalc = ((props.correctKeyPresses - props.incorrectKeyPresses) / 5) / (props.maxTime - props.timeLeft) * 60; 
-      
-      setWpm(wpmCalc > 0 ? wpmCalc.toFixed(0) : 0);
-    }
-  }, [
-      props.timeLeft,
-      props.maxTime,
-      props.correctKeyPresses,
-      props.incorrectKeyPresses
-    ]);
-
-  useEffect(() => {
-    if(props.isGameReseted) {
-      setWpm(0);
-      setAccuracy(0);
-    }
-  }, [props.isGameReseted]);
+  const wpm = useCalcWpm();
+  const accuracy = useCalcAccuracy();
 
   return(
     <>
       <ResultContainer>
-        <Wrapper>
+        <Wrapper showResults={state.isGameOver}>
           <span>Precisão: {accuracy}</span>
           <span>Palavras por Minuto: {wpm}</span>
         </Wrapper>

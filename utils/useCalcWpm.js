@@ -15,4 +15,18 @@ export function useCalcWpm() {
   if(wpmResult < 0) wpmResult = 0;
   
   return wpmResult.toFixed();
-} 
+}
+
+export function useCalcAccuracy() {
+  const { state } = useContext(GameContext);
+  const { totalRightKeyPresses, totalWrongKeyPresses } = state;
+  
+  const totalKeyPresses = totalRightKeyPresses + totalWrongKeyPresses;
+
+  if(totalKeyPresses > 0) {
+    const accuracyCalc = (totalRightKeyPresses / totalKeyPresses) * 100;
+    return accuracyCalc.toFixed();
+  } else {
+    return 0;
+  }
+}

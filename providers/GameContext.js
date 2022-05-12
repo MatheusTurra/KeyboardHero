@@ -5,6 +5,7 @@ const initialState = {
   currentWord: 0,
   wordStatus: [],
   gameDuration: 0,
+  isGameOver: false,
   whenGameStarted: 0,
   isGameStarted: false,
   currentLetterIndex: 0,
@@ -45,6 +46,10 @@ function reducer(state, action) {
       state.isGameStarted = action.value;
       return {...state};
 
+    case "updateIsGameOver":
+      state.isGameOver = action.value;
+      return {...state};
+
     case "updateWhenGameStarted":
       state.whenGameStarted = action.value;
       return {...state};
@@ -56,6 +61,7 @@ function reducer(state, action) {
     case "resetState": 
       let resetedState = initialState;
       resetedState.isGameStarted = false;
+      resetedState.isGameOver = false;
 
       return resetedState;
 

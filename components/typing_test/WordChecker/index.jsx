@@ -16,9 +16,11 @@ import {
   UserInteractionWrapper,
   UserInput
 } from "./styles";
+import Result from "../Result";
 
 /**
  * TODO: RESPONSIVIDADE NO FIREFOX
+ * TODO: CONTAR A QUANTIDADE DE TECLAS PRESSIONADAS A PARTIR DO TEXTO
  */
 
 export default function WordChecker({isDarkModeOn}) {
@@ -74,6 +76,7 @@ export default function WordChecker({isDarkModeOn}) {
               onKeyUp={event => detectSpacesHandler(event)}
 
             />
+            <Result />
             <Timer />
             <ResetButton isDarkModeOn={isDarkModeOn} />
           </UserInteractionWrapper>

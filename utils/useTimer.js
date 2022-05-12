@@ -6,7 +6,7 @@ export default function useTimer(totalTime = 1) {
   const [minutes, setMinutes] = useState(totalTime);
   const [seconds, setSeconds] = useState(0);
 
-  const { state } = useContext(GameContext);
+  const { state, dispatch } = useContext(GameContext);
 
   useEffect(() => {
     if(state.isGameStarted === false ) {
@@ -18,6 +18,7 @@ export default function useTimer(totalTime = 1) {
     if(minutes === 0 && seconds === 0) {
       setMinutes(0);
       setSeconds(0);
+      dispatch({ type: "updateIsGameOver", value: true });
       return;
     }
 
