@@ -22,8 +22,10 @@ export const TextContainer = styled.div`
 
 export const GameWord = styled.span`
   white-space: pre;
+  display: inline-block;
 `;
 
 export const WhiteSpace = styled.span`
+  display: inline-block;
   background-color: ${props => props.theme.colors.secondary};
 `;
