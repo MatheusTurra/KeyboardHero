@@ -16,7 +16,7 @@ export default function Result() {
 
   return(
     <ResultContainer>
-      <Wrapper showResults={true}>
+      <Wrapper showResults={state.isGameOver}>
         <span>Precisão: {accuracy}</span>
         <span>Palavras por Minuto: {wpm}</span>
       </Wrapper>

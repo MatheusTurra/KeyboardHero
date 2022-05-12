@@ -25,7 +25,7 @@ export default function WordChecker({isDarkModeOn}) {
   const [gameWords, setGameWords] = useState([""]);
 
   const { state } = useContext(GameContext);
-  const { isGameStarted } = state;
+  const { isGameStarted, isGameOver } = state;
 
   useWordCheck(gameWords, userInput);
 
@@ -68,6 +68,7 @@ export default function WordChecker({isDarkModeOn}) {
               spellCheck={false}
               autoComplete="off"
               placeholder="Digite aqui"
+              disabled={isGameOver}
               onChange={event => userInputHandler(event)}
               onKeyUp={event => detectSpacesHandler(event)}
 
