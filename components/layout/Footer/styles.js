@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 10rem;
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media(min-width: 768px) {
-    position: absolute;
-    bottom: 0;
-  }
 `;
 
 export const FooterTitle = styled.div`

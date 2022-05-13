@@ -14,10 +14,6 @@ import { ThemeProvider } from "styled-components";
 
 import { useState } from "react";
 
-/**
- * TODO: CRIAR UM CONTEXTO PARA ARMAZENAR O ESTADO DO TEMA
- */
-
 export default function Home(props) {
   const [theme, setTheme] = useState(props.theme);
   const [isDarkModeOn, setIsDarkModeOn] = useState(getThemeStatus);
@@ -56,7 +52,7 @@ export default function Home(props) {
         <GameProvider>
           <TextChecker isDarkModeOn={isDarkModeOn} />
         </GameProvider>
-        {/* <Footer /> */}
+        <Footer />
       </ ThemeProvider >
     </>
   );

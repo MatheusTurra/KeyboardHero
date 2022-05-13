@@ -30,7 +30,7 @@ export const GameContainer = styled.div`
   margin: 2rem 0;
 
   @media(min-width: 768px) {
-    margin: 10rem 0;
+    margin-top: 10rem;
   }
 `;
 
