@@ -22,7 +22,7 @@ export default function useTimer(totalTime = 1) {
       return;
     }
 
-    const oneSecond = 100;
+    const oneSecond = 1000;
     const timerInterval = setInterval(() => {
       setSeconds(prevState => prevState - 1);
     }, oneSecond);
