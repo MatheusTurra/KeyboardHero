@@ -22,7 +22,7 @@ function RenderWords({ text }) {
   useEffect(() => {
     const wordPosition = currentWordRef.current?.offsetLeft;
 
-    if(wordPosition === 0) {
+    if(wordPosition === 25) {
       setTextScroll(prevState => prevState + 5);
     }
   }, [currentWord]);
