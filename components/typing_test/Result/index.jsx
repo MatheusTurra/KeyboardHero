@@ -5,7 +5,9 @@ import { useContext } from "react";
 
 import {
   Wrapper,
-  ResultContainer
+  ResultContainer,
+  Label,
+  Value
 } from "./styles";
 
 export default function Result() {
@@ -15,10 +17,15 @@ export default function Result() {
   const accuracy = useCalcAccuracy();
 
   return(
-    <ResultContainer>
-      <Wrapper showResults={state.isGameOver}>
-        <span>Precisão: {accuracy}</span>
-        <span>Palavras por Minuto: {wpm}</span>
+    <ResultContainer showResults={state.isGameOver}>
+      <Wrapper>
+        <Label>Palavras por minuto: </Label>
+        <Value>{wpm}</Value>
+      </Wrapper>
+
+      <Wrapper>
+        <Label>Precisão: </Label>
+        <Value>{accuracy}</Value>
       </Wrapper>
     </ResultContainer>
   );

@@ -5,7 +5,7 @@ const initialState = {
   currentWord: 0,
   wordStatus: [],
   gameDuration: 0,
-  isGameOver: false,
+  isGameOver: null,
   whenGameStarted: 0,
   isGameStarted: false,
   currentLetterIndex: 0,

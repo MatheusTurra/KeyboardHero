@@ -71,13 +71,12 @@ export default function WordChecker({isDarkModeOn}) {
               disabled={isGameOver}
               onChange={event => userInputHandler(event)}
               onKeyUp={event => detectSpacesHandler(event)}
-
             />
-            <Result />
             <Timer />
             <ResetButton isDarkModeOn={isDarkModeOn} />
           </UserInteractionWrapper>
           </UserContainerGradient>
+          <Result />
         </GameContainer>
       </Container>
     </>
