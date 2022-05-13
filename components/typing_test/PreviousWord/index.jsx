@@ -17,23 +17,19 @@ export function PreviousWord({ word, wordIndex }) {
   
   if(wordStatus[wordIndex]) {
     return(
-      <>
-        <RightWord>
-          <WpmFeedback>{wpm}</WpmFeedback>
-          {word}
-        </RightWord>
+      <RightWord>
+        <WpmFeedback>{wpm}</WpmFeedback>
+        {word}
         <WhiteSpace>&nbsp;</WhiteSpace>
-      </>
+      </RightWord>
     );
   }
   
   return(
-    <>
-      <WrongWord>
-        <WpmFeedback>{wpm}</WpmFeedback>
-        {word}
-      </WrongWord>
+    <WrongWord>
+      <WpmFeedback>{wpm}</WpmFeedback>
+      {word}
       <WhiteSpace>&nbsp;</WhiteSpace>
-    </>
+    </WrongWord>
   );
 }

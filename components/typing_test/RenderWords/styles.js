@@ -8,20 +8,24 @@ export const TextContainer = styled.div`
   line-height: 5rem;
   overflow: hidden;
   font-size: 1.8rem;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  padding: 0 2.5rem;
   font-family: "JetBrains Mono", monospace;
   background-color: ${props => props.theme.colors.secondary};
-
+  
   & div {
+    padding: 0 2.5rem;
     position: relative;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
     bottom: ${props => props.scroll}rem;
+  }
+
+  & span {
+    display: inline-block;
   }
 `;
 
 export const GameWord = styled.span`
-  white-space: pre;
   display: inline-block;
 `;
 

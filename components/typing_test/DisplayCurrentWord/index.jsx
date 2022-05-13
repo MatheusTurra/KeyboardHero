@@ -1,6 +1,5 @@
 import { 
   CurrentWord,
-  LeftChunk,
   WordCursor,
   WhiteSpace,
  } from "./styles";
@@ -25,7 +24,7 @@ export default function DisplayCurrentWord({word}) {
   return(
     <>
       <CurrentWord isLetterRight={isCurrentLetterRight}>
-        <LeftChunk isLetterRight={isCurrentLetterRight}>{wordLeftChunk}</LeftChunk>
+        <span>{wordLeftChunk}</span>
         <WordCursor isLetterRight={isCurrentLetterRight}>{wordCursor}</WordCursor>
         <span>{wordRightChunk}</span>
       </CurrentWord>

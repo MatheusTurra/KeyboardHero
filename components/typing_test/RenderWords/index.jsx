@@ -27,7 +27,6 @@ function RenderWords({ text }) {
     }
   }, [currentWord]);
 
-
   useEffect(() => {
     setTextScroll(0);
   }, [isGameStarted]);

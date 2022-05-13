@@ -36,21 +36,22 @@ export const WpmFeedback = styled.span`
 
 export const RightWord = styled.span`
   color: ${props => props.theme.gameText.previousRightWordColor};
-  white-space: pre;
   z-index: 10;
   position: relative;
+  display: inline-block;
 `;
 
 export const  WrongWord = styled.span`
   z-index: 0;
+  display: inline-block;
   position: relative;
   color: #8d99ae;
-  white-space: pre;
   text-decoration: line-through;
   text-decoration-color: crimson;
   text-decoration-thickness: 0.25rem;
 `;
 
 export const WhiteSpace = styled.span`
+  display: inline-block;
   background-color: ${props => props.theme.colors.secondary};
 `;

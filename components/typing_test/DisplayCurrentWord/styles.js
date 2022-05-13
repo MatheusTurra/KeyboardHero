@@ -14,13 +14,9 @@ function changeWhitespaceColor(show, isLetterRight) {
   }
 }
 
-export const LeftChunk = styled.span`
-  color: ;
-`;
-
 export const CurrentWord = styled.span`
-  white-space: pre;
   border-radius: 0.3rem;
+  display: inline-block;
   background-color: ${props => changeFeedbackColor(props.isLetterRight, props.theme.gameText)}; 
 `;
 const blinkCursor = keyframes`
@@ -30,6 +26,7 @@ const blinkCursor = keyframes`
 `;
 
 export const WordCursor = styled.span`
+  display: inline-block;
   border-radius: 0.3rem;
   animation: ${blinkCursor} 1s infinite alternate;
   background-color: ${props => 
@@ -39,6 +36,7 @@ export const WordCursor = styled.span`
 `;
 
 export const WhiteSpace = styled.span`
+  display: inline-block;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
   animation: ${blinkCursor} 1s infinite alternate;
