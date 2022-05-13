@@ -21,6 +21,7 @@ export const TextContainer = styled.div`
   }
 
   & span {
+    line-height: 2.5rem;
     display: inline-block;
   }
 `;
