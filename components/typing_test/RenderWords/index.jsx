@@ -19,6 +19,8 @@ function RenderWords({ text }) {
 
   const [textScroll, setTextScroll] = useState(0);
 
+  useEffect(() => setTextScroll(0), [isGameStarted]);
+
   useEffect(() => {
     const wordPosition = currentWordRef.current?.offsetLeft;
 
@@ -27,40 +29,35 @@ function RenderWords({ text }) {
     }
   }, [currentWord]);
 
-  useEffect(() => {
-    setTextScroll(0);
-  }, [isGameStarted]);
   
   return(
-    <> 
-      <TextContainer scroll={textScroll}>
-        <div>
-          {text.map((word, index) => {
-            const isCurrentWordActive = currentWord === index;
-            const isPrevious = index < currentWord ? true : false;
-            
-            if(isPrevious) {
-              return <PreviousWord key={"previous" + index} word={word} wordIndex={index}/>;
-            }
+    <TextContainer scroll={textScroll}>
+      <div>
+        {text.map((word, index) => {
+          const isCurrentWordActive = currentWord === index;
+          const isPrevious = index < currentWord ? true : false;
+          
+          if(isPrevious) {
+            return <PreviousWord key={"previous" + index} word={word} wordIndex={index}/>;
+          }
 
-            if(isCurrentWordActive && isGameStarted) {
-              return (
-                <span key={"current" + index} ref={currentWordRef}>
-                  <DisplayCurrentWord word={word}/>
-                </span>
-              );
-            }
-
-            return(
-              <GameWord key={"word" + index}>
-                {word}
-                <WhiteSpace>&nbsp;</WhiteSpace>
-              </GameWord>
+          if(isCurrentWordActive && isGameStarted) {
+            return (
+              <span key={"current" + index} ref={currentWordRef}>
+                <DisplayCurrentWord word={word}/>
+              </span>
             );
-          })}
-        </div>
-      </TextContainer>
-    </>
+          }
+
+          return(
+            <GameWord key={"word" + index}>
+              {word}
+              <WhiteSpace>&nbsp;</WhiteSpace>
+            </GameWord>
+          );
+        })}
+      </div>
+    </TextContainer>
   );
 }
 
