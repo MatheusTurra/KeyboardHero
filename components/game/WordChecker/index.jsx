@@ -1,7 +1,7 @@
-import Timer from "../Timer";
-import Result from "../Result";
-import RenderWords from "../RenderWords";
-import ResetButton from "../../interface/ResetButton";
+import Timer from "../../layout/Timer";
+import Result from "../../layout/Result";
+import RenderWords from "../../layout/RenderWords";
+import ResetButton from "../../layout/ResetButton";
 
 import useWordCheck from "../../../utils/useWordCheck";
 

@@ -1,6 +1,6 @@
-import RenderWords from "../RenderWords";
-import Chronometer from "../Chronometer";
-import ResetButton from "../../interface/ResetButton";
+import RenderWords from "../../layout/RenderWords";
+import Chronometer from "../../layout/Chronometer";
+import ResetButton from "../../layout/ResetButton";
 import useWordCheck from "../../../utils/useWordCheck";
 
 import { GameContext } from "../../../providers/GameContext";

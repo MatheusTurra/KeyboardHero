@@ -1,7 +1,7 @@
 import Seo from "../components/Seo";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import WordChecker from "../components/typing_test/WordChecker";
+import WordChecker from "../components/game/WordChecker";
 
 import { GameProvider } from "../providers/GameContext";
 

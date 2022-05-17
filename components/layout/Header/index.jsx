@@ -1,4 +1,4 @@
-import ThemeSwitcher from "../../interface/ThemeSwitcher";
+import ThemeSwitcher from "../../layout/ThemeSwitcher";
 
 import { FaSun, FaMoon } from "react-icons/fa"
 import { GradientWrapper, Navbar, Logo, SwitcherWrapper } from "./styles";
