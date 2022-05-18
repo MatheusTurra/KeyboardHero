@@ -15,7 +15,7 @@ function RenderWords({ text }) {
   const currentWordRef = useRef(null);
   
   const { state } = useContext(GameContext);
-  const { currentWord, isGameStarted } = state;
+  const { currentWord, isGameStarted, isGameOver } = state;
 
   const [textScroll, setTextScroll] = useState(0);
 
@@ -41,7 +41,7 @@ function RenderWords({ text }) {
             return <PreviousWord key={"previous" + index} word={word} wordIndex={index}/>;
           }
 
-          if(isCurrentWordActive && isGameStarted) {
+          if(isCurrentWordActive && isGameStarted && isGameOver === false) {
             return (
               <span key={"current" + index} ref={currentWordRef}>
                 <DisplayCurrentWord word={word}/>
