@@ -61,8 +61,11 @@ export const UserInput = styled.input`
   outline: none;
   font-size: 2rem;
   margin-left: 0.3rem;
-  color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.secondary};
+  color: ${props => 
+    props.disabled 
+      ? "#495057"
+      : props.theme.colors.text};
 
   & :focus {
     outline: none;
