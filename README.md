@@ -33,7 +33,7 @@ O projeto **keyboard Hero** tem o intuito de testar a sua habilidade de digitaç
 * Em desenvolvimento 👷‍♂️
   * Diferentes testes.
   * Interface de escolha de idioma e texto.
-  * Interface de introdução ao projeto.{:target="_blank"}
+  * Interface de introdução ao projeto.
 
 <br>
 
