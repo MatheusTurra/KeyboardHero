@@ -1,7 +1,7 @@
 import { 
   CurrentWord,
   WordCursor,
-  WhiteSpace,
+  WhiteSpace
  } from "./styles";
 
 import { GameContext } from "../../../providers/GameContext";
@@ -12,7 +12,7 @@ let showWhitespace = false;
 
 export default function DisplayCurrentWord({word}) {
   const { state } = useContext(GameContext);
-  const { currentLetterIndex, isCurrentLetterRight } = state;
+  const { currentLetterIndex, isCurrentLetterRight, isGameOver } = state;
 
   const wordLeftChunk = word.substring(0, currentLetterIndex);
   let wordCursor = word[currentLetterIndex];
@@ -25,7 +25,12 @@ export default function DisplayCurrentWord({word}) {
     <>
       <CurrentWord isLetterRight={isCurrentLetterRight}>
         <span>{wordLeftChunk}</span>
-        <WordCursor isLetterRight={isCurrentLetterRight}>{wordCursor}</WordCursor>
+        <WordCursor
+          showCursor={!isGameOver} 
+          isLetterRight={isCurrentLetterRight}
+        >
+          {wordCursor}
+        </WordCursor>
         <span>{wordRightChunk}</span>
       </CurrentWord>
       <WhiteSpace 

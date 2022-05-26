@@ -15,6 +15,7 @@ export default {
     currentRightWordBackground: "#78c6a3",
     currentWrongWordBackground: "#ec8385",
     previousRightWordColor: "#25a244",
-
+    rightCursorColor: "#40916c",
+    wrongCursorColor: "#e35053"
   }
 }
