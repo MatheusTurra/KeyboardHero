@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 92%;
-  margin: 0 auto;
-
+  margin: 5rem auto;
+  
   @media(min-width: 768px) {
-    max-width: 125rem;
+    width: 50%;
   }
 `;
 
@@ -30,7 +30,7 @@ export const GameContainer = styled.div`
   margin: 2rem 0;
 
   @media(min-width: 768px) {
-    margin: 10rem 0;
+    margin-top: 10rem;
   }
 `;
 
@@ -47,31 +47,27 @@ export const UserContainerGradient = styled.div`
 
 export const UserInteractionWrapper = styled.div`
   display: grid;
-  justify-items: center;
+  grid-template-columns: 14fr 1fr 1fr;
   align-items: center;
-  grid-gap: 1rem;
-  padding: 1rem;
+  height: 100%;
   border-radius: 1rem;
-  background: ${props => props.theme.colors.secondary};
-  
-  @media(min-width: 768px) {
-    flex-direction: row;
-    grid-template-columns: 6fr 2fr 1fr 1fr;
-  }
+  padding: 0 1rem;
+  background-color: ${props => props.theme.colors.secondary};
 `;
 
 export const UserInput = styled.input`
-  width: 95%;
-  height: 4.4rem;
   border: 0;
-  border-radius: 1rem;
-  margin: 0 auto;
-  font-size: 2.2rem;
-  border: 0.3rem solid;
-  border-color: rgba(0,30,84, 0.50);
+  width: 90%;
+  outline: none;
+  font-size: 2rem;
+  margin-left: 0.3rem;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => 
+    props.disabled 
+      ? "#495057"
+      : props.theme.colors.text};
 
   & :focus {
     outline: none;
   }
-
 `;

@@ -8,8 +8,12 @@ export const TimerContainer = styled.div`
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   border-radius: 1rem;
   background-color: ${props => props.theme.colors.secondary};
+
+  & span {
+    display: ${props => props.showTimer === false && "none"};
+  }
 `;

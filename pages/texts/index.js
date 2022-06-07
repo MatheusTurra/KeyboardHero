@@ -1,13 +1,13 @@
-import Seo from "../components/Seo";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import WordChecker from "../components/game/WordChecker";
+import Seo from "../../components/Seo";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
+import TextChecker from "../../components/game/TextChecker";
 
-import { GameProvider } from "../providers/GameContext";
+import dark from "../../styles/themes/dark";
+import light from "../../styles/themes/light";
+import GlobalStyle from "../../styles/GlobalStyle";
 
-import dark from "../styles/themes/dark";
-import light from "../styles/themes/light";
-import GlobalStyle from "../styles/GlobalStyle";
+import { GameProvider } from "../../providers/GameContext";
 
 import { parseCookies, setCookie } from "nookies";
 import { ThemeProvider } from "styled-components";
@@ -38,23 +38,21 @@ export default function Home(props) {
       const newState = !prevState;
       
       if(newState) setPersistedTheme(dark);
-      else setPersistedTheme(light)
+      else setPersistedTheme(light);
       return newState;
     });
   }
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Seo />
-        <GlobalStyle />
-        <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
-        <GameProvider>
-          <WordChecker isDarkModeOn={isDarkModeOn}/>
-        </GameProvider>
-        <Footer />
-      </ ThemeProvider >
-    </>
+    <ThemeProvider theme={theme}>
+      <Seo />
+      <GlobalStyle />
+      <Header isDarkModeOn={isDarkModeOn} onClick={handleThemeChange}/>
+      <GameProvider>
+        <TextChecker isDarkModeOn={isDarkModeOn} />
+      </GameProvider>
+      <Footer />
+    </ ThemeProvider >
   );
 }
 

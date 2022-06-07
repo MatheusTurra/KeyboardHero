@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonContainer = styled.button`
-  /* width: 65%; */
-  width: 30%;
+  width: 8rem;
   height: 5rem;
   cursor: pointer;
   font-size: 2.8rem;
@@ -62,7 +61,6 @@ export const ButtonContainer = styled.button`
   } 
 
   @media(min-width: 768px) {
-    width: 65%;
 
     & :hover {
       box-shadow: 0.7rem 0.5rem 1rem #000;
